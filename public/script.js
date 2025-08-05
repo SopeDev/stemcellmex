@@ -206,28 +206,87 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Enhanced parallax effect for hero background shapes only
-window.addEventListener('scroll', function() {
+// High-performance parallax effect using requestAnimationFrame
+let ticking = false;
+let lastScrollY = 0;
+
+function updateParallax() {
     const scrolled = window.pageYOffset;
+    const heroSection = document.querySelector('.hero');
+    const time = Date.now() * 0.001; // Current time for float animation
+    
+    if (!heroSection) return;
+    
+    const heroHeight = heroSection.offsetHeight;
+    const heroTop = heroSection.offsetTop;
+    
+    // Background parallax (slower movement)
+    const heroBackground = document.querySelector('.parallax-bg');
+    if (heroBackground) {
+        const bgY = scrolled * 0.3;
+        heroBackground.style.transform = `translate3d(0, ${bgY}px, 0)`;
+    }
+    
+    // Shapes parallax with float animation (always animate, not just when in view)
     const shapes = document.querySelectorAll('.shape');
     
-    // Only apply parallax to background shapes, not the hero section itself
     shapes.forEach((shape, index) => {
-        const speed = 0.3 + (index * 0.2); // More varied speeds
+        const depth = parseFloat(shape.getAttribute('data-depth') || '0.5');
+        const speed = 0.5 + (depth * 0.5); // Deeper shapes move faster
         const yPos = -(scrolled * speed);
-        const rotation = scrolled * (0.05 + index * 0.02);
-        const scale = 1 + (scrolled * 0.0001 * (index + 1));
+        const xPos = scrolled * (depth * 0.1); // Subtle horizontal movement
         
-        shape.style.transform = `translateY(${yPos}px) rotate(${rotation}deg) scale(${scale})`;
+        // Float animation parameters
+        const floatSpeed = 0.5 + (index * 0.1);
+        const floatAmplitude = 15 + (depth * 10);
+        const floatY = Math.sin(time * floatSpeed) * floatAmplitude;
+        const rotation = Math.sin(time * (0.3 + index * 0.1)) * 180;
+        const scale = 1 + Math.sin(time * (0.2 + index * 0.05)) * 0.1;
+        
+        // Border-radius animation (from original CSS keyframes)
+        const borderRadiusProgress = Math.sin(time * (0.2 + index * 0.05));
+        const borderRadius = 50 + (borderRadiusProgress * 10); // Animate between 40% and 60%
+        
+        // Combine parallax and float animation
+        shape.style.transform = `translate3d(${xPos}px, ${yPos + floatY}px, ${depth * 100}px) rotate(${rotation}deg) scale(${scale})`;
+        shape.style.borderRadius = `50% ${borderRadius}%`;
     });
     
-    // Parallax for organic shapes container only
-    const organicShapes = document.querySelector('.organic-shapes');
-    if (organicShapes) {
-        const organicParallax = scrolled * 0.6;
-        organicShapes.style.transform = `translateY(${organicParallax}px)`;
+    // Content parallax (very subtle, keeps content readable)
+    const heroContent = document.querySelector('.parallax-content');
+    if (heroContent) {
+        const contentY = scrolled * 0.1;
+        heroContent.style.transform = `translate3d(0, ${contentY}px, 0)`;
     }
-});
+    
+    ticking = false;
+}
+
+function requestTick() {
+    if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+    }
+}
+
+// Throttled scroll listener for better performance
+window.addEventListener('scroll', function() {
+    requestTick();
+}, { passive: true });
+
+// Update parallax on window resize
+window.addEventListener('resize', function() {
+    requestTick();
+}, { passive: true });
+
+// Continuous animation loop for float effect
+function animateFloat() {
+    requestTick();
+    requestAnimationFrame(animateFloat);
+}
+
+// Start the continuous animation loop
+animateFloat();
 
 // Add loading animation
 window.addEventListener('load', function() {
