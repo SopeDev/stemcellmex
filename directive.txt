@@ -1,0 +1,42 @@
+Design a modern, visually captivating website for a cutting-edge medical stem cell company, incorporating the official color palette and typography to convey technological innovation and professional excellence. Use a clinical yet inviting color scheme built around the main colors:
+
+Aphrodite Aqua (#45EDB9) as a vibrant accent for key highlights, calls to action, and decorative elements evoking advanced biomedical technology.
+
+Stellar Explorer (#002B2B) as the primary dark base, giving the website a bold, high-contrast, and futuristic feel.
+
+Journey To The Sky (#CCEDEC) as a soft background or section divider for fresh, clean expanses.
+
+Auxiliary colors Light Mint (#BFFFBD), Luminescent Sky (#CAFFFB), and Lamiaceae (#40FFDF) can be used sparingly for gradients, subtle overlays, hover states, or micro-interactions, reinforcing a modern, science-forward aesthetic.
+
+Imagery & Shapes:
+
+Emphasize abstract, organic forms inspired by cells, molecules, and microscopic structures.
+
+Use translucent layers, fluid shapes, and soft gradients to suggest depth, precision, and motion.
+
+Incorporate textures or visuals referencing laboratory imagery (e.g., bubble patterns, microfluidics) to enhance the sense of advanced research.
+
+Typography:
+
+Specter (Bold → Light → Regular) – primary headings; use bold for main titles, light or regular for supporting text within the same section.
+
+Calvino Grande (Regular → Light → Light Italic) – secondary headings or impactful phrases; use regular weight for body of the phrase, switching to light italic for keywords or emphasis (e.g., “Your Health is their Future”, with Health and Future in light italic).
+
+Bio Sans (Regular → Light → Light Italic) – auxiliary content, subtext, body paragraphs; maintain clarity and modern professionalism, applying light italic sparingly for subtle emphasis.
+
+Overall Mood:
+
+Conveys cutting-edge science, modern medicine, and trustworthiness.
+
+Balances sleek minimalism with organic visuals to keep the experience both professional and approachable.
+
+Should feel premium, inviting, and aligned with the latest medical technologies — exactly matching the client’s vision of “una página moderna y cautivadora para el ojo”.
+
+In the "reference" folder of this project you will find 4 documents:
+
+faq is literally for the faq section.
+general info is a document with info about the company.
+website info is a document the client sent me with content (copy) specifically for the website.
+propuesta is part of the proposal sent to the client, it contains specs for the website structure and content.
+
+the base tech stack for the project will be html, css, javascrtipt; no frameworks. 

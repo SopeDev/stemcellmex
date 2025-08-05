@@ -1,0 +1,1131 @@
+/* CSS Variables for Color Palette */
+:root {
+    --aphrodite-aqua: #45EDB9;
+    --stellar-explorer: #002B2B;
+    --journey-sky: #CCEDEC;
+    --light-mint: #BFFFBD;
+    --luminescent-sky: #CAFFFB;
+    --lamiaceae: #40FFDF;
+    --white: #FFFFFF;
+    --black: #000000;
+    --gray-light: #F8F9FA;
+    --gray-medium: #6C757D;
+    --gray-dark: #343A40;
+}
+
+/* Font Face Declarations */
+@font-face {
+    font-family: 'Specter';
+    src: url('public/fonts/specter-bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Specter';
+    src: url('public/fonts/specter-light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Specter';
+    src: url('public/fonts/specter-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Calvino';
+    src: url('public/fonts/calvino-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Calvino';
+    src: url('public/fonts/calvino-light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Calvino';
+    src: url('public/fonts/calvino-light-italic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bio Sans';
+    src: url('public/fonts/biosans-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bio Sans';
+    src: url('public/fonts/biosans-light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bio Sans';
+    src: url('public/fonts/biosans-light-italic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Bio Sans', sans-serif;
+    line-height: 1.6;
+    color: var(--stellar-explorer);
+    background-color: var(--white);
+    overflow-x: hidden;
+    font-weight: normal;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Specter', sans-serif;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: bold;
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: bold;
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-family: 'Calvino', serif;
+    font-weight: normal;
+}
+
+h4 {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-family: 'Calvino', serif;
+    font-weight: normal;
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-family: 'Bio Sans', sans-serif;
+    font-weight: normal;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: transparent;
+    z-index: 10000;
+    padding: 1rem 0;
+    transition: all 0.5s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    transition: all 0.3s ease;
+    filter: brightness(0) invert(1); /* Makes the logo white */
+}
+
+.navbar.scrolled .logo-img {
+    filter: brightness(0) invert(0); /* Makes the logo dark when navbar is scrolled */
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+    opacity: 0.9;
+}
+
+.navbar.scrolled .nav-menu a {
+    color: var(--stellar-explorer);
+}
+
+.nav-menu a:hover {
+    color: var(--aphrodite-aqua);
+    opacity: 1;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--aphrodite-aqua);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.lang-btn {
+    background: rgba(69, 237, 185, 0.2);
+    color: var(--white);
+    border: 1px solid var(--aphrodite-aqua);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.navbar.scrolled .lang-btn {
+    background: var(--aphrodite-aqua);
+    color: var(--stellar-explorer);
+    border: none;
+}
+
+.lang-btn:hover {
+    background: var(--aphrodite-aqua);
+    color: var(--stellar-explorer);
+    transform: translateY(-2px);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--white);
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+.navbar.scrolled .hamburger span {
+    background: var(--stellar-explorer);
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(135deg, var(--stellar-explorer) 0%, #001a1a 50%, var(--stellar-explorer) 100%);
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0, 43, 43, 0.8), rgba(69, 237, 185, 0.1));
+    z-index: 1;
+}
+
+.organic-shapes {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--aphrodite-aqua), var(--lamiaceae));
+    opacity: 0.15;
+    animation: float 8s ease-in-out infinite;
+    filter: blur(1px);
+}
+
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    top: 5%;
+    right: 5%;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 250px;
+    height: 250px;
+    bottom: 15%;
+    left: 10%;
+    animation-delay: 2s;
+}
+
+.shape-3 {
+    width: 180px;
+    height: 180px;
+    top: 60%;
+    left: 60%;
+    animation-delay: 4s;
+}
+
+.shape-4 {
+    width: 120px;
+    height: 120px;
+    top: 20%;
+    left: 20%;
+    animation-delay: 6s;
+}
+
+.shape-5 {
+    width: 90px;
+    height: 90px;
+    bottom: 40%;
+    right: 30%;
+    animation-delay: 8s;
+}
+
+.shape-6 {
+    width: 60px;
+    height: 60px;
+    top: 15%;
+    left: 80%;
+    animation-delay: 1s;
+}
+
+.shape-7 {
+    width: 80px;
+    height: 80px;
+    top: 75%;
+    left: 15%;
+    animation-delay: 3s;
+}
+
+.shape-8 {
+    width: 45px;
+    height: 45px;
+    top: 25%;
+    right: 20%;
+    animation-delay: 5s;
+}
+
+.shape-9 {
+    width: 70px;
+    height: 70px;
+    bottom: 25%;
+    left: 25%;
+    animation-delay: 7s;
+}
+
+.shape-10 {
+    width: 50px;
+    height: 50px;
+    top: 85%;
+    left: 70%;
+    animation-delay: 2s;
+}
+
+.shape-11 {
+    width: 65px;
+    height: 65px;
+    top: 35%;
+    left: 10%;
+    animation-delay: 4s;
+}
+
+.shape-12 {
+    width: 40px;
+    height: 40px;
+    bottom: 15%;
+    right: 60%;
+    animation-delay: 6s;
+}
+
+.shape-13 {
+    width: 75px;
+    height: 75px;
+    top: 65%;
+    right: 15%;
+    animation-delay: 1.5s;
+}
+
+.shape-14 {
+    width: 55px;
+    height: 55px;
+    top: 10%;
+    left: 30%;
+    animation-delay: 3.5s;
+}
+
+.shape-15 {
+    width: 85px;
+    height: 85px;
+    bottom: 30%;
+    right: 45%;
+    animation-delay: 5.5s;
+}
+
+.shape-16 {
+    width: 35px;
+    height: 35px;
+    top: 45%;
+    left: 85%;
+    animation-delay: 2.5s;
+}
+
+.shape-17 {
+    width: 95px;
+    height: 95px;
+    top: 80%;
+    left: 60%;
+    animation-delay: 4.5s;
+}
+
+.shape-18 {
+    width: 50px;
+    height: 50px;
+    bottom: 70%;
+    left: 75%;
+    animation-delay: 6.5s;
+}
+
+.shape-19 {
+    width: 70px;
+    height: 70px;
+    top: 20%;
+    right: 70%;
+    animation-delay: 1.8s;
+}
+
+.shape-20 {
+    width: 60px;
+    height: 60px;
+    bottom: 60%;
+    right: 10%;
+    animation-delay: 3.8s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+    50% { transform: translateY(-30px) rotate(180deg) scale(1.1); }
+}
+
+
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.hero-main {
+    color: var(--white);
+    max-width: 700px;
+}
+
+.hero-title {
+    margin-bottom: 1.5rem;
+}
+
+.hero-title .highlight {
+    color: var(--aphrodite-aqua);
+    display: block;
+    font-size: 0.5em;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+    line-height: 1.3;
+}
+
+.hero-title .main-title {
+    color: var(--white);
+    display: block;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-shadow: 0 0 30px rgba(69, 237, 185, 0.5);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-family: 'Calvino', serif;
+    font-size: 1.4rem;
+    color: var(--aphrodite-aqua);
+    margin-bottom: 1.5rem;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    opacity: 0.95;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--journey-sky);
+    line-height: 1.7;
+    opacity: 0.9;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Bio Sans', sans-serif;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: var(--aphrodite-aqua);
+    color: var(--stellar-explorer);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(69, 237, 185, 0.3);
+}
+
+.btn-primary:hover {
+    background: var(--lamiaceae);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(69, 237, 185, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: var(--white);
+    color: var(--stellar-explorer);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+
+
+
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    animation: bounce 2s infinite;
+}
+
+.scroll-arrow {
+    width: 30px;
+    height: 30px;
+    border-right: 2px solid var(--aphrodite-aqua);
+    border-bottom: 2px solid var(--aphrodite-aqua);
+    transform: rotate(45deg);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* Section Styles */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    color: var(--stellar-explorer);
+    margin-bottom: 1rem;
+}
+
+.title-accent {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--aphrodite-aqua), var(--lamiaceae));
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* About Section */
+.about {
+    padding: 6rem 0;
+    background: var(--white);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.about-text h3 {
+    color: var(--stellar-explorer);
+    margin-bottom: 1rem;
+    font-family: 'Calvino', serif;
+    font-weight: normal;
+}
+
+.about-text p {
+    color: var(--gray-dark);
+    margin-bottom: 2rem;
+    font-family: 'Bio Sans', sans-serif;
+    font-weight: normal;
+}
+
+.mission-vision {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.mission, .vision {
+    background: linear-gradient(135deg, var(--journey-sky), var(--light-mint));
+    padding: 2rem;
+    border-radius: 15px;
+    border-left: 4px solid var(--aphrodite-aqua);
+}
+
+.mission h4, .vision h4 {
+    color: var(--stellar-explorer);
+    margin-bottom: 1rem;
+    font-family: 'Calvino', serif;
+    font-weight: normal;
+}
+
+.location-card {
+    background: linear-gradient(135deg, var(--stellar-explorer), #003333);
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 43, 43, 0.3);
+}
+
+.location-card h4 {
+    color: var(--aphrodite-aqua);
+    margin-bottom: 1rem;
+}
+
+/* Services Preview */
+.services-preview {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, var(--journey-sky), var(--luminescent-sky));
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.service-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-cell, .icon-exosome, .icon-iv, .icon-ortho {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--aphrodite-aqua), var(--lamiaceae));
+    position: relative;
+}
+
+.icon-cell::before, .icon-exosome::before, .icon-iv::before, .icon-ortho::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--white);
+}
+
+.service-card h3 {
+    color: var(--stellar-explorer);
+    margin-bottom: 1rem;
+}
+
+.service-card p {
+    color: var(--gray-dark);
+}
+
+.services-cta {
+    text-align: center;
+}
+
+/* Benefits Section */
+.benefits {
+    padding: 6rem 0;
+    background: var(--white);
+}
+
+.benefits-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.benefits-text h2 {
+    color: var(--stellar-explorer);
+    margin-bottom: 2rem;
+}
+
+.benefits-list {
+    list-style: none;
+}
+
+.benefits-list li {
+    padding: 0.5rem 0;
+    color: var(--gray-dark);
+    position: relative;
+    padding-left: 2rem;
+}
+
+.benefits-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--aphrodite-aqua);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.benefits-animation {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.benefit-dot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--aphrodite-aqua);
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.dot-1 {
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.dot-2 {
+    top: 50%;
+    right: 30%;
+    animation-delay: 0.5s;
+}
+
+.dot-3 {
+    bottom: 30%;
+    left: 50%;
+    animation-delay: 1s;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, var(--stellar-explorer), #003333);
+    color: var(--white);
+    text-align: center;
+}
+
+.cta-content h2 {
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+.cta-content p {
+    color: var(--journey-sky);
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Footer */
+.footer {
+    background: var(--stellar-explorer);
+    color: var(--white);
+    padding: 4rem 0 2rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3, .footer-section h4 {
+    color: var(--aphrodite-aqua);
+    margin-bottom: 1rem;
+}
+
+.footer-section p {
+    color: var(--journey-sky);
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+    color: var(--journey-sky);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: var(--aphrodite-aqua);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    color: var(--journey-sky);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: var(--aphrodite-aqua);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--gray-dark);
+    padding-top: 2rem;
+    text-align: center;
+    color: var(--gray-medium);
+}
+
+/* Mobile Navigation Overlay */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--stellar-explorer) 0%, var(--aphrodite-aqua) 100%);
+    z-index: 9999;
+    transform: translateX(100%) translateY(-100%);
+    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-nav-overlay.active {
+    transform: translateX(0) translateY(0);
+}
+
+.mobile-nav-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.mobile-nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.mobile-nav-menu li {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.4s ease;
+    transition-delay: 0.1s;
+}
+
+.mobile-nav-overlay.active .mobile-nav-menu li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-nav-menu li:nth-child(1) { transition-delay: 0.1s; }
+.mobile-nav-menu li:nth-child(2) { transition-delay: 0.2s; }
+.mobile-nav-menu li:nth-child(3) { transition-delay: 0.3s; }
+.mobile-nav-menu li:nth-child(4) { transition-delay: 0.4s; }
+.mobile-nav-menu li:nth-child(5) { transition-delay: 0.5s; }
+.mobile-nav-menu li:nth-child(6) { transition-delay: 0.6s; }
+
+.mobile-nav-menu a {
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Calvino', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.mobile-nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--aphrodite-aqua);
+    transition: width 0.3s ease;
+}
+
+.mobile-nav-menu a:hover {
+    color: var(--aphrodite-aqua);
+    transform: scale(1.05);
+}
+
+.mobile-nav-menu a:hover::after {
+    width: 100%;
+}
+
+.mobile-language-toggle {
+    margin-top: 1rem;
+}
+
+.mobile-language-toggle .lang-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--white);
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-family: 'Bio Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.mobile-language-toggle .lang-btn:hover {
+    background: var(--white);
+    color: var(--stellar-explorer);
+    transform: scale(1.05);
+}
+
+/* Hamburger animation */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-7px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-6px, -6px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .benefits-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .hero-buttons, .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .hero-content {
+        padding: 0 1rem;
+    }
+    
+    .section-header {
+        margin-bottom: 2rem;
+    }
+    
+    .about, .services-preview, .benefits, .cta-section {
+        padding: 3rem 0;
+    }
+} 

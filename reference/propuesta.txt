@@ -1,0 +1,49 @@
+﻿
+
+
+Alcance del Proyecto
+Secciones contempladas (estructura de navegación):
+1. Inicio / Quienes Somos
+ Breve historia, misión, visión, video institucional (1-2 mins), ubicación de la clínica, presentación del equipo.
+
+2. Tratamientos y Servicios
+ Explicación de lo que ofrecen, beneficios de la terapia con células madre, enfoque regenerativo, segmentos de pacientes.
+
+3. Testimonios / Resultados
+ Espacio para reseñas de pacientes o casos de éxito.
+
+4. Preguntas Frecuentes
+
+5. Contacto
+ Formulario, mapa, teléfono, redes sociales integradas.
+
+
+
+________________
+
+Características técnicas:
+   * Sitio bilingüe (español e inglés) con opción de cambio de idioma
+
+   * Diseño responsivo (adaptado a móviles, tablets y escritorio)
+
+   * Estilo visual médico moderno, basado en referencias como su Instagram
+
+   * Integración de video institucional
+
+   * Formulario de contacto funcional
+
+   * Integración con redes sociales
+
+   * Optimización básica SEO y velocidad
+
+Mantenimiento y soporte:
+      * Ustedes no requieren acceso para editar, por lo tanto, el mantenimiento será gestionado por mí.
+
+      * Incluye 1 mes de soporte posterior a la entrega (cambios menores, monitoreo y actualizaciones).
+
+No incluye (por ahora):
+         * Tienda online o sistema de cobros
+
+         * Sistema de agenda o calendario
+
+         * Área privada o administración de usuarios
