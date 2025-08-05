@@ -16,7 +16,7 @@
 /* Font Face Declarations */
 @font-face {
     font-family: 'Specter';
-    src: url('public/fonts/specter-bold.woff') format('woff');
+    src: url('./fonts/specter-bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
     font-family: 'Specter';
-    src: url('public/fonts/specter-light.woff') format('woff');
+    src: url('./fonts/specter-light.woff') format('woff');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -32,7 +32,7 @@
 
 @font-face {
     font-family: 'Specter';
-    src: url('public/fonts/specter-regular.woff') format('woff');
+    src: url('./fonts/specter-regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -40,7 +40,7 @@
 
 @font-face {
     font-family: 'Calvino';
-    src: url('public/fonts/calvino-regular.woff') format('woff');
+    src: url('./fonts/calvino-regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -48,7 +48,7 @@
 
 @font-face {
     font-family: 'Calvino';
-    src: url('public/fonts/calvino-light.woff') format('woff');
+    src: url('./fonts/calvino-light.woff') format('woff');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -56,7 +56,7 @@
 
 @font-face {
     font-family: 'Calvino';
-    src: url('public/fonts/calvino-light-italic.woff') format('woff');
+    src: url('./fonts/calvino-light-italic.woff') format('woff');
     font-weight: 300;
     font-style: italic;
     font-display: swap;
@@ -64,7 +64,7 @@
 
 @font-face {
     font-family: 'Bio Sans';
-    src: url('public/fonts/biosans-regular.woff') format('woff');
+    src: url('./fonts/biosans-regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -72,7 +72,7 @@
 
 @font-face {
     font-family: 'Bio Sans';
-    src: url('public/fonts/biosans-light.woff') format('woff');
+    src: url('./fonts/biosans-light.woff') format('woff');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -80,7 +80,7 @@
 
 @font-face {
     font-family: 'Bio Sans';
-    src: url('public/fonts/biosans-light-italic.woff') format('woff');
+    src: url('./fonts/biosans-light-italic.woff') format('woff');
     font-weight: 300;
     font-style: italic;
     font-display: swap;
