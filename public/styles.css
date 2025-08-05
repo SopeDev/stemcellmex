@@ -231,6 +231,15 @@ p {
     width: 100%;
 }
 
+.nav-menu a.active {
+    color: var(--aphrodite-aqua);
+    opacity: 1;
+}
+
+.nav-menu a.active::after {
+    width: 100%;
+}
+
 .lang-btn {
     background: rgba(69, 237, 185, 0.2);
     color: var(--white);
@@ -1086,6 +1095,15 @@ p {
 }
 
 .mobile-nav-menu a:hover::after {
+    width: 100%;
+}
+
+.mobile-nav-menu a.active {
+    color: var(--aphrodite-aqua);
+    transform: scale(1.05);
+}
+
+.mobile-nav-menu a.active::after {
     width: 100%;
 }
 

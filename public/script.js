@@ -288,6 +288,35 @@ function animateFloat() {
 // Start the continuous animation loop
 animateFloat();
 
+// Active navigation link based on current URL path
+function updateActiveNavLink() {
+    const navLinks = document.querySelectorAll('.nav-menu a[href^="#"], .mobile-nav-menu a[href^="#"]');
+    
+    // Get current URL hash or default to #inicio
+    const currentPath = window.location.hash || '#inicio';
+    
+    // Remove active class from all links
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+    });
+    
+    // Add active class to current path link
+    const activeLinks = document.querySelectorAll(`a[href="${currentPath}"]`);
+    activeLinks.forEach(link => {
+        link.classList.add('active');
+    });
+}
+
+// Update active nav link on hash change
+window.addEventListener('hashchange', function() {
+    updateActiveNavLink();
+});
+
+// Update active nav link on page load
+document.addEventListener('DOMContentLoaded', function() {
+    updateActiveNavLink();
+});
+
 // Add loading animation
 window.addEventListener('load', function() {
     document.body.classList.add('loaded');
