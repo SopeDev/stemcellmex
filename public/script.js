@@ -2,46 +2,29 @@
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+    const navbar = document.querySelector('.navbar');
     const body = document.body;
     
     // Open mobile menu
     if (hamburger && mobileOverlay) {
         hamburger.addEventListener('click', function() {
-            hamburger.classList.add('active');
-            mobileOverlay.classList.add('active');
-            body.style.overflow = 'hidden'; // Prevent background scrolling
-        });
-    }
-    
-    // Close mobile menu when clicking on a link
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-menu a');
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            mobileOverlay.classList.remove('active');
-            body.style.overflow = '';
-        });
-    });
-    
-    // Close mobile menu when clicking outside
-    if (mobileOverlay) {
-        mobileOverlay.addEventListener('click', function(e) {
-            if (e.target === mobileOverlay) {
+            if (mobileOverlay.classList.contains('active')) {
                 hamburger.classList.remove('active');
                 mobileOverlay.classList.remove('active');
                 body.style.overflow = '';
-            }
+                if (window.scrollY > 200) {
+                    navbar.classList.add('scrolled');
+                }
+            } else {
+                hamburger.classList.add('active');
+                mobileOverlay.classList.add('active');
+                body.style.overflow = 'hidden'; // Prevent background scrolling
+                if (navbar.classList.contains('scrolled')) {
+                    navbar.classList.remove('scrolled');
+                }
+            }                
         });
     }
-    
-    // Close mobile menu on escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && mobileOverlay && mobileOverlay.classList.contains('active')) {
-            hamburger.classList.remove('active');
-            mobileOverlay.classList.remove('active');
-            body.style.overflow = '';
-        }
-    });
 });
 
 // Smooth scrolling for navigation links
