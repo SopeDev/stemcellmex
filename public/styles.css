@@ -147,6 +147,7 @@ p {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+    width: 100%;
 }
 
 /* Navigation */
@@ -697,6 +698,15 @@ p {
 .section-title {
     color: var(--stellar-explorer);
     margin-bottom: 1rem;
+    font-family: 'Calvino', serif;
+    font-weight: normal;
+    font-size: 3rem;
+    text-transform: capitalize;
+}
+
+.section-title span {
+    font-family: 'Calvino', serif;
+    font-style: italic;
 }
 
 .title-accent {
@@ -711,6 +721,9 @@ p {
 .about {
     padding: 6rem 0;
     background: var(--white);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 .about-content {
@@ -790,7 +803,34 @@ p {
 /* Services Preview */
 .services-preview {
     padding: 6rem 0;
-    background: linear-gradient(135deg, var(--journey-sky), var(--luminescent-sky));
+    background: linear-gradient(135deg, var(--journey-sky), var(--luminescent-sky)), url('./images/background-1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    background-attachment: fixed;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.services-preview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(204, 237, 236, 0.8), rgba(202, 255, 251, 0.8));
+    z-index: 1;
+}
+
+.services-preview .container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
 }
 
 .services-grid {
@@ -843,9 +883,18 @@ p {
     background: var(--white);
 }
 
+/* New SVG icon styles */
+.service-svg-icon {
+    width: 60px;
+    height: 60px;
+}
+
 .service-card h3 {
     color: var(--stellar-explorer);
     margin-bottom: 1rem;
+    font-family: 'Specter', sans-serif;
+    font-weight: bold;
+    font-size: 1.6rem;
 }
 
 .service-card p {
@@ -860,6 +909,9 @@ p {
 .benefits {
     padding: 6rem 0;
     background: var(--white);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 .benefits-content {
@@ -939,6 +991,9 @@ p {
     background: linear-gradient(135deg, var(--stellar-explorer), #003333);
     color: var(--white);
     text-align: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 .cta-content h2 {
@@ -1221,6 +1276,11 @@ p {
     
     .container {
         padding: 0 1rem;
+    }
+    
+    /* Disable parallax on mobile for better performance */
+    .services-preview {
+        background-attachment: scroll;
     }
 }
 

@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elementsToTranslate.forEach(element => {
         const newText = element.getAttribute('data-en');
         if (newText) {
-            element.textContent = newText;
+            element.innerHTML = newText;
         }
     });
     
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetLang = currentLanguage === 'en' ? 'en' : 'es';
             const newText = element.getAttribute(`data-${targetLang}`);
             if (newText) {
-                element.textContent = newText;
+                element.innerHTML = newText;
             }
         });
         
@@ -245,7 +245,7 @@ function updateParallax() {
         
         // Border-radius animation (from original CSS keyframes)
         const borderRadiusProgress = Math.sin(time * (0.2 + index * 0.05));
-        const borderRadius = 50 + (borderRadiusProgress * 10); // Animate between 40% and 60%
+        const borderRadius = 45 + (borderRadiusProgress * 5); // Animate between 40% and 50%
         
         // Combine parallax and float animation
         shape.style.transform = `translate3d(${xPos}px, ${yPos + floatY}px, ${depth * 100}px) rotate(${rotation}deg) scale(${scale})`;
