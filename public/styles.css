@@ -668,25 +668,37 @@ p {
 
 .scroll-indicator {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
     z-index: 3;
-    animation: bounce 2s infinite;
+    text-align: center;
+    width: auto;
+    min-width: 200px;
+}
+
+.scroll-indicator p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    opacity: 0.8;
 }
 
 .scroll-arrow {
     width: 30px;
     height: 30px;
+    rotate: 45deg;
     border-right: 2px solid var(--aphrodite-aqua);
     border-bottom: 2px solid var(--aphrodite-aqua);
-    transform: rotate(45deg);
+    animation: arrow-bounce 2s infinite;
 }
 
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-    40% { transform: translateX(-50%) translateY(-10px); }
-    60% { transform: translateX(-50%) translateY(-5px); }
+@keyframes arrow-bounce {
+    0%, 100% { transform: translate3d(5px, 5px, 0); }
+    50% { transform: translate3d(-5px, -5px, 0); }
 }
 
 /* Section Styles */
@@ -1358,6 +1370,7 @@ p {
     flex-direction: column;
     justify-content: center;
     position: relative;
+    z-index: 1;
 }
 
 .panel-header {
@@ -1386,13 +1399,29 @@ p {
 
 /* Overview Panel Styles */
 .treatment-overview {
+    padding: 6rem 0;
     background: linear-gradient(135deg, var(--journey-sky), var(--luminescent-sky)), url('./images/background-1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-blend-mode: overlay;
     background-attachment: fixed;
-    color: var(--white);
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.treatment-overview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(204, 237, 236, 0.8), rgba(202, 255, 251, 0.8));
+    z-index: 1;
 }
 
 .treatment-overview .panel-title {
@@ -1481,7 +1510,7 @@ p {
 /* Treatment Panel Body Styles */
 .panel-body {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
