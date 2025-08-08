@@ -1386,7 +1386,12 @@ p {
 
 /* Overview Panel Styles */
 .treatment-overview {
-    background: linear-gradient(135deg, var(--stellar-explorer) 0%, var(--journey-sky) 100%);
+    background: linear-gradient(135deg, var(--journey-sky), var(--luminescent-sky)), url('./images/background-1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    background-attachment: fixed;
     color: var(--white);
 }
 
