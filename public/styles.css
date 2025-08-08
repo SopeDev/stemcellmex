@@ -1301,3 +1301,433 @@ p {
         padding: 3rem 0;
     }
 } 
+
+/* Sliding Treatments Section */
+.treatments-section {
+    position: relative;
+    width: 100%;
+    height: 500vh; /* Overview: 50vh + Treatments: 4 × 100vh = 450vh total */
+    background: linear-gradient(135deg, var(--stellar-explorer) 0%, var(--journey-sky) 100%);
+}
+
+.treatments-container {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.treatment-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--white);
+    transform: translateX(100%);
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.treatment-panel:nth-child(2) { z-index: 2; }
+.treatment-panel:nth-child(3) { z-index: 3; }
+.treatment-panel:nth-child(4) { z-index: 4; }
+.treatment-panel:nth-child(5) { z-index: 5; }
+
+.treatment-panel.active {
+    transform: translateX(0);
+}
+
+.treatment-panel.sliding-in {
+    transform: translateX(0);
+}
+
+/* Removed sliding-out class - using simpler approach */
+
+.panel-content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.panel-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.panel-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--stellar-explorer);
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.panel-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+.panel-description p {
+    font-size: 1.3rem;
+    color: var(--gray-dark);
+    line-height: 1.6;
+}
+
+/* Overview Panel Styles */
+.treatment-overview {
+    background: linear-gradient(135deg, var(--stellar-explorer) 0%, var(--journey-sky) 100%);
+    color: var(--white);
+}
+
+.treatment-overview .panel-title {
+    color: var(--white);
+}
+
+.treatment-overview .panel-description p {
+    color: var(--white);
+    opacity: 0.9;
+}
+
+.treatments-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.treatment-preview-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.treatment-preview-item:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.preview-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+}
+
+.preview-svg-icon {
+    width: 40px;
+    height: 40px;
+    filter: brightness(0) invert(1);
+}
+
+.treatment-preview-item h3 {
+    color: var(--white);
+    font-size: 1.3rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.scroll-hint {
+    text-align: center;
+    margin-top: 3rem;
+    opacity: 0.8;
+}
+
+.scroll-hint p {
+    color: var(--white);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.scroll-arrow-down {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    border: 2px solid var(--white);
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+    animation: bounce 2s infinite;
+}
+
+/* Treatment Panel Body Styles */
+.panel-body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.treatment-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.treatment-description {
+    padding-right: 2rem;
+}
+
+.treatment-description p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--gray-dark);
+    margin-bottom: 2rem;
+}
+
+.treatment-benefits h3 {
+    color: var(--stellar-explorer);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.treatment-benefits ul {
+    list-style: none;
+    padding: 0;
+}
+
+.treatment-benefits li {
+    padding: 0.8rem 0;
+    padding-left: 2rem;
+    position: relative;
+    font-size: 1.1rem;
+    color: var(--gray-dark);
+}
+
+.treatment-benefits li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0.8rem;
+    color: var(--aphrodite-aqua);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.treatment-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.treatment-image {
+    width: 100%;
+    max-width: 500px;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(135deg, var(--journey-sky) 0%, var(--light-mint) 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.image-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.placeholder-text {
+    text-align: center;
+    color: var(--stellar-explorer);
+    font-weight: 600;
+    font-size: 1.5rem;
+    z-index: 1;
+    position: relative;
+}
+
+/* Individual Treatment Panel Backgrounds */
+.treatment-stem-cells {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.treatment-exosomes {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+}
+
+.treatment-iv-therapy {
+    background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+}
+
+.treatment-orthopedics {
+    background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .treatment-info {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .treatment-description {
+        padding-right: 0;
+    }
+    
+    .treatments-preview {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .panel-content {
+        padding: 1rem;
+    }
+    
+    .panel-title {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+    
+    .panel-description p {
+        font-size: 1.1rem;
+    }
+    
+    .treatment-description p {
+        font-size: 1rem;
+    }
+    
+    .treatment-benefits li {
+        font-size: 1rem;
+    }
+    
+    .treatments-preview {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .treatment-preview-item {
+        padding: 1.5rem;
+    }
+    
+    .image-placeholder {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .panel-content {
+        padding: 1rem;
+    }
+    
+    .panel-title {
+        font-size: clamp(1.8rem, 10vw, 2.5rem);
+    }
+    
+    .treatment-info {
+        gap: 1.5rem;
+    }
+    
+    .image-placeholder {
+        height: 250px;
+    }
+    
+    .treatment-preview-item {
+        padding: 1rem;
+    }
+    
+    .preview-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .preview-svg-icon {
+        width: 30px;
+        height: 30px;
+    }
+} 
+
+/* Panel Indicators */
+.panel-indicators {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.panel-indicators.visible {
+    opacity: 1;
+}
+
+
+
+.panel-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    pointer-events: auto;
+}
+
+.panel-indicator:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.2);
+}
+
+.panel-indicator.active {
+    background: var(--aphrodite-aqua);
+    border-color: var(--aphrodite-aqua);
+    box-shadow: 0 0 10px rgba(69, 237, 185, 0.5);
+}
+
+/* Hide indicators on mobile */
+@media (max-width: 768px) {
+    .panel-indicators {
+        display: none;
+    }
+} 

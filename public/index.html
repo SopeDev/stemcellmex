@@ -136,45 +136,194 @@
         </div>
     </section>
 
-    <!-- Services Preview -->
-    <section class="services-preview">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-es="Nuestros Tratamientos" data-en="Our Treatments">Our Treatments</h2>
+    <!-- Sliding Treatments Section -->
+    <section id="tratamientos" class="treatments-section">
+        <div class="treatments-container">
+            <!-- Initial overview panel -->
+            <div class="treatment-panel treatment-overview active" data-panel="overview">
+                <div class="panel-content">
+                    <div class="panel-header">
+                        <h2 class="panel-title" data-es="Nuestros Tratamientos" data-en="Our Treatments">Our Treatments</h2>
                 <div class="title-accent"></div>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="./images/icon-1.svg" alt="Stem Cells" class="service-svg-icon">
+                    <div class="panel-description">
+                        <p data-es="Descubre nuestra gama completa de tratamientos regenerativos diseñados para restaurar tu salud y vitalidad." data-en="Discover our complete range of regenerative treatments designed to restore your health and vitality.">Discover our complete range of regenerative treatments designed to restore your health and vitality.</p>
                     </div>
-                    <h3 data-es="Células Madre Mesenquimales" data-en="Mesenchymal Stem Cells">Mesenchymal Stem Cells</h3>
-                    <p data-es="Tratamiento regenerativo principal para diversas condiciones médicas." data-en="Main regenerative treatment for various medical conditions.">Main regenerative treatment for various medical conditions.</p>
+                    <div class="treatments-preview">
+                        <div class="treatment-preview-item">
+                            <div class="preview-icon">
+                                <img src="./images/icon-1.svg" alt="Stem Cells" class="preview-svg-icon">
+                    </div>
+                            <h3 data-es="Células Madre" data-en="Stem Cells">Stem Cells</h3>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="./images/icon-2.svg" alt="Exosomes" class="service-svg-icon">
+                        <div class="treatment-preview-item">
+                            <div class="preview-icon">
+                                <img src="./images/icon-2.svg" alt="Exosomes" class="preview-svg-icon">
                     </div>
                     <h3 data-es="Exosomas" data-en="Exosomes">Exosomes</h3>
-                    <p data-es="Terapia avanzada para regeneración celular y rejuvenecimiento." data-en="Advanced therapy for cellular regeneration and rejuvenation.">Advanced therapy for cellular regeneration and rejuvenation.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="./images/icon-3.svg" alt="IV Therapy" class="service-svg-icon">
+                        <div class="treatment-preview-item">
+                            <div class="preview-icon">
+                                <img src="./images/icon-3.svg" alt="IV Therapy" class="preview-svg-icon">
                     </div>
-                    <h3 data-es="Sueros IV" data-en="IV Therapy">IV Therapy</h3>
-                    <p data-es="Tratamientos multivitamínicos intravenosos personalizados." data-en="Personalized intravenous multivitamin treatments.">Personalized intravenous multivitamin treatments.</p>
+                            <h3 data-es="Terapia IV" data-en="IV Therapy">IV Therapy</h3>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="./images/icon-4.svg" alt="Orthopedics" class="service-svg-icon">
+                        <div class="treatment-preview-item">
+                            <div class="preview-icon">
+                                <img src="./images/icon-4.svg" alt="Orthopedics" class="preview-svg-icon">
                     </div>
                     <h3 data-es="Ortopedia" data-en="Orthopedics">Orthopedics</h3>
-                    <p data-es="Tratamiento de lesiones deportivas y dolores articulares." data-en="Treatment of sports injuries and joint pain.">Treatment of sports injuries and joint pain.</p>
+                        </div>
+                    </div>
+                    <div class="scroll-hint">
+                        <p data-es="Desplázate hacia abajo para explorar cada tratamiento" data-en="Scroll down to explore each treatment">Scroll down to explore each treatment</p>
+                        <div class="scroll-arrow-down"></div>
+                    </div>
                 </div>
             </div>
-            <div class="services-cta">
-                <button class="btn-primary" data-es="Ver Todos los Tratamientos" data-en="View All Treatments">View All Treatments</button>
+
+            <!-- Stem Cells Treatment Panel -->
+            <div class="treatment-panel treatment-stem-cells" data-panel="stem-cells">
+                <div class="panel-content">
+                    <div class="panel-header">
+                        <h2 class="panel-title" data-es="Células Madre Mesenquimales" data-en="Mesenchymal Stem Cells">Mesenchymal Stem Cells</h2>
+                        <div class="title-accent"></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="treatment-info">
+                            <div class="treatment-description">
+                                <p data-es="Las células madre mesenquimales son la base de la medicina regenerativa moderna. Estas células tienen la capacidad única de diferenciarse en diferentes tipos de tejidos y promover la regeneración natural del cuerpo." data-en="Mesenchymal stem cells are the foundation of modern regenerative medicine. These cells have the unique ability to differentiate into different types of tissues and promote natural body regeneration.">Mesenchymal stem cells are the foundation of modern regenerative medicine. These cells have the unique ability to differentiate into different types of tissues and promote natural body regeneration.</p>
+                                
+                                <div class="treatment-benefits">
+                                    <h3 data-es="Beneficios Principales" data-en="Key Benefits">Key Benefits</h3>
+                                    <ul>
+                                        <li data-es="Regeneración de tejidos dañados" data-en="Regeneration of damaged tissues">Regeneration of damaged tissues</li>
+                                        <li data-es="Reducción de inflamación crónica" data-en="Reduction of chronic inflammation">Reduction of chronic inflammation</li>
+                                        <li data-es="Mejora del sistema inmunológico" data-en="Enhanced immune system">Enhanced immune system</li>
+                                        <li data-es="Aceleración del proceso de curación" data-en="Accelerated healing process">Accelerated healing process</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="treatment-visual">
+                                <div class="treatment-image">
+                                    <div class="image-placeholder stem-cells-img">
+                                        <div class="placeholder-text">
+                                            <p>Stem Cells</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exosomes Treatment Panel -->
+            <div class="treatment-panel treatment-exosomes" data-panel="exosomes">
+                <div class="panel-content">
+                    <div class="panel-header">
+                        <h2 class="panel-title" data-es="Terapia con Exosomas" data-en="Exosome Therapy">Exosome Therapy</h2>
+                        <div class="title-accent"></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="treatment-info">
+                            <div class="treatment-description">
+                                <p data-es="Los exosomas son vesículas extracelulares que contienen proteínas, lípidos y ácidos nucleicos que facilitan la comunicación celular. Esta terapia avanzada promueve la regeneración y rejuvenecimiento a nivel celular." data-en="Exosomes are extracellular vesicles containing proteins, lipids, and nucleic acids that facilitate cellular communication. This advanced therapy promotes regeneration and rejuvenation at the cellular level.">Exosomes are extracellular vesicles containing proteins, lipids, and nucleic acids that facilitate cellular communication. This advanced therapy promotes regeneration and rejuvenation at the cellular level.</p>
+                                
+                                <div class="treatment-benefits">
+                                    <h3 data-es="Beneficios Principales" data-en="Key Benefits">Key Benefits</h3>
+                                    <ul>
+                                        <li data-es="Rejuvenecimiento celular" data-en="Cellular rejuvenation">Cellular rejuvenation</li>
+                                        <li data-es="Mejora de la función inmunológica" data-en="Enhanced immune function">Enhanced immune function</li>
+                                        <li data-es="Reducción de signos de envejecimiento" data-en="Reduction of aging signs">Reduction of aging signs</li>
+                                        <li data-es="Aceleración de la recuperación post-tratamiento" data-en="Accelerated post-treatment recovery">Accelerated post-treatment recovery</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="treatment-visual">
+                                <div class="treatment-image">
+                                    <div class="image-placeholder exosomes-img">
+                                        <div class="placeholder-text">
+                                            <p>Exosomes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IV Therapy Treatment Panel -->
+            <div class="treatment-panel treatment-iv-therapy" data-panel="iv-therapy">
+                <div class="panel-content">
+                    <div class="panel-header">
+                        <h2 class="panel-title" data-es="Terapia Intravenosa" data-en="Intravenous Therapy">Intravenous Therapy</h2>
+                        <div class="title-accent"></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="treatment-info">
+                            <div class="treatment-description">
+                                <p data-es="Nuestros tratamientos intravenosos personalizados proporcionan vitaminas, minerales y nutrientes directamente al torrente sanguíneo, asegurando una absorción del 100% y resultados inmediatos." data-en="Our personalized intravenous treatments provide vitamins, minerals, and nutrients directly to the bloodstream, ensuring 100% absorption and immediate results.">Our personalized intravenous treatments provide vitamins, minerals, and nutrients directly to the bloodstream, ensuring 100% absorption and immediate results.</p>
+                                
+                                <div class="treatment-benefits">
+                                    <h3 data-es="Beneficios Principales" data-en="Key Benefits">Key Benefits</h3>
+                                    <ul>
+                                        <li data-es="Absorción directa al torrente sanguíneo" data-en="Direct absorption into bloodstream">Direct absorption into bloodstream</li>
+                                        <li data-es="Resultados inmediatos" data-en="Immediate results">Immediate results</li>
+                                        <li data-es="Mejora de energía y vitalidad" data-en="Enhanced energy and vitality">Enhanced energy and vitality</li>
+                                        <li data-es="Refuerzo del sistema inmunológico" data-en="Immune system boost">Immune system boost</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="treatment-visual">
+                                <div class="treatment-image">
+                                    <div class="image-placeholder iv-therapy-img">
+                                        <div class="placeholder-text">
+                                            <p>IV Therapy</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orthopedics Treatment Panel -->
+            <div class="treatment-panel treatment-orthopedics" data-panel="orthopedics">
+                <div class="panel-content">
+                    <div class="panel-header">
+                        <h2 class="panel-title" data-es="Tratamiento Ortopédico" data-en="Orthopedic Treatment">Orthopedic Treatment</h2>
+                        <div class="title-accent"></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="treatment-info">
+                            <div class="treatment-description">
+                                <p data-es="Nuestros tratamientos ortopédicos regenerativos combinan la medicina tradicional con terapias avanzadas para tratar lesiones deportivas, dolores articulares y condiciones degenerativas." data-en="Our regenerative orthopedic treatments combine traditional medicine with advanced therapies to treat sports injuries, joint pain, and degenerative conditions.">Our regenerative orthopedic treatments combine traditional medicine with advanced therapies to treat sports injuries, joint pain, and degenerative conditions.</p>
+                                
+                                <div class="treatment-benefits">
+                                    <h3 data-es="Beneficios Principales" data-en="Key Benefits">Key Benefits</h3>
+                                    <ul>
+                                        <li data-es="Regeneración de cartílago y tejido conectivo" data-en="Cartilage and connective tissue regeneration">Cartilage and connective tissue regeneration</li>
+                                        <li data-es="Reducción del dolor articular" data-en="Joint pain reduction">Joint pain reduction</li>
+                                        <li data-es="Mejora de la movilidad" data-en="Improved mobility">Improved mobility</li>
+                                        <li data-es="Recuperación acelerada de lesiones" data-en="Accelerated injury recovery">Accelerated injury recovery</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="treatment-visual">
+                                <div class="treatment-image">
+                                    <div class="image-placeholder orthopedics-img">
+                                        <div class="placeholder-text">
+                                            <p>Orthopedics</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
             </div>
         </div>
     </section>

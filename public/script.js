@@ -341,3 +341,225 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style); 
+
+// Sliding Treatments Section Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const treatmentsSection = document.querySelector('.treatments-section');
+    const treatmentPanels = document.querySelectorAll('.treatment-panel');
+    const panels = Array.from(treatmentPanels);
+    
+    console.log('Treatments section found:', treatmentsSection);
+    console.log('Treatment panels found:', panels.length);
+    
+    if (!treatmentsSection || panels.length === 0) {
+        console.log('Treatments section or panels not found, exiting');
+        return;
+    }
+    
+    let currentPanelIndex = 0;
+    let isAnimating = false;
+    let sectionStart = 0;
+    let sectionEnd = 0;
+    let panelHeight = 0;
+    
+    // Initialize section measurements
+    function initializeSection() {
+        const rect = treatmentsSection.getBoundingClientRect();
+        sectionStart = window.pageYOffset + rect.top;
+        sectionEnd = sectionStart + treatmentsSection.offsetHeight;
+        panelHeight = window.innerHeight;
+        
+        console.log('Section initialized:', {
+            sectionStart,
+            sectionEnd,
+            panelHeight,
+            sectionHeight: treatmentsSection.offsetHeight
+        });
+    }
+    
+    // Initialize on load
+    initializeSection();
+    
+    // Recalculate on resize
+    window.addEventListener('resize', initializeSection);
+    
+    // Function to activate a specific panel
+    function activatePanel(index) {
+        if (isAnimating || index < 0 || index >= panels.length) return;
+        
+        isAnimating = true;
+        
+        // Reset all panels
+        panels.forEach((panel, i) => {
+            panel.classList.remove('active', 'sliding-in', 'sliding-out');
+        });
+        
+        // Set active panels (stacking effect)
+        for (let i = 0; i <= index; i++) {
+            panels[i].classList.add('active');
+        }
+        
+        // Set the current panel as sliding-in
+        if (index > 0) {
+            panels[index].classList.add('sliding-in');
+        }
+        
+        setTimeout(() => {
+            panels.forEach(panel => {
+                panel.classList.remove('sliding-in', 'sliding-out');
+            });
+            isAnimating = false;
+        }, 600);
+        
+        currentPanelIndex = index;
+    }
+    
+    // Scroll-based panel activation
+    function handleScroll() {
+        const scrollY = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        
+        // Check if we're in the treatments section
+        if (scrollY < sectionStart || scrollY > sectionEnd) {
+            return;
+        }
+        
+                // Calculate which panel should be active based on scroll position
+                // Use absolute viewport heights: 0-50vh, 50-150vh, 150-250vh, 250-350vh, 350-450vh
+                const scrollDistance = scrollY - sectionStart;
+                const viewportHeight = window.innerHeight;
+                const totalPanels = panels.length;
+                
+                let targetPanelIndex;
+                if (scrollDistance < 50 * viewportHeight / 100) {
+                    // 0-50vh: Overview panel
+                    targetPanelIndex = 0;
+                } else if (scrollDistance < 150 * viewportHeight / 100) {
+                    // 50-150vh: Stem Cells
+                    targetPanelIndex = 1;
+                } else if (scrollDistance < 250 * viewportHeight / 100) {
+                    // 150-250vh: Exosomes
+                    targetPanelIndex = 2;
+                } else if (scrollDistance < 350 * viewportHeight / 100) {
+                    // 250-350vh: IV Therapy
+                    targetPanelIndex = 3;
+                } else {
+                    // 350-450vh: Orthopedics
+                    targetPanelIndex = 4;
+                }
+        
+        // Ensure we don't go beyond the last panel
+        const clampedIndex = Math.min(Math.max(targetPanelIndex, 0), totalPanels - 1);
+        
+        console.log('Scroll detected:', {
+            scrollY,
+            sectionStart,
+            scrollDistance: scrollY - sectionStart,
+            viewportHeight: window.innerHeight,
+            targetPanelIndex,
+            clampedIndex,
+            currentPanelIndex
+        });
+        
+        // Add some hysteresis to prevent rapid switching
+        if (clampedIndex !== currentPanelIndex && !isAnimating) {
+            console.log('Activating panel:', clampedIndex);
+            activatePanel(clampedIndex);
+        }
+    }
+    
+    // Throttled scroll handler for better performance
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+        if (scrollTimeout) return;
+        
+        scrollTimeout = setTimeout(() => {
+            handleScroll();
+            scrollTimeout = null;
+        }, 16); // ~60fps
+    }, { passive: true });
+    
+    // Initialize the first panel as active
+    console.log('Initializing first panel as active');
+    activatePanel(0);
+    
+    // Test: Log all panels to make sure they're found
+    panels.forEach((panel, index) => {
+        console.log(`Panel ${index}:`, panel.className, panel.dataset.panel);
+    });
+    
+
+    
+    // Add visual indicators for current panel
+    function updatePanelIndicators() {
+        // Get or create indicators
+        let indicators = document.querySelector('.panel-indicators');
+        if (!indicators) {
+            indicators = document.createElement('div');
+            indicators.className = 'panel-indicators';
+            
+            panels.forEach((panel, index) => {
+                const indicator = document.createElement('div');
+                indicator.className = 'panel-indicator';
+                
+                indicator.addEventListener('click', () => {
+                    const targetScroll = sectionStart + (index / panels.length) * (sectionEnd - sectionStart);
+                    window.scrollTo({
+                        top: targetScroll,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                indicators.appendChild(indicator);
+            });
+            
+            // Append to document body but manage visibility
+            document.body.appendChild(indicators);
+        }
+        
+        // Check if we're in the treatments section
+        const scrollY = window.pageYOffset;
+        const isInSection = scrollY >= sectionStart && scrollY <= sectionEnd;
+        
+        if (isInSection) {
+            indicators.classList.add('visible');
+            // Update active state
+            const indicatorElements = indicators.querySelectorAll('.panel-indicator');
+            indicatorElements.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentPanelIndex);
+            });
+        } else {
+            indicators.classList.remove('visible');
+        }
+    }
+    
+    // Update indicators when panel changes
+    const originalActivatePanel = activatePanel;
+    function activatePanelWithIndicators(index) {
+        originalActivatePanel(index);
+        // Update indicators after a short delay to ensure panel state is set
+        setTimeout(updatePanelIndicators, 100);
+    }
+    
+    // Replace the original activatePanel function
+    activatePanel = activatePanelWithIndicators;
+    
+    // Initialize indicators
+    updatePanelIndicators();
+    
+    // Add scroll listener to update indicator visibility
+    window.addEventListener('scroll', () => {
+        updatePanelIndicators();
+    }, { passive: true });
+    
+
+    
+    // Test: Add a simple click handler to test panel switching
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('panel-indicator')) {
+            console.log('Panel indicator clicked');
+        }
+    });
+    
+    console.log('Treatments section initialization complete');
+}); 
