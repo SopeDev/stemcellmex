@@ -356,6 +356,23 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
     
+    // Check if we're on mobile - disable overlapping panels functionality
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        // console.log('Mobile device detected, disabling overlapping panels functionality');
+        // Make all panels visible and remove any transform/position styles
+        panels.forEach((panel, index) => {
+            panel.classList.remove('active', 'sliding-in', 'sliding-out');
+            panel.style.position = 'relative';
+            panel.style.transform = 'none';
+            panel.style.height = 'auto';
+            panel.style.minHeight = '100vh';
+            panel.style.display = 'block';
+            panel.style.overflow = 'visible';
+        });
+        return; // Exit early for mobile devices
+    }
+    
     let currentPanelIndex = 0;
     let isAnimating = false;
     let sectionStart = 0;
@@ -381,7 +398,47 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSection();
     
     // Recalculate on resize
-    window.addEventListener('resize', initializeSection);
+    window.addEventListener('resize', function() {
+        const newIsMobile = window.innerWidth <= 768;
+        
+        // If switching to mobile, disable overlapping panels
+        if (newIsMobile && !isMobile) {
+            // console.log('Switching to mobile, disabling overlapping panels');
+            panels.forEach((panel, index) => {
+                panel.classList.remove('active', 'sliding-in', 'sliding-out');
+                panel.style.position = 'relative';
+                panel.style.transform = 'none';
+                panel.style.height = 'auto';
+                panel.style.minHeight = '100vh';
+                panel.style.display = 'block';
+                panel.style.overflow = 'visible';
+            });
+            return;
+        }
+        
+        // If switching from mobile to desktop, re-enable functionality
+        if (!newIsMobile && isMobile) {
+            // console.log('Switching to desktop, re-enabling overlapping panels');
+            panels.forEach((panel, index) => {
+                panel.style.position = '';
+                panel.style.transform = '';
+                panel.style.height = '';
+                panel.style.minHeight = '';
+                panel.style.display = '';
+                panel.style.overflow = '';
+            });
+            initializeSection();
+            activatePanel(0);
+        }
+        
+        // Update mobile state
+        isMobile = newIsMobile;
+        
+        // Only initialize section if not on mobile
+        if (!isMobile) {
+            initializeSection();
+        }
+    });
     
     // Function to activate a specific panel
     function activatePanel(index) {
@@ -474,6 +531,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let scrollDirection = 0;
     
     window.addEventListener('scroll', function() {
+        // Only handle scroll events on desktop (non-mobile)
+        if (isMobile) {
+            return;
+        }
+        
         const currentScrollY = window.pageYOffset;
         const scrollDelta = currentScrollY - lastScrollY;
         
@@ -499,9 +561,11 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScrollY = currentScrollY;
     }, { passive: true });
     
-    // Initialize the first panel as active
+    // Initialize the first panel as active (only on desktop)
     // console.log('Initializing first panel as active');
-    activatePanel(0);
+    if (!isMobile) {
+        activatePanel(0);
+    }
     
     // Test: Log all panels to make sure they're found
     // panels.forEach((panel, index) => {

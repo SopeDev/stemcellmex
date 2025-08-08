@@ -1669,8 +1669,41 @@ p {
 }
 
 @media (max-width: 768px) {
+    /* Remove overlapping panels implementation for mobile */
+    .treatments-section {
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .treatments-container {
+        position: relative;
+        height: auto;
+        overflow: visible;
+    }
+    
+    .treatment-panel {
+        position: relative;
+        transform: none;
+        height: auto;
+        min-height: 100vh;
+        display: block;
+        overflow: visible;
+    }
+    
+    .treatment-panel.active,
+    .treatment-panel.sliding-in {
+        transform: none;
+    }
+    
     .panel-content {
         padding: 1rem;
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    /* Fix background attachment issues on mobile */
+    .treatment-overview {
+        background-attachment: scroll;
     }
     
     .panel-title {
@@ -1704,8 +1737,41 @@ p {
 }
 
 @media (max-width: 480px) {
+    /* Ensure all content is visible on small mobile devices */
+    .treatments-section {
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .treatments-container {
+        position: relative;
+        height: auto;
+        overflow: visible;
+    }
+    
+    .treatment-panel {
+        position: relative;
+        transform: none;
+        height: auto;
+        min-height: 100vh;
+        display: block;
+        overflow: visible;
+    }
+    
+    .treatment-panel.active,
+    .treatment-panel.sliding-in {
+        transform: none;
+    }
+    
     .panel-content {
         padding: 1rem;
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    /* Fix background attachment issues on mobile */
+    .treatment-overview {
+        background-attachment: scroll;
     }
     
     .panel-title {
