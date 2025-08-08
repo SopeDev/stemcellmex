@@ -917,8 +917,8 @@ p {
     text-align: center;
 }
 
-/* Benefits Section */
-.benefits {
+/* Team Section */
+.team {
     padding: 6rem 0;
     background: var(--white);
     min-height: 100vh;
@@ -926,75 +926,85 @@ p {
     align-items: center;
 }
 
-.benefits-content {
+.team-content {
+    margin-top: 3rem;
+}
+
+.team-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.team-member {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.member-photo {
+    margin-bottom: 1.5rem;
+}
+
+.member-photo .photo-placeholder {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--aphrodite-aqua), var(--lamiaceae));
+    display: flex;
     align-items: center;
-}
-
-.benefits-text h2 {
-    color: var(--stellar-explorer);
-    margin-bottom: 2rem;
-}
-
-.benefits-list {
-    list-style: none;
-}
-
-.benefits-list li {
-    padding: 0.5rem 0;
-    color: var(--gray-dark);
+    justify-content: center;
+    margin: 0 auto;
     position: relative;
-    padding-left: 2rem;
+    overflow: hidden;
 }
 
-.benefits-list li::before {
-    content: '✓';
+.member-photo .photo-placeholder::before {
+    content: '';
     position: absolute;
-    left: 0;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 2s infinite;
+}
+
+.member-photo .placeholder-text {
+    color: var(--white);
+    font-weight: bold;
+    font-size: 1.1rem;
+    z-index: 1;
+    position: relative;
+}
+
+.member-info h3 {
+    color: var(--stellar-explorer);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.member-specialty {
     color: var(--aphrodite-aqua);
     font-weight: bold;
-    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
 }
 
-.benefits-animation {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
-}
-
-.benefit-dot {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--aphrodite-aqua);
-    animation: bounce 2s ease-in-out infinite;
-}
-
-.dot-1 {
-    top: 20%;
-    left: 20%;
-    animation-delay: 0s;
-}
-
-.dot-2 {
-    top: 50%;
-    right: 30%;
-    animation-delay: 0.5s;
-}
-
-.dot-3 {
-    bottom: 30%;
-    left: 50%;
-    animation-delay: 1s;
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+.member-description {
+    color: var(--gray-dark);
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 0;
 }
 
 /* CTA Section */
@@ -1272,9 +1282,18 @@ p {
         grid-row: 3 / 4;
     }
     
-    .benefits-content {
+    .team-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+    
+    .team-member {
+        padding: 1.5rem;
+    }
+    
+    .member-photo .photo-placeholder {
+        width: 120px;
+        height: 120px;
     }
     
     .hero-buttons, .cta-buttons {
@@ -1309,7 +1328,7 @@ p {
         margin-bottom: 2rem;
     }
     
-    .about, .services-preview, .benefits, .cta-section {
+    .about, .services-preview, .team, .cta-section {
         padding: 3rem 0;
     }
 } 
@@ -1716,7 +1735,8 @@ p {
     }
 } 
 
-/* Panel Indicators */
+/* Panel Indicators - Commented out */
+/*
 .panel-indicators {
     position: fixed;
     right: 30px;
@@ -1734,8 +1754,6 @@ p {
 .panel-indicators.visible {
     opacity: 1;
 }
-
-
 
 .panel-indicator {
     width: 12px;
@@ -1764,4 +1782,4 @@ p {
     .panel-indicators {
         display: none;
     }
-} 
+}
