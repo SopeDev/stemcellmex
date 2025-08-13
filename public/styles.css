@@ -13,19 +13,11 @@
     --gray-dark: #343A40;
 }
 
-/* Font Face Declarations */
+/* Font Face Declarations - Only keeping the ones actually used */
 @font-face {
     font-family: 'Specter';
     src: url('./fonts/specter-bold.woff') format('woff');
     font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Specter';
-    src: url('./fonts/specter-light.woff') format('woff');
-    font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
@@ -47,42 +39,10 @@
 }
 
 @font-face {
-    font-family: 'Calvino';
-    src: url('./fonts/calvino-light.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Calvino';
-    src: url('./fonts/calvino-light-italic.woff') format('woff');
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
     font-family: 'Bio Sans';
     src: url('./fonts/biosans-regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Bio Sans';
-    src: url('./fonts/biosans-light.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Bio Sans';
-    src: url('./fonts/biosans-light-italic.woff') format('woff');
-    font-weight: 300;
-    font-style: italic;
     font-display: swap;
 }
 
@@ -104,6 +64,8 @@ body {
     background-color: var(--white);
     overflow-x: hidden;
     font-weight: normal;
+    position: relative;
+    z-index: -5;
 }
 
 /* Typography */
@@ -185,11 +147,11 @@ p {
     height: 40px;
     width: auto;
     transition: all 0.3s ease;
-    filter: brightness(0) invert(1); /* Makes the logo white */
+    filter: brightness(0) invert(1);
 }
 
 .navbar.scrolled .logo-img {
-    filter: brightness(0) invert(0); /* Makes the logo dark when navbar is scrolled */
+    filter: brightness(0) invert(0);
 }
 
 .nav-menu {
@@ -537,18 +499,6 @@ p {
     backface-visibility: hidden;
 }
 
-/* Performance optimizations */
-.hero {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-}
-
-.shape {
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-}
-
-
 .hero-content {
     position: relative;
     z-index: 3;
@@ -591,16 +541,6 @@ p {
     text-shadow: 0 0 30px rgba(69, 237, 185, 0.5);
     margin-bottom: 1rem;
     line-height: 1.2;
-}
-
-.hero-subtitle {
-    font-family: 'Calvino', serif;
-    font-size: 1.4rem;
-    color: var(--aphrodite-aqua);
-    margin-bottom: 1.5rem;
-    font-weight: normal;
-    letter-spacing: 0.05em;
-    opacity: 0.95;
 }
 
 .hero-description {
@@ -662,10 +602,6 @@ p {
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
 
-
-
-
-
 .scroll-indicator {
     position: absolute;
     display: flex;
@@ -679,12 +615,6 @@ p {
     text-align: center;
     width: auto;
     min-width: 200px;
-}
-
-.scroll-indicator p {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    opacity: 0.8;
 }
 
 .scroll-arrow {
@@ -763,7 +693,6 @@ p {
 }
 
 .photo-placeholder {
-    background: linear-gradient(135deg, var(--journey-sky), var(--light-mint));
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -771,25 +700,30 @@ p {
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
-    border: 2px dashed var(--aphrodite-aqua);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .photo-placeholder:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 30px rgba(69, 237, 185, 0.2);
 }
 
 .photo-1 {
+    background-image: url('./images/IMG_0091.png');
     grid-column: 1 / 2;
     grid-row: 1 / 3;
 }
 
 .photo-2 {
+    background-image: url('./images/IMG_0047.png');
     grid-column: 2 / 3;
     grid-row: 1 / 2;
 }
 
 .photo-3 {
+    background-image: url('./images/IMG_0201.png');
     grid-column: 2 / 3;
     grid-row: 2 / 3;
 }
@@ -799,12 +733,6 @@ p {
     color: var(--stellar-explorer);
 }
 
-.placeholder-icon {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
 .placeholder-text p {
     font-family: 'Calvino', serif;
     font-size: 0.9rem;
@@ -812,39 +740,7 @@ p {
     opacity: 0.8;
 }
 
-/* Services Preview */
-.services-preview {
-    padding: 6rem 0;
-    background: linear-gradient(135deg, var(--journey-sky), var(--luminescent-sky)), url('./images/background-1.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-blend-mode: overlay;
-    background-attachment: fixed;
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-}
-
-.services-preview::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(204, 237, 236, 0.8), rgba(202, 255, 251, 0.8));
-    z-index: 1;
-}
-
-.services-preview .container {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-}
-
+/* Services Grid */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -875,27 +771,6 @@ p {
     justify-content: center;
 }
 
-.icon-cell, .icon-exosome, .icon-iv, .icon-ortho {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: linear-gradient(45deg, var(--aphrodite-aqua), var(--lamiaceae));
-    position: relative;
-}
-
-.icon-cell::before, .icon-exosome::before, .icon-iv::before, .icon-ortho::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: var(--white);
-}
-
-/* New SVG icon styles */
 .service-svg-icon {
     width: 60px;
     height: 60px;
@@ -911,10 +786,6 @@ p {
 
 .service-card p {
     color: var(--gray-dark);
-}
-
-.services-cta {
-    text-align: center;
 }
 
 /* Team Section */
@@ -1007,19 +878,46 @@ p {
     margin-bottom: 0;
 }
 
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #002b2bcc, #003333cc);
+    z-index: -1;
+}
+
 /* CTA Section */
 .cta-section {
     padding: 6rem 0;
-    background: linear-gradient(135deg, var(--stellar-explorer), #003333);
+    background: linear-gradient(135deg, var(--stellar-explorer), #003333), url('./images/background-1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    background-attachment: fixed;
     color: var(--white);
     text-align: center;
     min-height: 100vh;
     display: flex;
     align-items: center;
+    overflow: hidden;
+    position: relative;
+    z-index: -2;
+}
+
+.cta-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    z-index: -1;
 }
 
 .cta-content h2 {
-    color: var(--white);
+    color: var(--aphrodite-aqua);
     margin-bottom: 1rem;
 }
 
@@ -1240,104 +1138,11 @@ p {
     transform: rotate(45deg) translate(-6px, -6px);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .nav-menu {
-        display: none;
-    }
-    
-    .hamburger {
-        display: flex;
-    }
-    
-    .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
-    }
-    
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .photo-gallery {
-        height: 300px;
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(3, 1fr);
-    }
-    
-    .photo-1 {
-        grid-column: 1 / 2;
-        grid-row: 1 / 2;
-    }
-    
-    .photo-2 {
-        grid-column: 1 / 2;
-        grid-row: 2 / 3;
-    }
-    
-    .photo-3 {
-        grid-column: 1 / 2;
-        grid-row: 3 / 4;
-    }
-    
-    .team-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .team-member {
-        padding: 1.5rem;
-    }
-    
-    .member-photo .photo-placeholder {
-        width: 120px;
-        height: 120px;
-    }
-    
-    .hero-buttons, .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .container {
-        padding: 0 1rem;
-    }
-    
-    /* Disable parallax on mobile for better performance */
-    .services-preview {
-        background-attachment: scroll;
-    }
-}
-
-@media (max-width: 480px) {
-    .nav-container {
-        padding: 0 1rem;
-    }
-    
-    .hero-content {
-        padding: 0 1rem;
-    }
-    
-    .section-header {
-        margin-bottom: 2rem;
-    }
-    
-    .about, .services-preview, .team, .cta-section {
-        padding: 3rem 0;
-    }
-} 
-
 /* Sliding Treatments Section */
 .treatments-section {
     position: relative;
     width: 100%;
-    height: 500vh; /* Overview: 50vh + Treatments: 4 × 100vh = 450vh total */
+    height: 500vh;
     background: linear-gradient(135deg, var(--stellar-explorer) 0%, var(--journey-sky) 100%);
 }
 
@@ -1356,8 +1161,6 @@ p {
     width: 100%;
     height: 100vh;
     background: var(--white);
-    transform: translateX(100%);
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1368,16 +1171,6 @@ p {
 .treatment-panel:nth-child(3) { z-index: 3; }
 .treatment-panel:nth-child(4) { z-index: 4; }
 .treatment-panel:nth-child(5) { z-index: 5; }
-
-.treatment-panel.active {
-    transform: translateX(0);
-}
-
-.treatment-panel.sliding-in {
-    transform: translateX(0);
-}
-
-/* Removed sliding-out class - using simpler approach */
 
 .panel-content {
     width: 100%;
@@ -1392,6 +1185,16 @@ p {
     z-index: 1;
 }
 
+.panel-content .scroll-indicator {
+    position: relative; 
+    bottom: 0;
+}
+
+.panel-content .scroll-indicator .scroll-arrow {
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+}
+
 .panel-header {
     text-align: center;
     margin-bottom: 3rem;
@@ -1402,18 +1205,6 @@ p {
     color: var(--stellar-explorer);
     margin-bottom: 1rem;
     font-weight: bold;
-}
-
-.panel-description {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 3rem;
-}
-
-.panel-description p {
-    font-size: 1.3rem;
-    color: var(--gray-dark);
-    line-height: 1.6;
 }
 
 /* Overview Panel Styles */
@@ -1447,85 +1238,6 @@ p {
     color: var(--white);
 }
 
-.treatment-overview .panel-description p {
-    color: var(--white);
-    opacity: 0.9;
-}
-
-.treatments-preview {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin: 3rem 0;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.treatment-preview-item {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.treatment-preview-item:hover {
-    transform: translateY(-10px);
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-.preview-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    backdrop-filter: blur(10px);
-}
-
-.preview-svg-icon {
-    width: 40px;
-    height: 40px;
-    filter: brightness(0) invert(1);
-}
-
-.treatment-preview-item h3 {
-    color: var(--white);
-    font-size: 1.3rem;
-    margin: 0;
-    font-weight: 600;
-}
-
-.scroll-hint {
-    text-align: center;
-    margin-top: 3rem;
-    opacity: 0.8;
-}
-
-.scroll-hint p {
-    color: var(--white);
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-}
-
-.scroll-arrow-down {
-    width: 30px;
-    height: 30px;
-    margin: 0 auto;
-    border: 2px solid var(--white);
-    border-top: none;
-    border-left: none;
-    transform: rotate(45deg);
-    animation: bounce 2s infinite;
-}
-
 /* Treatment Panel Body Styles */
 .panel-body {
     width: 100%;
@@ -1542,10 +1254,6 @@ p {
     align-items: center;
     max-width: 1200px;
     width: 100%;
-}
-
-.treatment-description {
-    padding-right: 2rem;
 }
 
 .treatment-description p {
@@ -1599,6 +1307,9 @@ p {
     width: 100%;
     height: 400px;
     background: linear-gradient(135deg, var(--journey-sky) 0%, var(--light-mint) 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -1608,29 +1319,20 @@ p {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
-.image-placeholder::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-    animation: shimmer 3s infinite;
+.stem-cells-img {
+    background-image: url('./images/IMG_0104.png');
 }
 
-@keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+.exosomes-img {
+    background-image: url('./images/IMG_0129.png');
 }
 
-.placeholder-text {
-    text-align: center;
-    color: var(--stellar-explorer);
-    font-weight: 600;
-    font-size: 1.5rem;
-    z-index: 1;
-    position: relative;
+.iv-therapy-img {
+    background-image: url('./images/IMG_0204.png');
+}
+
+.orthopedics-img {
+    background-image: url('./images/IMG_0053.png');
 }
 
 /* Individual Treatment Panel Backgrounds */
@@ -1661,14 +1363,80 @@ p {
     .treatment-description {
         padding-right: 0;
     }
-    
-    .treatments-preview {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
-    }
 }
 
 @media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .photo-gallery {
+        height: 150vh;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .photo-placeholder:hover {
+        transform: none;
+    }
+    
+    .photo-1 {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+    
+    .photo-2 {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+    
+    .photo-3 {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+    }
+    
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .team-member {
+        padding: 1.5rem;
+    }
+    
+    .member-photo .photo-placeholder {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .hero-buttons, .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
     /* Remove overlapping panels implementation for mobile */
     .treatments-section {
         height: auto;
@@ -1689,29 +1457,15 @@ p {
         display: block;
         overflow: visible;
     }
-    
-    .treatment-panel.active,
-    .treatment-panel.sliding-in {
-        transform: none;
-    }
-    
+        
     .panel-content {
         padding: 1rem;
         height: auto;
         min-height: 100vh;
     }
-    
-    /* Fix background attachment issues on mobile */
-    .treatment-overview {
-        background-attachment: scroll;
-    }
-    
+        
     .panel-title {
         font-size: clamp(2rem, 8vw, 3rem);
-    }
-    
-    .panel-description p {
-        font-size: 1.1rem;
     }
     
     .treatment-description p {
@@ -1722,21 +1476,28 @@ p {
         font-size: 1rem;
     }
     
-    .treatments-preview {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .treatment-preview-item {
-        padding: 1.5rem;
-    }
-    
     .image-placeholder {
         height: 300px;
     }
 }
 
 @media (max-width: 480px) {
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .hero-content {
+        padding: 0 1rem;
+    }
+    
+    .section-header {
+        margin-bottom: 2rem;
+    }
+    
+    .about, .team, .cta-section {
+        padding: 3rem 0;
+    }
+    
     /* Ensure all content is visible on small mobile devices */
     .treatments-section {
         height: auto;
@@ -1758,22 +1519,12 @@ p {
         overflow: visible;
     }
     
-    .treatment-panel.active,
-    .treatment-panel.sliding-in {
-        transform: none;
-    }
-    
     .panel-content {
         padding: 1rem;
         height: auto;
         min-height: 100vh;
     }
-    
-    /* Fix background attachment issues on mobile */
-    .treatment-overview {
-        background-attachment: scroll;
-    }
-    
+        
     .panel-title {
         font-size: clamp(1.8rem, 10vw, 2.5rem);
     }
@@ -1785,67 +1536,4 @@ p {
     .image-placeholder {
         height: 250px;
     }
-    
-    .treatment-preview-item {
-        padding: 1rem;
-    }
-    
-    .preview-icon {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .preview-svg-icon {
-        width: 30px;
-        height: 30px;
-    }
 } 
-
-/* Panel Indicators - Commented out */
-/*
-.panel-indicators {
-    position: fixed;
-    right: 30px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.panel-indicators.visible {
-    opacity: 1;
-}
-
-.panel-indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-    pointer-events: auto;
-}
-
-.panel-indicator:hover {
-    background: rgba(255, 255, 255, 0.5);
-    transform: scale(1.2);
-}
-
-.panel-indicator.active {
-    background: var(--aphrodite-aqua);
-    border-color: var(--aphrodite-aqua);
-    box-shadow: 0 0 10px rgba(69, 237, 185, 0.5);
-}
-
-/* Hide indicators on mobile */
-@media (max-width: 768px) {
-    .panel-indicators {
-        display: none;
-    }
-}

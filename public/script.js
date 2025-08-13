@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 hamburger.classList.add('active');
                 mobileOverlay.classList.add('active');
-                body.style.overflow = 'hidden'; // Prevent background scrolling
+                body.style.overflow = 'hidden';
                 if (navbar.classList.contains('scrolled')) {
                     navbar.classList.remove('scrolled');
                 }
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetSection = document.querySelector(targetId);
             
             if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
+                const offsetTop = targetSection.offsetTop - 80;
                 
                 window.scrollTo({
                     top: offsetTop,
@@ -79,7 +79,7 @@ const observer = new IntersectionObserver(function(entries) {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', function() {
-    const animatedElements = document.querySelectorAll('.service-card, .mission, .vision, .location-card');
+    const animatedElements = document.querySelectorAll('.service-card, .team-member');
     
     animatedElements.forEach(el => {
         el.style.opacity = '0';
@@ -105,12 +105,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Handle different button actions
             const buttonText = this.textContent.toLowerCase();
-            if (buttonText.includes('agendar') || buttonText.includes('consulta')) {
-                // Open consultation form or redirect to contact
+            if (buttonText.includes('agendar') || buttonText.includes('consulta') || buttonText.includes('schedule')) {
                 console.log('Opening consultation form...');
-                // You can add actual functionality here
-            } else if (buttonText.includes('tratamientos')) {
-                // Scroll to treatments section
+            } else if (buttonText.includes('tratamientos') || buttonText.includes('treatments')) {
                 const treatmentsSection = document.querySelector('#tratamientos');
                 if (treatmentsSection) {
                     treatmentsSection.scrollIntoView({ behavior: 'smooth' });
@@ -130,16 +127,13 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Handle different button actions
             const buttonText = this.textContent.toLowerCase();
-            if (buttonText.includes('conoce') || buttonText.includes('más')) {
-                // Scroll to about section
+            if (buttonText.includes('conoce') || buttonText.includes('más') || buttonText.includes('learn') || buttonText.includes('more')) {
                 const aboutSection = document.querySelector('.about');
                 if (aboutSection) {
                     aboutSection.scrollIntoView({ behavior: 'smooth' });
                 }
-            } else if (buttonText.includes('llamar')) {
-                // Open phone call
+            } else if (buttonText.includes('llamar') || buttonText.includes('call')) {
                 console.log('Opening phone call...');
-                // You can add actual phone functionality here
             }
         });
     });
@@ -148,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Language toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
     const langBtns = document.querySelectorAll('.lang-btn');
-    let currentLanguage = 'en'; // Default language is English
+    let currentLanguage = 'en';
     
     // Set initial content to English
     const elementsToTranslate = document.querySelectorAll('[data-es][data-en]');
@@ -213,12 +207,9 @@ let lastScrollY = 0;
 function updateParallax() {
     const scrolled = window.pageYOffset;
     const heroSection = document.querySelector('.hero');
-    const time = Date.now() * 0.001; // Current time for float animation
+    const time = Date.now() * 0.001;
     
     if (!heroSection) return;
-    
-    const heroHeight = heroSection.offsetHeight;
-    const heroTop = heroSection.offsetTop;
     
     // Background parallax (slower movement)
     const heroBackground = document.querySelector('.parallax-bg');
@@ -227,14 +218,14 @@ function updateParallax() {
         heroBackground.style.transform = `translate3d(0, ${bgY}px, 0)`;
     }
     
-    // Shapes parallax with float animation (always animate, not just when in view)
+    // Shapes parallax with float animation
     const shapes = document.querySelectorAll('.shape');
     
     shapes.forEach((shape, index) => {
         const depth = parseFloat(shape.getAttribute('data-depth') || '0.5');
-        const speed = 0.5 + (depth * 0.5); // Deeper shapes move faster
+        const speed = 0.5 + (depth * 0.5);
         const yPos = -(scrolled * speed);
-        const xPos = scrolled * (depth * 0.1); // Subtle horizontal movement
+        const xPos = scrolled * (depth * 0.1);
         
         // Float animation parameters
         const floatSpeed = 0.5 + (index * 0.1);
@@ -243,16 +234,16 @@ function updateParallax() {
         const rotation = Math.sin(time * (0.3 + index * 0.1)) * 180;
         const scale = 1 + Math.sin(time * (0.2 + index * 0.05)) * 0.1;
         
-        // Border-radius animation (from original CSS keyframes)
+        // Border-radius animation
         const borderRadiusProgress = Math.sin(time * (0.2 + index * 0.05));
-        const borderRadius = 45 + (borderRadiusProgress * 5); // Animate between 40% and 50%
+        const borderRadius = 45 + (borderRadiusProgress * 5);
         
         // Combine parallax and float animation
         shape.style.transform = `translate3d(${xPos}px, ${yPos + floatY}px, ${depth * 100}px) rotate(${rotation}deg) scale(${scale})`;
         shape.style.borderRadius = `50% ${borderRadius}%`;
     });
     
-    // Content parallax (very subtle, keeps content readable)
+    // Content parallax (very subtle)
     const heroContent = document.querySelector('.parallax-content');
     if (heroContent) {
         const contentY = scrolled * 0.1;
@@ -279,13 +270,12 @@ window.addEventListener('resize', function() {
     requestTick();
 }, { passive: true });
 
-// Continuous animation loop for float effect
+// Start the continuous animation loop
 function animateFloat() {
     requestTick();
     requestAnimationFrame(animateFloat);
 }
 
-// Start the continuous animation loop
 animateFloat();
 
 // Active navigation link based on current URL path
@@ -340,195 +330,126 @@ style.textContent = `
         }
     }
 `;
-document.head.appendChild(style); 
+document.head.appendChild(style);
 
-// Sliding Treatments Section Functionality
+// Smooth Scroll-Based Treatments Section Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const treatmentsSection = document.querySelector('.treatments-section');
-    const treatmentPanels = document.querySelectorAll('.treatment-panel');
-    const panels = Array.from(treatmentPanels);
+    const treatmentPanels = document.querySelectorAll('.treatment-panel:not(.treatment-overview)');
     
-    // console.log('Treatments section found:', treatmentsSection);
-    // console.log('Treatment panels found:', panels.length);
-    
-    if (!treatmentsSection || panels.length === 0) {
-        // console.log('Treatments section or panels not found, exiting');
+    if (!treatmentsSection || treatmentPanels.length === 0) {
         return;
     }
     
     // Check if we're on mobile - disable overlapping panels functionality
-    const isMobile = window.innerWidth <= 768;
-    if (isMobile) {
-        // console.log('Mobile device detected, disabling overlapping panels functionality');
-        // Make all panels visible and remove any transform/position styles
-        panels.forEach((panel, index) => {
-            panel.classList.remove('active', 'sliding-in', 'sliding-out');
+    let isMobile = window.innerWidth <= 768;
+    
+    // Function to enable mobile mode (all panels visible, no transforms)
+    function enableMobileMode() {
+        treatmentPanels.forEach(panel => {
             panel.style.position = 'relative';
             panel.style.transform = 'none';
             panel.style.height = 'auto';
             panel.style.minHeight = '100vh';
             panel.style.display = 'block';
             panel.style.overflow = 'visible';
+            panel.style.zIndex = '';
         });
-        return; // Exit early for mobile devices
     }
     
-    let currentPanelIndex = 0;
-    let isAnimating = false;
+    // Function to enable desktop mode (overlapping panels with transforms)
+    function enableDesktopMode() {
+        treatmentPanels.forEach(panel => {
+            panel.style.position = '';
+            panel.style.transform = '';
+            panel.style.height = '';
+            panel.style.minHeight = '';
+            panel.style.display = '';
+            panel.style.overflow = '';
+            panel.style.zIndex = '';
+            panel.style.transform = 'translateY(100vh)';
+        });
+    }
+    
+    // Initial setup based on current device type
+    if (isMobile) {
+        enableMobileMode();
+        return;
+    } else {
+        enableDesktopMode();
+    }
+    
     let sectionStart = 0;
     let sectionEnd = 0;
-    let panelHeight = 0;
     
     // Initialize section measurements
     function initializeSection() {
         const rect = treatmentsSection.getBoundingClientRect();
         sectionStart = window.pageYOffset + rect.top;
-        sectionEnd = sectionStart + treatmentsSection.offsetHeight;
-        panelHeight = window.innerHeight;
-        
-        // console.log('Section initialized:', {
-        //     sectionStart,
-        //     sectionEnd,
-        //     panelHeight,
-        //     sectionHeight: treatmentsSection.offsetHeight
-        // });
+        sectionEnd = sectionStart + (treatmentPanels.length * window.innerHeight);
     }
     
-    // Initialize on load
-    initializeSection();
+    // Initialize on load (only for desktop)
+    if (!isMobile) {
+        initializeSection();
+    }
     
     // Recalculate on resize
     window.addEventListener('resize', function() {
         const newIsMobile = window.innerWidth <= 768;
         
-        // If switching to mobile, disable overlapping panels
-        if (newIsMobile && !isMobile) {
-            // console.log('Switching to mobile, disabling overlapping panels');
-            panels.forEach((panel, index) => {
-                panel.classList.remove('active', 'sliding-in', 'sliding-out');
-                panel.style.position = 'relative';
-                panel.style.transform = 'none';
-                panel.style.height = 'auto';
-                panel.style.minHeight = '100vh';
-                panel.style.display = 'block';
-                panel.style.overflow = 'visible';
-            });
-            return;
-        }
-        
-        // If switching from mobile to desktop, re-enable functionality
-        if (!newIsMobile && isMobile) {
-            // console.log('Switching to desktop, re-enabling overlapping panels');
-            panels.forEach((panel, index) => {
-                panel.style.position = '';
-                panel.style.transform = '';
-                panel.style.height = '';
-                panel.style.minHeight = '';
-                panel.style.display = '';
-                panel.style.overflow = '';
-            });
-            initializeSection();
-            activatePanel(0);
-        }
-        
-        // Update mobile state
-        isMobile = newIsMobile;
-        
-        // Only initialize section if not on mobile
-        if (!isMobile) {
-            initializeSection();
+        // Only handle if switching between modes
+        if (newIsMobile !== isMobile) {
+            if (newIsMobile) {
+                enableMobileMode();
+            } else {
+                enableDesktopMode();
+                initializeSection();
+            }
+            
+            isMobile = newIsMobile;
         }
     });
     
-    // Function to activate a specific panel
-    function activatePanel(index) {
-        if (isAnimating || index < 0 || index >= panels.length) return;
-        
-        isAnimating = true;
-        
-        // Reset all panels
-        panels.forEach((panel, i) => {
-            panel.classList.remove('active', 'sliding-in', 'sliding-out');
-        });
-        
-        // Set active panels (stacking effect)
-        for (let i = 0; i <= index; i++) {
-            panels[i].classList.add('active');
-        }
-        
-        // Set the current panel as sliding-in
-        if (index > 0) {
-            panels[index].classList.add('sliding-in');
-        }
-        
-        setTimeout(() => {
-            panels.forEach(panel => {
-                panel.classList.remove('sliding-in', 'sliding-out');
-            });
-            isAnimating = false;
-        }, 600);
-        
-        currentPanelIndex = index;
-    }
-    
-    // Scroll-based panel activation
+    // Smooth scroll-based panel movement
     function handleScroll() {
         const scrollY = window.pageYOffset;
-        const windowHeight = window.innerHeight;
         
         // Check if we're in the treatments section
         if (scrollY < sectionStart || scrollY > sectionEnd) {
             return;
         }
         
-                // Calculate which panel should be active based on scroll position
-                // Use absolute viewport heights: 0-50vh, 50-150vh, 150-250vh, 250-350vh, 350-450vh
-                const scrollDistance = scrollY - sectionStart;
-                const viewportHeight = window.innerHeight;
-                const totalPanels = panels.length;
+        const scrollDistance = scrollY - sectionStart;
+        const viewportHeight = window.innerHeight;
+        
+        // Calculate each panel's position based on scroll
+        treatmentPanels.forEach((panel, index) => {
+            const panelStart = index * viewportHeight;
+            const panelEnd = (index + 1) * viewportHeight;
+            
+            if (scrollDistance >= panelStart && scrollDistance < panelEnd) {
+                // Panel is in its active scroll range
+                const panelScrollProgress = scrollDistance - panelStart;
+                const transformY = Math.max(0, viewportHeight - panelScrollProgress);
                 
-                let targetPanelIndex;
-                if (scrollDistance < 50 * viewportHeight / 100) {
-                    // 0-50vh: Overview panel
-                    targetPanelIndex = 0;
-                } else if (scrollDistance < 150 * viewportHeight / 100) {
-                    // 50-150vh: Stem Cells
-                    targetPanelIndex = 1;
-                } else if (scrollDistance < 250 * viewportHeight / 100) {
-                    // 150-250vh: Exosomes
-                    targetPanelIndex = 2;
-                } else if (scrollDistance < 350 * viewportHeight / 100) {
-                    // 250-350vh: IV Therapy
-                    targetPanelIndex = 3;
-                } else {
-                    // 350-450vh: Orthopedics
-                    targetPanelIndex = 4;
-                }
-        
-        // Ensure we don't go beyond the last panel
-        const clampedIndex = Math.min(Math.max(targetPanelIndex, 0), totalPanels - 1);
-        
-            // console.log('Scroll detected:', {
-    //     scrollY,
-    //     sectionStart,
-    //     scrollDistance: scrollY - sectionStart,
-    //     viewportHeight: window.innerHeight,
-    //     targetPanelIndex,
-    //     clampedIndex,
-    //     currentPanelIndex
-    // });
-        
-        // Add some hysteresis to prevent rapid switching
-        if (clampedIndex !== currentPanelIndex && !isAnimating) {
-            // console.log('Activating panel:', clampedIndex);
-            activatePanel(clampedIndex);
-        }
+                // Apply smooth transform
+                panel.style.transform = `translateY(${transformY}px)`;
+                panel.classList.add('active');
+            } else if (scrollDistance >= panelEnd) {
+                // Panel has completed its scroll range - keep it fixed at top
+                panel.style.transform = 'translateY(0)';
+                panel.classList.add('active');
+            } else {
+                // Panel hasn't started its scroll range yet
+                panel.style.transform = 'translateY(100vh)';
+                panel.classList.remove('active');
+            }
+        });
     }
     
-    // Optimized scroll handler for better performance and fast scrolling
+    // Optimized scroll handler for smooth performance
     let scrollTimeout;
-    let lastScrollY = window.pageYOffset;
-    let scrollDirection = 0;
     
     window.addEventListener('scroll', function() {
         // Only handle scroll events on desktop (non-mobile)
@@ -536,114 +457,19 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        const currentScrollY = window.pageYOffset;
-        const scrollDelta = currentScrollY - lastScrollY;
-        
         // Clear existing timeout
         if (scrollTimeout) {
             clearTimeout(scrollTimeout);
         }
         
-        // Determine scroll direction and speed
-        if (Math.abs(scrollDelta) > 50) {
-            // Fast scroll detected - handle immediately
+        // Use requestAnimationFrame for smooth scrolling
+        scrollTimeout = requestAnimationFrame(() => {
             handleScroll();
-            scrollTimeout = setTimeout(() => {
-                handleScroll(); // Final check after fast scroll
-            }, 100);
-        } else {
-            // Normal scroll - use throttling
-            scrollTimeout = setTimeout(() => {
-                handleScroll();
-            }, 16); // ~60fps
-        }
-        
-        lastScrollY = currentScrollY;
+        });
     }, { passive: true });
     
-    // Initialize the first panel as active (only on desktop)
-    // console.log('Initializing first panel as active');
+    // Initialize panels on load (only on desktop)
     if (!isMobile) {
-        activatePanel(0);
+        handleScroll();
     }
-    
-    // Test: Log all panels to make sure they're found
-    // panels.forEach((panel, index) => {
-    //     console.log(`Panel ${index}:`, panel.className, panel.dataset.panel);
-    // });
-    
-
-    
-    // Add visual indicators for current panel
-    // function updatePanelIndicators() {
-    //     // Get or create indicators
-    //     let indicators = document.querySelector('.panel-indicators');
-    //     if (!indicators) {
-    //         indicators = document.createElement('div');
-    //         indicators.className = 'panel-indicators';
-    //         
-    //         panels.forEach((panel, index) => {
-    //             const indicator = document.createElement('div');
-    //             indicator.className = 'panel-indicator';
-    //             
-    //             indicator.addEventListener('click', () => {
-    //                 const targetScroll = sectionStart + (index / panels.length) * (sectionEnd - sectionStart);
-    //                 window.scrollTo({
-    //                         top: targetScroll,
-    //                         behavior: 'smooth'
-    //                     });
-    //                 });
-    //                 
-    //                 indicators.appendChild(indicator);
-    //             });
-    //             
-    //             // Append to document body but manage visibility
-    //             document.body.appendChild(indicators);
-    //         }
-    //         
-    //         // Check if we're in the treatments section
-    //         const scrollY = window.pageYOffset;
-    //         const isInSection = scrollY >= sectionStart && scrollY <= sectionEnd;
-    //         
-    //         if (isInSection) {
-    //             indicators.classList.add('visible');
-    //             // Update active state
-    //             const indicatorElements = indicators.querySelectorAll('.panel-indicator');
-    //             indicatorElements.forEach((indicator, index) => {
-    //                     indicator.classList.toggle('active', index === currentPanelIndex);
-    //                 });
-    //             } else {
-    //                 indicators.classList.remove('visible');
-    //             }
-    //         }
-    //         
-    //         // Update indicators when panel changes
-    //         const originalActivatePanel = activatePanel;
-    //         function activatePanelWithIndicators(index) {
-    //             originalActivatePanel(index);
-    //             // Update indicators after a short delay to ensure panel state is set
-    //             setTimeout(updatePanelIndicators, 100);
-    //         }
-    //         
-    //         // Replace the original activatePanel function
-    //         activatePanel = activatePanelWithIndicators;
-    //         
-    //         // Initialize indicators
-    //         updatePanelIndicators();
-    //         
-    //         // Add scroll listener to update indicator visibility
-    //         window.addEventListener('scroll', () => {
-    //             updatePanelIndicators();
-    //         }, { passive: true });
-    
-
-    
-    // Test: Add a simple click handler to test panel switching
-    // document.addEventListener('click', function(e) {
-    //     if (e.target.classList.contains('panel-indicator')) {
-    //         console.log('Panel indicator clicked');
-    //     }
-    // });
-    
-    // console.log('Treatments section initialization complete');
 }); 
