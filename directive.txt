@@ -1,42 +1,111 @@
-Design a modern, visually captivating website for a cutting-edge medical stem cell company, incorporating the official color palette and typography to convey technological innovation and professional excellence. Use a clinical yet inviting color scheme built around the main colors:
+Stemcell MX — Integrated Visual Style & Mood Guide
+Overall Mood
 
-Aphrodite Aqua (#45EDB9) as a vibrant accent for key highlights, calls to action, and decorative elements evoking advanced biomedical technology.
+The website should project a modern, sophisticated, and science-driven identity while carrying a human and wellness-oriented warmth.
+It should balance clinical trust (clean, minimal, professional) with organic vitality (fluid, natural forms and textures), evoking both cutting-edge biomedical innovation and approachability.
 
-Stellar Explorer (#002B2B) as the primary dark base, giving the website a bold, high-contrast, and futuristic feel.
+The overall feeling is premium but approachable — positioned between a high-end wellness brand and a serious medical institution.
+It must match the client’s vision of “una página moderna y cautivadora para el ojo”.
 
-Journey To The Sky (#CCEDEC) as a soft background or section divider for fresh, clean expanses.
+Color Palette & Atmosphere
 
-Auxiliary colors Light Mint (#BFFFBD), Luminescent Sky (#CAFFFB), and Lamiaceae (#40FFDF) can be used sparingly for gradients, subtle overlays, hover states, or micro-interactions, reinforcing a modern, science-forward aesthetic.
+Primary Colors:
 
-Imagery & Shapes:
+Aphrodite Aqua (#45EDB9) – Vibrant accent for key highlights, calls to action, and decorative elements. Suggests advanced biomedical technology, freshness, and innovation.
 
-Emphasize abstract, organic forms inspired by cells, molecules, and microscopic structures.
+Stellar Explorer (#002B2B) – Bold, deep teal base for contrast and a futuristic, elegant feel.
 
-Use translucent layers, fluid shapes, and soft gradients to suggest depth, precision, and motion.
+Journey To The Sky (#CCEDEC) – Soft background tone for fresh, clean sections.
 
-Incorporate textures or visuals referencing laboratory imagery (e.g., bubble patterns, microfluidics) to enhance the sense of advanced research.
+Auxiliary Colors:
 
-Typography:
+Light Mint (#BFFFBD)
 
-Specter (Bold → Light → Regular) – primary headings; use bold for main titles, light or regular for supporting text within the same section.
+Luminescent Sky (#CAFFFB)
 
-Calvino Grande (Regular → Light → Light Italic) – secondary headings or impactful phrases; use regular weight for body of the phrase, switching to light italic for keywords or emphasis (e.g., “Your Health is their Future”, with Health and Future in light italic).
+Lamiaceae (#40FFDF)
+These should be used sparingly for gradients, hover states, overlays, or micro-interactions, adding depth and reinforcing a luminous, watery aesthetic.
 
-Bio Sans (Regular → Light → Light Italic) – auxiliary content, subtext, body paragraphs; maintain clarity and modern professionalism, applying light italic sparingly for subtle emphasis.
+Atmosphere:
 
-Overall Mood:
+Dominated by deep teal backdrops for elegance.
 
-Conveys cutting-edge science, modern medicine, and trustworthiness.
+Bright aqua/mint tones energize the palette.
 
-Balances sleek minimalism with organic visuals to keep the experience both professional and approachable.
+Occasional very light mint or sky blue backgrounds break up darker sections.
 
-Should feel premium, inviting, and aligned with the latest medical technologies — exactly matching the client’s vision of “una página moderna y cautivadora para el ojo”.
+The palette should feel fresh, watery, and luminous.
 
-In the "reference" folder of this project you will find 4 documents:
+Typography
 
-faq is literally for the faq section.
-general info is a document with info about the company.
-website info is a document the client sent me with content (copy) specifically for the website.
-propuesta is part of the proposal sent to the client, it contains specs for the website structure and content.
+Primary (Headings):
 
-the base tech stack for the project will be html, css, javascrtipt; no frameworks. 
+Specter (Bold → Light → Regular) – Bold for main titles; light or regular for supporting text within the same section.
+
+Secondary (Impactful Phrases):
+
+Calvino Grande (Regular → Light → Light Italic) – Use regular for the main phrase, switching to light italic for emphasis on keywords (e.g., “Your Health is their Future” → Health and Future in light italic).
+
+Auxiliary (Body & Subtext):
+
+Bio Sans (Regular → Light → Light Italic) – For paragraphs and subtext. Apply light italic sparingly for subtle emphasis.
+
+Feel & Use:
+
+Serif headlines with selective italics create an editorial, intelligent tone.
+
+Sans-serif body copy ensures clarity and modernity.
+
+Strong, confident headings contrast with light, airy supporting text.
+
+Text should feel integrated into the layout — overlapping textures, within shapes, or on clean color fields.
+
+Graphic Language
+
+Organic “cell/amoeba” shapes as cutouts, masks, or frames for imagery.
+
+Secondary motif: small flower/rosette cell icon for decoration or bullets.
+
+Shapes should be fluid and biomorphic, hinting at stem cells without being literal.
+
+Incorporate translucent layers, fluid shapes, and soft gradients for depth and motion.
+
+Subtle references to laboratory imagery (e.g., bubble patterns, microfluidics).
+
+Photography Style
+
+Mix of black & white portraits (emotional connection) and clinical lifestyle shots (credibility — hands, lab tools, injections).
+
+Sports and active lifestyle imagery within organic shapes to convey vitality and recovery.
+
+Macro shots of bubbles, water ripples, and ink dispersions for abstract backgrounds.
+
+Images may be tinted with mint/aqua for brand cohesion.
+
+Texture & Backgrounds
+
+Softly blurred, abstract scientific or watery textures.
+
+Bubbles and liquid swirls suggesting regenerative processes.
+
+Backgrounds often layered behind color panels or inside organic masks for a clean layout.
+
+Tone & Brand Personality
+
+Trustworthy – Grounded in science, safety, and expertise.
+
+Innovative – Design and visuals feel “next-gen.”
+
+Human-centered – Imagery and copy convey care, empathy, and wellness.
+
+Minimal but expressive – Each visual element has a clear purpose.
+
+Technical & Implementation Notes
+
+Base stack: HTML, CSS, JavaScript (no frameworks).
+
+Maintain performance and clean code — minimal bloat.
+
+Use subtle animations/micro-interactions (hover effects, smooth transitions) to enhance engagement.
+
+Structure should align with the content specs in the propuesta document, with reference to “faq”, “general info”, and “website info” docs for copy and section layout.

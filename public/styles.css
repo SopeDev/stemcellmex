@@ -892,7 +892,7 @@ p {
 /* CTA Section */
 .cta-section {
     padding: 6rem 0;
-    background: linear-gradient(135deg, var(--stellar-explorer), #003333), url('./images/background-1.jpg');
+    background: linear-gradient(135deg, var(--stellar-explorer), #003333), url('./images/background-2.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -996,6 +996,92 @@ p {
     padding-top: 2rem;
     text-align: center;
     color: var(--gray-medium);
+}
+
+/* FAQ Page */
+.faq {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(242, 255, 252, 0.96)), url('./images/background-faq.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: normal;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-category h3 {
+    font-family: 'Calvino', serif;
+    font-weight: normal;
+    color: var(--stellar-explorer);
+    margin-bottom: 1rem;
+}
+
+.faq-list {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.faq-item + .faq-item {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    padding: 1rem 1.25rem 1rem 3rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: 'Bio Sans', sans-serif;
+    font-size: 1.05rem;
+    color: var(--stellar-explorer);
+    position: relative;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.faq-question::before {
+    content: '';
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--aphrodite-aqua);
+    box-shadow: 0 0 12px rgba(69, 237, 185, 0.5);
+}
+
+.faq-item.open .faq-question {
+    background: rgba(69, 237, 185, 0.06);
+    color: var(--stellar-explorer);
+}
+
+.faq-answer {
+    padding: 0 1.25rem 0 3rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    color: var(--gray-dark);
+}
+
+.faq-item.open .faq-answer {
+    padding: 0.25rem 1.25rem 1rem 3rem;
+}
+
+.faq-question:focus-visible {
+    outline: 2px solid var(--aphrodite-aqua);
+    outline-offset: 2px;
+    border-radius: 8px;
 }
 
 /* Mobile Navigation Overlay */
@@ -1160,7 +1246,6 @@ p {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1202,7 +1287,6 @@ p {
 
 .panel-title {
     font-size: clamp(2.5rem, 6vw, 4rem);
-    color: var(--stellar-explorer);
     margin-bottom: 1rem;
     font-weight: bold;
 }
@@ -1259,12 +1343,10 @@ p {
 .treatment-description p {
     font-size: 1.2rem;
     line-height: 1.8;
-    color: var(--gray-dark);
     margin-bottom: 2rem;
 }
 
 .treatment-benefits h3 {
-    color: var(--stellar-explorer);
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
 }
@@ -1279,7 +1361,6 @@ p {
     padding-left: 2rem;
     position: relative;
     font-size: 1.1rem;
-    color: var(--gray-dark);
 }
 
 .treatment-benefits li::before {
@@ -1306,7 +1387,6 @@ p {
 .image-placeholder {
     width: 100%;
     height: 400px;
-    background: linear-gradient(135deg, var(--journey-sky) 0%, var(--light-mint) 100%);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1316,7 +1396,6 @@ p {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .stem-cells-img {
@@ -1335,21 +1414,129 @@ p {
     background-image: url('./images/IMG_0053_1080.webp');
 }
 
-/* Individual Treatment Panel Backgrounds */
+/* Individual Treatment Panel Backgrounds - Redesigned according to directive */
 .treatment-stem-cells {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(135deg, var(--stellar-explorer) 0%, #003333 50%, var(--stellar-explorer) 100%);
+    overflow: hidden;
+}
+
+.treatment-stem-cells::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 60%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(69, 237, 185, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 20s ease-in-out infinite;
+}
+
+.treatment-stem-cells::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -15%;
+    width: 40%;
+    height: 160%;
+    background: radial-gradient(circle, rgba(191, 255, 189, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 25s ease-in-out infinite reverse;
 }
 
 .treatment-exosomes {
-    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    background: linear-gradient(135deg, var(--stellar-explorer) 0%, #003a3a 50%, var(--stellar-explorer) 100%);
+    overflow: hidden;
+}
+
+.treatment-exosomes::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: -20%;
+    width: 50%;
+    height: 180%;
+    background: radial-gradient(circle, rgba(202, 255, 251, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 22s ease-in-out infinite;
+}
+
+.treatment-exosomes::after {
+    content: '';
+    position: absolute;
+    bottom: -25%;
+    right: -10%;
+    width: 35%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(64, 255, 223, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 28s ease-in-out infinite reverse;
 }
 
 .treatment-iv-therapy {
-    background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+    background: linear-gradient(135deg, var(--stellar-explorer) 0%, #002222 50%, var(--stellar-explorer) 100%);
+    overflow: hidden;
+}
+
+.treatment-iv-therapy::before {
+    content: '';
+    position: absolute;
+    top: -35%;
+    right: -25%;
+    width: 55%;
+    height: 170%;
+    background: radial-gradient(circle, rgba(69, 237, 185, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 24s ease-in-out infinite;
+}
+
+.treatment-iv-therapy::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -30%;
+    width: 45%;
+    height: 140%;
+    background: radial-gradient(circle, rgba(191, 255, 189, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 26s ease-in-out infinite reverse;
 }
 
 .treatment-orthopedics {
-    background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+    background: linear-gradient(135deg, var(--stellar-explorer) 0%, #004444 50%, var(--stellar-explorer) 100%);
+    overflow: hidden;
+}
+
+.treatment-orthopedics::before {
+    content: '';
+    position: absolute;
+    top: -45%;
+    left: -15%;
+    width: 48%;
+    height: 190%;
+    background: radial-gradient(circle, rgba(202, 255, 251, 0.13) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 23s ease-in-out infinite;
+}
+
+.treatment-orthopedics::after {
+    content: '';
+    position: absolute;
+    bottom: -35%;
+    right: -20%;
+    width: 42%;
+    height: 170%;
+    background: radial-gradient(circle, rgba(64, 255, 223, 0.11) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 27s ease-in-out infinite reverse;
+}
+
+/* Organic floating animation for background elements */
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-20px) rotate(90deg); }
+    50% { transform: translateY(-40px) rotate(180deg); }
+    75% { transform: translateY(-20px) rotate(270deg); }
 }
 
 /* Responsive Design */
@@ -1466,18 +1653,36 @@ p {
         
     .panel-title {
         font-size: clamp(2rem, 8vw, 3rem);
+        color: var(--white);
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
     
     .treatment-description p {
         font-size: 1rem;
+        color: var(--white);
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
     }
     
     .treatment-benefits li {
         font-size: 1rem;
+        color: var(--white);
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    .treatment-benefits h3 {
+        color: var(--aphrodite-aqua);
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
     }
     
     .image-placeholder {
         height: 300px;
+        border: 2px solid rgba(69, 237, 185, 0.3);
+    }
+    
+    /* Ensure background animations work on mobile */
+    .treatment-panel::before,
+    .treatment-panel::after {
+        display: none; /* Disable complex animations on mobile for performance */
     }
 }
 
@@ -1527,6 +1732,8 @@ p {
         
     .panel-title {
         font-size: clamp(1.8rem, 10vw, 2.5rem);
+        color: var(--white);
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
     
     .treatment-info {
@@ -1535,5 +1742,331 @@ p {
     
     .image-placeholder {
         height: 250px;
+        border: 2px solid rgba(69, 237, 185, 0.3);
     }
+    
+    /* Ensure background animations work on small mobile devices */
+    .treatment-panel::before,
+    .treatment-panel::after {
+        display: none; /* Disable complex animations on small mobile for performance */
+    }
+} 
+
+/* Individual Treatment Panel Backgrounds - Redesigned according to directive */
+.treatment-stem-cells {
+    background: linear-gradient(135deg, var(--stellar-explorer) 0%, #003333 50%, var(--stellar-explorer) 100%);
+    overflow: hidden;
+}
+
+.treatment-stem-cells::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 60%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(69, 237, 185, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 20s ease-in-out infinite;
+}
+
+.treatment-stem-cells::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -15%;
+    width: 40%;
+    height: 160%;
+    background: radial-gradient(circle, rgba(191, 255, 189, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 25s ease-in-out infinite reverse;
+}
+
+.treatment-exosomes {
+    background: linear-gradient(135deg, var(--stellar-explorer) 0%, #003a3a 50%, var(--stellar-explorer) 100%);
+    overflow: hidden;
+}
+
+.treatment-exosomes::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: -20%;
+    width: 50%;
+    height: 180%;
+    background: radial-gradient(circle, rgba(202, 255, 251, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 22s ease-in-out infinite;
+}
+
+.treatment-exosomes::after {
+    content: '';
+    position: absolute;
+    bottom: -25%;
+    right: -10%;
+    width: 35%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(64, 255, 223, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 28s ease-in-out infinite reverse;
+}
+
+.treatment-iv-therapy {
+    background: linear-gradient(135deg, var(--stellar-explorer) 0%, #002222 50%, var(--stellar-explorer) 100%);
+    overflow: hidden;
+}
+
+.treatment-iv-therapy::before {
+    content: '';
+    position: absolute;
+    top: -35%;
+    right: -25%;
+    width: 55%;
+    height: 170%;
+    background: radial-gradient(circle, rgba(69, 237, 185, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 24s ease-in-out infinite;
+}
+
+.treatment-iv-therapy::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -30%;
+    width: 45%;
+    height: 140%;
+    background: radial-gradient(circle, rgba(191, 255, 189, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 26s ease-in-out infinite reverse;
+}
+
+.treatment-orthopedics {
+    background: linear-gradient(135deg, var(--stellar-explorer) 0%, #004444 50%, var(--stellar-explorer) 100%);
+    overflow: hidden;
+}
+
+.treatment-orthopedics::before {
+    content: '';
+    position: absolute;
+    top: -45%;
+    left: -15%;
+    width: 48%;
+    height: 190%;
+    background: radial-gradient(circle, rgba(202, 255, 251, 0.13) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 23s ease-in-out infinite;
+}
+
+.treatment-orthopedics::after {
+    content: '';
+    position: absolute;
+    bottom: -35%;
+    right: -20%;
+    width: 42%;
+    height: 170%;
+    background: radial-gradient(circle, rgba(64, 255, 223, 0.11) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 27s ease-in-out infinite reverse;
+}
+
+/* Organic floating animation for background elements */
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-20px) rotate(90deg); }
+    50% { transform: translateY(-40px) rotate(180deg); }
+    75% { transform: translateY(-20px) rotate(270deg); }
+}
+
+/* Enhanced Treatment Panel Content Styling */
+.treatment-panel .panel-content {
+    position: relative;
+    z-index: 2;
+}
+
+.treatment-panel .panel-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.treatment-panel .panel-title {
+    font-size: clamp(2.5rem, 6vw, 3rem);
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.treatment-panel .title-accent {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--aphrodite-aqua), var(--lamiaceae));
+    margin: 0 auto;
+    border-radius: 1px;
+    box-shadow: 0 0 20px rgba(69, 237, 185, 0.5);
+}
+
+/* Enhanced Treatment Info Grid */
+.treatment-panel .treatment-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+}
+
+/* Enhanced Treatment Description */
+.treatment-panel .treatment-description p {
+    font-family: 'Bio Sans', sans-serif;
+    font-weight: normal;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--white);
+    margin-bottom: 2.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+
+
+.treatment-panel .treatment-description p::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--aphrodite-aqua), var(--lamiaceae));
+    border-radius: 2px;
+    opacity: 0.8;
+}
+
+/* Enhanced Treatment Benefits */
+.treatment-panel .treatment-benefits h3 {
+    color: var(--aphrodite-aqua);
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.treatment-panel .treatment-benefits ul {
+    list-style: none;
+    padding: 0;
+}
+
+.treatment-panel .treatment-benefits li {
+    padding: 1rem 0;
+    padding-left: 2.5rem;
+    position: relative;
+    font-size: 1.1rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.treatment-panel .treatment-benefits li::before {
+    content: "●";
+    position: absolute;
+    left: 0;
+    top: 1rem;
+    color: var(--aphrodite-aqua);
+    font-size: 1.5rem;
+    text-shadow: 0 0 15px rgba(69, 237, 185, 0.6);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+/* Enhanced Treatment Visual */
+.treatment-panel .treatment-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.treatment-panel .treatment-image {
+    width: 100%;
+    max-width: 550px;
+    position: relative;
+}
+
+.treatment-panel .image-placeholder {
+    width: 100%;
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(69, 237, 185, 0.3);
+    transition: all 0.4s ease;
+}
+
+.treatment-panel .image-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(69, 237, 185, 0.1) 0%, 
+        rgba(64, 255, 223, 0.05) 50%, 
+        rgba(191, 255, 189, 0.1) 100%);
+    z-index: 1;
+}
+
+.treatment-panel .image-placeholder::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, 
+        rgba(69, 237, 185, 0.1) 0%, 
+        transparent 50%);
+    animation: rotate 30s linear infinite;
+    z-index: 0;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.treatment-panel .image-placeholder:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.4);
+    border-color: rgba(69, 237, 185, 0.6);
+}
+
+/* Enhanced Image Placeholders - Natural Rounded Style */
+.treatment-panel .stem-cells-img {
+    background-image: url('./images/IMG_0104_1080.webp');
+}
+
+.treatment-panel .exosomes-img {
+    background-image: url('./images/IMG_0129_1080.webp');
+}
+
+.treatment-panel .iv-therapy-img {
+    background-image: url('./images/IMG_0204_1080.webp');
+}
+
+.treatment-panel .orthopedics-img {
+    background-image: url('./images/IMG_0053_1080.webp');
 } 
