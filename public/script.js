@@ -473,3 +473,37 @@ document.addEventListener('DOMContentLoaded', function() {
         handleScroll();
     }
 }); 
+
+// CTA Section Scroll Behavior
+document.addEventListener('DOMContentLoaded', function() {
+    const ctaContent = document.querySelector('.cta-content');
+    const footer = document.querySelector('.footer');
+    
+    if (ctaContent && footer) {
+        // Create an intersection observer for the footer
+        const footerObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Footer is visible, immediately switch CTA content to natural scrolling
+                    ctaContent.classList.add('scroll-natural');
+                } else {
+                    // Footer is not visible, immediately switch CTA content back to fixed
+                    ctaContent.classList.remove('scroll-natural');
+                }
+            });
+        }, {
+            threshold: 0 // Trigger as soon as any part of footer is visible
+        });
+        
+        // Start observing the footer
+        footerObserver.observe(footer);
+        
+        // Handle window resize to ensure proper positioning
+        window.addEventListener('resize', function() {
+            if (!ctaContent.classList.contains('scroll-natural')) {
+                // Force recalculation of fixed positioning
+                ctaContent.style.transform = 'translate3d(-50%, -50%, 0)';
+            }
+        });
+    }
+}); 
