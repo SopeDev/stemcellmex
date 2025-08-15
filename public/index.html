@@ -14,9 +14,11 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <img src="./images/logo-white.svg" alt="Stemcell México" class="logo-img">
-            </div>
+            			<div class="nav-logo">
+				<a href="./index.html">
+					<img src="./images/logo-white.svg" alt="Stemcell México" class="logo-img">
+				</a>
+			</div>
             <ul class="nav-menu">
                 <li><a href="./index.html" data-es="Inicio" data-en="Home">Home</a></li>
                 <li><a href="" data-es="Tratamientos" data-en="Treatments">Treatments</a></li>
@@ -179,7 +181,7 @@
                 <div class="panel-content">
                     <div class="panel-header">
                         <h2 class="panel-title" data-es="Células Madre Mesenquimales" data-en="Mesenchymal Stem Cells">Mesenchymal Stem Cells</h2>
-                        <div class="title-accent"></div>
+                        <button class="btn-primary" data-es="Agendar Consulta" data-en="Schedule Consultation">Schedule Consultation</button>
                     </div>
                     <div class="panel-body">
                         <div class="treatment-info">
@@ -196,11 +198,6 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="treatment-visual">
-                                <div class="treatment-image">
-                                    <div class="image-placeholder stem-cells-img"></div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -211,15 +208,10 @@
                 <div class="panel-content">
                     <div class="panel-header">
                         <h2 class="panel-title" data-es="Terapia con Exosomas" data-en="Exosome Therapy">Exosome Therapy</h2>
-                        <div class="title-accent"></div>
+                        <button class="btn-primary" data-es="Agendar Consulta" data-en="Schedule Consultation">Schedule Consultation</button>
                     </div>
                     <div class="panel-body">
                         <div class="treatment-info">
-                            <div class="treatment-visual">
-                                <div class="treatment-image">
-                                    <div class="image-placeholder exosomes-img"></div>
-                                </div>
-                            </div>
                             <div class="treatment-description">
                                 <p data-es="Los exosomas son vesículas extracelulares que contienen proteínas, lípidos y ácidos nucleicos que facilitan la comunicación celular. Esta terapia avanzada promueve la regeneración y rejuvenecimiento a nivel celular." data-en="Exosomes are extracellular vesicles containing proteins, lipids, and nucleic acids that facilitate cellular communication. This advanced therapy promotes regeneration and rejuvenation at the cellular level.">Exosomes are extracellular vesicles containing proteins, lipids, and nucleic acids that facilitate cellular communication. This advanced therapy promotes regeneration and rejuvenation at the cellular level.</p>
                                 
@@ -243,7 +235,7 @@
                 <div class="panel-content">
                     <div class="panel-header">
                         <h2 class="panel-title" data-es="Terapia Intravenosa" data-en="Intravenous Therapy">Intravenous Therapy</h2>
-                        <div class="title-accent"></div>
+                        <button class="btn-primary" data-es="Agendar Consulta" data-en="Schedule Consultation">Schedule Consultation</button>
                     </div>
                     <div class="panel-body">
                         <div class="treatment-info">
@@ -260,11 +252,6 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="treatment-visual">
-                                <div class="treatment-image">
-                                    <div class="image-placeholder iv-therapy-img"></div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -275,15 +262,10 @@
                 <div class="panel-content">
                     <div class="panel-header">
                         <h2 class="panel-title" data-es="Tratamiento Ortopédico" data-en="Orthopedic Treatment">Orthopedic Treatment</h2>
-                        <div class="title-accent"></div>
+                        <button class="btn-primary" data-es="Agendar Consulta" data-en="Schedule Consultation">Schedule Consultation</button>
                     </div>
                     <div class="panel-body">
                         <div class="treatment-info">
-                            <div class="treatment-visual">
-                                <div class="treatment-image">
-                                    <div class="image-placeholder orthopedics-img"></div>
-                                </div>
-                            </div>
                             <div class="treatment-description">
                                 <p data-es="Nuestros tratamientos ortopédicos regenerativos combinan la medicina tradicional con terapias avanzadas para tratar lesiones deportivas, dolores articulares y condiciones degenerativas." data-en="Our regenerative orthopedic treatments combine traditional medicine with advanced therapies to treat sports injuries, joint pain, and degenerative conditions.">Our regenerative orthopedic treatments combine traditional medicine with advanced therapies to treat sports injuries, joint pain, and degenerative conditions.</p>
                                 
@@ -369,10 +351,39 @@
             <div class="cta-content">
                 <h2 data-es="¿Listo para transformar tu salud?" data-en="Ready to Transform Your Health?">Ready to Transform Your Health?</h2>
                 <p data-es="Agenda tu consulta gratuita y descubre cómo la medicina regenerativa puede cambiar tu vida." data-en="Schedule your free consultation and discover how regenerative medicine can change your life.">Schedule your free consultation and discover how regenerative medicine can change your life.</p>
-                <div class="cta-buttons">
-                    <button class="btn-primary" data-es="Agendar Consulta" data-en="Schedule Consultation">Schedule Consultation</button>
-                    <button class="btn-secondary" data-es="Llamar Ahora" data-en="Call Now">Call Now</button>
-                </div>
+                
+                <!-- Contact Form -->
+            </div>
+            <div class="contact-form-section">
+                <form class="contact-form" id="homepageContactForm">
+                    <div class="form-group">
+                        <label for="homepage-name" data-es="Nombre Completo" data-en="Full Name">Full Name</label>
+                        <input type="text" id="homepage-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="homepage-email" data-es="Correo Electrónico" data-en="Email">Email</label>
+                        <input type="email" id="homepage-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="homepage-phone" data-es="Teléfono" data-en="Phone">Phone</label>
+                        <input type="tel" id="homepage-phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="homepage-subject" data-es="Asunto" data-en="Subject">Subject</label>
+                        <select id="homepage-subject" name="subject" required>
+                            <option value="" data-es="Selecciona un asunto" data-en="Select a subject">Select a subject</option>
+                            <option value="consultation" data-es="Consulta Médica" data-en="Medical Consultation">Medical Consultation</option>
+                            <option value="treatment" data-es="Información de Tratamiento" data-en="Treatment Information">Treatment Information</option>
+                            <option value="appointment" data-es="Agendar Cita" data-en="Schedule Appointment">Schedule Appointment</option>
+                            <option value="general" data-es="Consulta General" data-en="General Inquiry">General Inquiry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="homepage-message" data-es="Mensaje" data-en="Message">Message</label>
+                        <textarea id="homepage-message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" data-es="Enviar Mensaje" data-en="Send Message">Send Message</button>
+                </form>
             </div>
         </div>
     </section>

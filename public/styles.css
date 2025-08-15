@@ -143,6 +143,13 @@ p {
     align-items: center;
 }
 
+.nav-logo a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
 .logo-img {
     height: 40px;
     width: auto;
@@ -905,44 +912,22 @@ p {
     align-items: center;
     overflow: hidden;
     position: relative;
-    z-index: -2;
-}
-
-/* Ensure smooth transition for all properties */
-.cta-content {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    z-index: -1;
-    width: 100%;
-    max-width: 800px;
-    padding: 0 2rem;
-    box-sizing: border-box;
-}
-
-/* State when footer becomes visible */
-.cta-content.scroll-natural {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
     z-index: 1;
+}
+
+/* CTA Content */
+.cta-content {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
     padding: 0 2rem;
     box-sizing: border-box;
+    z-index: 2;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .cta-content {
-        max-width: 100%;
-        padding: 0 1rem;
-    }
-    
-    .cta-content.scroll-natural {
         max-width: 100%;
         padding: 0 1rem;
     }
@@ -959,11 +944,94 @@ p {
     font-size: 1.2rem;
 }
 
-.cta-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
+/* CTA Contact Form Styling */
+.cta-section .contact-form-section {
+    margin-top: 2rem;
+}
+
+.cta-section .contact-form {
+    background: none;
+    box-shadow: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin: 0 auto;
+}
+
+.cta-section .contact-form .form-group:nth-child(1),
+.cta-section .contact-form .form-group:nth-child(2),
+.cta-section .contact-form .form-group:nth-child(3) {
+    grid-column: 1 / 1;
+}
+
+.cta-section .contact-form .form-group:nth-child(4),
+.cta-section .contact-form .form-group:nth-child(5) {
+    grid-column: 2 / 2;
+}
+
+.cta-section .contact-form .form-group:nth-child(4) {
+    grid-row: 1 / 1;
+}
+
+.cta-section .contact-form .form-group:nth-child(5) {
+    grid-row: 2 / 4;
+    display: grid;
+    align-self: stretch;
+    grid-template-rows: auto 1fr;
+}
+
+.cta-section .contact-form .form-group {
+    margin-bottom: 0;
+}
+
+.cta-section .contact-form .form-group:nth-child(5) textarea {
+    display: block;
+    resize: none;
+}
+
+.cta-section .contact-form .btn-primary {
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-top: 1rem;
+}
+
+.cta-section .contact-form label {
+    color: var(--white);
+    text-align: left;
+}
+
+.cta-section .contact-form input,
+.cta-section .contact-form select,
+.cta-section .contact-form textarea {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: var(--stellar-explorer);
+}
+
+.cta-section .contact-form input:focus,
+.cta-section .contact-form select:focus,
+.cta-section .contact-form textarea:focus {
+    border-color: var(--aphrodite-aqua);
+    background: var(--white);
+}
+
+/* CTA Form Messages */
+.cta-section .form-message {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cta-section .form-message-success {
+    background: rgba(69, 237, 185, 0.2);
+    border-color: var(--aphrodite-aqua);
+}
+
+.cta-section .form-message-error {
+    background: rgba(255, 107, 107, 0.2);
+    border-color: #ff6b6b;
 }
 
 /* Footer */
@@ -1181,6 +1249,40 @@ p {
 .form-group textarea {
     resize: vertical;
     min-height: 120px;
+}
+
+/* Form Messages */
+.form-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: 'Bio Sans', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    animation: slideIn 0.3s ease;
+}
+
+.form-message-success {
+    background: rgba(69, 237, 185, 0.1);
+    color: var(--stellar-explorer);
+    border: 2px solid var(--aphrodite-aqua);
+}
+
+.form-message-error {
+    background: rgba(255, 107, 107, 0.1);
+    color: #d32f2f;
+    border: 2px solid #ff6b6b;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Contact Info */
@@ -1500,7 +1602,7 @@ p {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     position: relative;
     z-index: 1;
 }
@@ -1513,11 +1615,6 @@ p {
 .panel-content .scroll-indicator .scroll-arrow {
     border-right: 2px solid #000000;
     border-bottom: 2px solid #000000;
-}
-
-.panel-header {
-    text-align: center;
-    margin-bottom: 3rem;
 }
 
 .panel-title {
@@ -1557,101 +1654,13 @@ p {
     color: var(--white);
 }
 
-/* Treatment Panel Body Styles */
-.panel-body {
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.treatment-info {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    max-width: 1200px;
-    width: 100%;
-}
-
-.treatment-description p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    margin-bottom: 2rem;
-}
-
-.treatment-benefits h3 {
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-}
-
-.treatment-benefits ul {
-    list-style: none;
-    padding: 0;
-}
-
-.treatment-benefits li {
-    padding: 0.8rem 0;
-    padding-left: 2rem;
-    position: relative;
-    font-size: 1.1rem;
-}
-
-.treatment-benefits li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    top: 0.8rem;
-    color: var(--aphrodite-aqua);
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.treatment-visual {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.treatment-image {
-    width: 100%;
-    max-width: 500px;
-}
-
-.image-placeholder {
-    width: 100%;
-    height: 400px;
+/* Individual Treatment Panel Backgrounds - Redesigned according to directive */
+.treatment-stem-cells {
+    background: linear-gradient(90deg, #000000 0%, #003333db 100%), url(./images/IMG_0104_1080.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.stem-cells-img {
-    background-image: url('./images/IMG_0104_1080.webp');
-}
-
-.exosomes-img {
-    background-image: url('./images/IMG_0129_1080.webp');
-}
-
-.iv-therapy-img {
-    background-image: url('./images/IMG_0204_1080.webp');
-}
-
-.orthopedics-img {
-    background-image: url('./images/IMG_0053_1080.webp');
-}
-
-/* Individual Treatment Panel Backgrounds - Redesigned according to directive */
-.treatment-stem-cells {
-    background: linear-gradient(135deg, var(--stellar-explorer) 0%, #003333 50%, var(--stellar-explorer) 100%);
+    background-attachment: fixed;
     overflow: hidden;
 }
 
@@ -1680,7 +1689,11 @@ p {
 }
 
 .treatment-exosomes {
-    background: linear-gradient(135deg, var(--stellar-explorer) 0%, #003a3a 50%, var(--stellar-explorer) 100%);
+    background: linear-gradient(90deg, #000000 0%, #003333db 100%), url('./images/IMG_0129_1080.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     overflow: hidden;
 }
 
@@ -1709,7 +1722,11 @@ p {
 }
 
 .treatment-iv-therapy {
-    background: linear-gradient(135deg, var(--stellar-explorer) 0%, #002222 50%, var(--stellar-explorer) 100%);
+    background: linear-gradient(90deg, #000000 0%, #003333db 100%), url('./images/IMG_0204_1080.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     overflow: hidden;
 }
 
@@ -1737,8 +1754,13 @@ p {
     animation: float 26s ease-in-out infinite reverse;
 }
 
+
 .treatment-orthopedics {
-    background: linear-gradient(135deg, var(--stellar-explorer) 0%, #004444 50%, var(--stellar-explorer) 100%);
+    background: linear-gradient(90deg, #000000 0%, #003333db 100%), url('./images/IMG_0053_1080.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     overflow: hidden;
 }
 
@@ -1774,12 +1796,112 @@ p {
     75% { transform: translateY(-20px) rotate(270deg); }
 }
 
+/* Enhanced Treatment Panel Content Styling */
+.treatment-panel .panel-content {
+    position: relative;
+    z-index: 2;
+}
+
+.treatment-panel .panel-header {
+    text-align: left;
+    position: relative;
+}
+
+.treatment-panel .panel-title {
+    font-size: clamp(2.5rem, 6vw, 3rem);
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: left;
+}
+
+/* .treatment-panel .title-accent {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--aphrodite-aqua), var(--lamiaceae));
+    margin: 0;
+    border-radius: 1px;
+    box-shadow: 0 0 20px rgba(69, 237, 185, 0.5);
+} */
+
+/* Enhanced Treatment Info Grid */
+.treatment-panel .treatment-info {
+    display: block;
+    width: 50%;
+    min-width: min-content;
+    position: relative;
+}
+
+/* Enhanced Treatment Description */
+.treatment-panel .treatment-description p {
+    font-family: 'Bio Sans', sans-serif;
+    font-weight: normal;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--white);
+    margin-bottom: 2.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Enhanced Treatment Benefits */
+.treatment-panel .treatment-benefits h3 {
+    color: var(--aphrodite-aqua);
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.treatment-panel .treatment-benefits ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.treatment-panel .treatment-benefits li {
+    padding: 0 1.5rem;
+    position: relative;
+    font-size: 1.1rem;
+    color: var(--white);
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    border-right: 1px solid var(--aphrodite-aqua);
+}
+
+.treatment-panel .treatment-benefits li:first-child {
+    padding-left: 0;
+}
+
+.treatment-panel .treatment-benefits li:last-child {
+    border-right: none;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Organic floating animation for background elements */
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-20px) rotate(90deg); }
+    50% { transform: translateY(-40px) rotate(180deg); }
+    75% { transform: translateY(-20px) rotate(270deg); }
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .treatment-info {
         grid-template-columns: 1fr;
         gap: 2rem;
-        text-align: center;
+        /* text-align: center; */
     }
     
     .treatment-description {
@@ -1846,7 +1968,7 @@ p {
         height: 120px;
     }
     
-    .hero-buttons, .cta-buttons {
+    .hero-buttons {
         flex-direction: column;
         align-items: center;
     }
@@ -1891,6 +2013,10 @@ p {
         color: var(--white);
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
+
+    .treatment-panel .treatment-info {
+        width: 80%;
+    }
     
     .treatment-description p {
         font-size: 1rem;
@@ -1909,16 +2035,53 @@ p {
         text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
     }
     
-    .image-placeholder {
-        height: 300px;
-        border: 2px solid rgba(69, 237, 185, 0.3);
+    .treatment-panel .treatment-benefits ul {
+        flex-direction: column;
+        width: fit-content;
+    }
+
+    .treatment-panel .treatment-benefits li {
+        padding: 1.5rem 0;
+        border-right: none;
+        border-bottom: 1px solid var(--aphrodite-aqua);
+    }
+
+    .treatment-panel .treatment-benefits li:first-child {
+        padding-top: 0;
+    }
+
+        .treatment-panel .treatment-benefits li:last-child {
+        border-bottom: none;
     }
     
     /* Ensure background animations work on mobile */
-    .treatment-panel::before,
+    /* .treatment-panel::before,
     .treatment-panel::after {
-        display: none; /* Disable complex animations on mobile for performance */
+        display: none;
+    } */
+
+    /* CTA Contact Form Mobile Styling */
+    .cta-section .contact-form {
+        padding: 1.5rem;
+        margin: 0 1rem;
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
+    
+    .cta-section .contact-form .form-group:nth-child(4),
+    .cta-section .contact-form .form-group:nth-child(5),
+    .cta-section .contact-form .form-group:nth-child(6) {
+        grid-column: 1;
+        grid-row: auto;
+    }
+        
+    .cta-section .contact-form .btn-primary {
+        grid-column: 1;
+    }
+    
+    .cta-section .contact-form-section {
+        margin-top: 1.5rem;
+    }    
 }
 
 @media (max-width: 480px) {
@@ -1987,320 +2150,3 @@ p {
     }
 } 
 
-/* Individual Treatment Panel Backgrounds - Redesigned according to directive */
-.treatment-stem-cells {
-    background: linear-gradient(135deg, var(--stellar-explorer) 0%, #003333 50%, var(--stellar-explorer) 100%);
-    overflow: hidden;
-}
-
-.treatment-stem-cells::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -20%;
-    width: 60%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(69, 237, 185, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: float 20s ease-in-out infinite;
-}
-
-.treatment-stem-cells::after {
-    content: '';
-    position: absolute;
-    bottom: -30%;
-    left: -15%;
-    width: 40%;
-    height: 160%;
-    background: radial-gradient(circle, rgba(191, 255, 189, 0.08) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: float 25s ease-in-out infinite reverse;
-}
-
-.treatment-exosomes {
-    background: linear-gradient(135deg, var(--stellar-explorer) 0%, #003a3a 50%, var(--stellar-explorer) 100%);
-    overflow: hidden;
-}
-
-.treatment-exosomes::before {
-    content: '';
-    position: absolute;
-    top: -40%;
-    left: -20%;
-    width: 50%;
-    height: 180%;
-    background: radial-gradient(circle, rgba(202, 255, 251, 0.12) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: float 22s ease-in-out infinite;
-}
-
-.treatment-exosomes::after {
-    content: '';
-    position: absolute;
-    bottom: -25%;
-    right: -10%;
-    width: 35%;
-    height: 150%;
-    background: radial-gradient(circle, rgba(64, 255, 223, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: float 28s ease-in-out infinite reverse;
-}
-
-.treatment-iv-therapy {
-    background: linear-gradient(135deg, var(--stellar-explorer) 0%, #002222 50%, var(--stellar-explorer) 100%);
-    overflow: hidden;
-}
-
-.treatment-iv-therapy::before {
-    content: '';
-    position: absolute;
-    top: -35%;
-    right: -25%;
-    width: 55%;
-    height: 170%;
-    background: radial-gradient(circle, rgba(69, 237, 185, 0.15) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: float 24s ease-in-out infinite;
-}
-
-.treatment-iv-therapy::after {
-    content: '';
-    position: absolute;
-    bottom: -20%;
-    left: -30%;
-    width: 45%;
-    height: 140%;
-    background: radial-gradient(circle, rgba(191, 255, 189, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: float 26s ease-in-out infinite reverse;
-}
-
-.treatment-orthopedics {
-    background: linear-gradient(135deg, var(--stellar-explorer) 0%, #004444 50%, var(--stellar-explorer) 100%);
-    overflow: hidden;
-}
-
-.treatment-orthopedics::before {
-    content: '';
-    position: absolute;
-    top: -45%;
-    left: -15%;
-    width: 48%;
-    height: 190%;
-    background: radial-gradient(circle, rgba(202, 255, 251, 0.13) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: float 23s ease-in-out infinite;
-}
-
-.treatment-orthopedics::after {
-    content: '';
-    position: absolute;
-    bottom: -35%;
-    right: -20%;
-    width: 42%;
-    height: 170%;
-    background: radial-gradient(circle, rgba(64, 255, 223, 0.11) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: float 27s ease-in-out infinite reverse;
-}
-
-/* Organic floating animation for background elements */
-@keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    25% { transform: translateY(-20px) rotate(90deg); }
-    50% { transform: translateY(-40px) rotate(180deg); }
-    75% { transform: translateY(-20px) rotate(270deg); }
-}
-
-/* Enhanced Treatment Panel Content Styling */
-.treatment-panel .panel-content {
-    position: relative;
-    z-index: 2;
-}
-
-.treatment-panel .panel-header {
-    text-align: center;
-    margin-bottom: 4rem;
-    position: relative;
-}
-
-.treatment-panel .panel-title {
-    font-size: clamp(2.5rem, 6vw, 3rem);
-    color: var(--white);
-    margin-bottom: 1.5rem;
-    font-weight: bold;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    position: relative;
-}
-
-.treatment-panel .title-accent {
-    width: 120px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--aphrodite-aqua), var(--lamiaceae));
-    margin: 0 auto;
-    border-radius: 1px;
-    box-shadow: 0 0 20px rgba(69, 237, 185, 0.5);
-}
-
-/* Enhanced Treatment Info Grid */
-.treatment-panel .treatment-info {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-    max-width: 1200px;
-    width: 100%;
-    position: relative;
-}
-
-/* Enhanced Treatment Description */
-.treatment-panel .treatment-description p {
-    font-family: 'Bio Sans', sans-serif;
-    font-weight: normal;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--white);
-    margin-bottom: 2.5rem;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    position: relative;
-}
-
-
-
-.treatment-panel .treatment-description p::before {
-    content: '';
-    position: absolute;
-    left: -20px;
-    top: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(180deg, var(--aphrodite-aqua), var(--lamiaceae));
-    border-radius: 2px;
-    opacity: 0.8;
-}
-
-/* Enhanced Treatment Benefits */
-.treatment-panel .treatment-benefits h3 {
-    color: var(--aphrodite-aqua);
-    margin-bottom: 2rem;
-    font-size: 1.8rem;
-    font-weight: bold;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.treatment-panel .treatment-benefits ul {
-    list-style: none;
-    padding: 0;
-}
-
-.treatment-panel .treatment-benefits li {
-    padding: 1rem 0;
-    padding-left: 2.5rem;
-    position: relative;
-    font-size: 1.1rem;
-    color: var(--white);
-    margin-bottom: 0.5rem;
-    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-}
-
-.treatment-panel .treatment-benefits li::before {
-    content: "●";
-    position: absolute;
-    left: 0;
-    top: 1rem;
-    color: var(--aphrodite-aqua);
-    font-size: 1.5rem;
-    text-shadow: 0 0 15px rgba(69, 237, 185, 0.6);
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.1); opacity: 0.8; }
-}
-
-/* Enhanced Treatment Visual */
-.treatment-panel .treatment-visual {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.treatment-panel .treatment-image {
-    width: 100%;
-    max-width: 550px;
-    position: relative;
-}
-
-.treatment-panel .image-placeholder {
-    width: 100%;
-    height: 450px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-    transition: all 0.4s ease;
-}
-
-/* .treatment-panel .image-placeholder::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, 
-        rgba(69, 237, 185, 0.1) 0%, 
-        rgba(64, 255, 223, 0.05) 50%, 
-        rgba(191, 255, 189, 0.1) 100%);
-    z-index: 1;
-}
-
-.treatment-panel .image-placeholder::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, 
-        rgba(69, 237, 185, 0.1) 0%, 
-        transparent 50%);
-    animation: rotate 30s linear infinite;
-    z-index: 0;
-} */
-
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-/* .treatment-panel .image-placeholder:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.4);
-    border-color: rgba(69, 237, 185, 0.6);
-} */
-
-/* Enhanced Image Placeholders - Natural Rounded Style */
-.treatment-panel .stem-cells-img {
-    background-image: url('./images/IMG_0104_1080.webp');
-}
-
-.treatment-panel .exosomes-img {
-    background-image: url('./images/IMG_0129_1080.webp');
-}
-
-.treatment-panel .iv-therapy-img {
-    background-image: url('./images/IMG_0204_1080.webp');
-}
-
-.treatment-panel .orthopedics-img {
-    background-image: url('./images/IMG_0053_1080.webp');
-} 

@@ -106,7 +106,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Handle different button actions
             const buttonText = this.textContent.toLowerCase();
             if (buttonText.includes('agendar') || buttonText.includes('consulta') || buttonText.includes('schedule')) {
-                console.log('Opening consultation form...');
+                // Scroll to CTA section for consultation buttons
+                const ctaSection = document.querySelector('.cta-section');
+                if (ctaSection) {
+                    ctaSection.scrollIntoView({ behavior: 'smooth' });
+                }
             } else if (buttonText.includes('tratamientos') || buttonText.includes('treatments')) {
                 const treatmentsSection = document.querySelector('#tratamientos');
                 if (treatmentsSection) {
@@ -166,6 +170,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // Apply active states after initial language setup
+    updateActiveNavLink();
+    
     // Function to update language
     function updateLanguage() {
         currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
@@ -190,6 +197,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 link.textContent = navTexts[currentLanguage][index];
             }
         });
+        
+        // Re-apply active states after language change
+        updateActiveNavLink();
         
         console.log(`Switched to ${currentLanguage === 'en' ? 'English' : 'Spanish'}`);
     }
@@ -278,23 +288,60 @@ function animateFloat() {
 
 animateFloat();
 
-// Active navigation link based on current URL path
+// Navigation highlighting function
 function updateActiveNavLink() {
-    const navLinks = document.querySelectorAll('.nav-menu a[href^="#"], .mobile-nav-menu a[href^="#"]');
+    const navLinks = document.querySelectorAll('.nav-menu a, .mobile-nav-menu a');
     
-    // Get current URL hash or default to #inicio
-    const currentPath = window.location.hash || '#inicio';
+    console.log('updateActiveNavLink called');
+    console.log('Found navLinks:', navLinks.length);
+    
+    if (navLinks.length === 0) {
+        console.log('No navigation links found');
+        return;
+    }
     
     // Remove active class from all links
     navLinks.forEach(link => {
         link.classList.remove('active');
     });
     
-    // Add active class to current path link
-    const activeLinks = document.querySelectorAll(`a[href="${currentPath}"]`);
-    activeLinks.forEach(link => {
-        link.classList.add('active');
+    // Get current page pathname
+    const currentPage = window.location.pathname;
+    console.log('Current page pathname:', currentPage);
+    
+    // Find and highlight the current page link
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        console.log('Checking link:', href);
+        
+        if (href && href !== '') {
+            // Check if this link matches the current page
+            const isCurrentPage = currentPage.endsWith(href) || 
+                (currentPage.endsWith('/') && href === './index.html') ||
+                (currentPage.endsWith('index.html') && href === './index.html') ||
+                (currentPage.includes('faq.html') && href === './faq.html') ||
+                (currentPage.includes('contact.html') && href === './contact.html');
+            
+            console.log('Link href:', href, 'Current page:', currentPage, 'Is current:', isCurrentPage);
+            
+            if (isCurrentPage) {
+                link.classList.add('active');
+                console.log('Activated link:', href);
+            }
+        }
     });
+    
+    // Also handle hash-based navigation for same-page links
+    const hashLinks = document.querySelectorAll('a[href^="#"]');
+    const currentHash = window.location.hash;
+    
+    if (currentHash) {
+        hashLinks.forEach(link => {
+            if (link.getAttribute('href') === currentHash) {
+                link.classList.add('active');
+            }
+        });
+    }
 }
 
 // Update active nav link on hash change
@@ -307,8 +354,14 @@ document.addEventListener('DOMContentLoaded', function() {
     updateActiveNavLink();
 });
 
-// Add loading animation
+// Update active nav link when navigating between pages
+window.addEventListener('popstate', function() {
+    updateActiveNavLink();
+});
+
+// Also update on window load to catch any late-loading elements
 window.addEventListener('load', function() {
+    updateActiveNavLink();
     document.body.classList.add('loaded');
 });
 
@@ -472,38 +525,87 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!isMobile) {
         handleScroll();
     }
-}); 
+});
 
-// CTA Section Scroll Behavior
+// Contact Form Handling
 document.addEventListener('DOMContentLoaded', function() {
-    const ctaContent = document.querySelector('.cta-content');
-    const footer = document.querySelector('.footer');
-    
-    if (ctaContent && footer) {
-        // Create an intersection observer for the footer
-        const footerObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Footer is visible, immediately switch CTA content to natural scrolling
-                    ctaContent.classList.add('scroll-natural');
-                } else {
-                    // Footer is not visible, immediately switch CTA content back to fixed
-                    ctaContent.classList.remove('scroll-natural');
-                }
-            });
-        }, {
-            threshold: 0 // Trigger as soon as any part of footer is visible
-        });
-        
-        // Start observing the footer
-        footerObserver.observe(footer);
-        
-        // Handle window resize to ensure proper positioning
-        window.addEventListener('resize', function() {
-            if (!ctaContent.classList.contains('scroll-natural')) {
-                // Force recalculation of fixed positioning
-                ctaContent.style.transform = 'translate3d(-50%, -50%, 0)';
-            }
+    // Handle homepage contact form
+    const homepageContactForm = document.getElementById('homepageContactForm');
+    if (homepageContactForm) {
+        homepageContactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleFormSubmission(this, 'homepage');
         });
     }
-}); 
+    
+    // Handle FAQ page contact form
+    const faqContactForm = document.getElementById('faqContactForm');
+    if (faqContactForm) {
+        faqContactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleFormSubmission(this, 'faq');
+        });
+    }
+    
+    // Handle contact page form (if exists)
+    const contactPageForm = document.getElementById('contactForm');
+    if (contactPageForm) {
+        contactPageForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleFormSubmission(this, 'contact');
+        });
+    }
+    
+    // Generic form submission handler
+    function handleFormSubmission(form, formType) {
+        // Get form data
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+        
+        // Simple validation
+        if (!data.name || !data.email || !data.subject || !data.message) {
+            showFormMessage(form, 'Please fill in all required fields.', 'error');
+            return;
+        }
+        
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(data.email)) {
+            showFormMessage(form, 'Please enter a valid email address.', 'error');
+            return;
+        }
+        
+        // Here you would typically send the data to your server
+        console.log(`${formType} form submitted:`, data);
+        
+        // Show success message
+        showFormMessage(form, 'Thank you for your message! We will get back to you soon.', 'success');
+        
+        // Reset form
+        form.reset();
+    }
+    
+    // Function to show form messages
+    function showFormMessage(form, message, type) {
+        // Remove any existing messages
+        const existingMessage = form.querySelector('.form-message');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+        
+        // Create message element
+        const messageElement = document.createElement('div');
+        messageElement.className = `form-message form-message-${type}`;
+        messageElement.textContent = message;
+        
+        // Insert message after the form
+        form.parentNode.insertBefore(messageElement, form.nextSibling);
+        
+        // Auto-remove message after 5 seconds
+        setTimeout(() => {
+            if (messageElement.parentNode) {
+                messageElement.remove();
+            }
+        }, 5000);
+    }
+});

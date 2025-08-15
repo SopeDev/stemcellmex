@@ -15,7 +15,7 @@ Secciones contempladas (estructura de navegación):
 4. Preguntas Frecuentes
 
 5. Contacto
- Formulario, mapa, teléfono, redes sociales integradas.
+ Formulario, mapa (google maps), teléfono, redes sociales integradas.
 
 
 

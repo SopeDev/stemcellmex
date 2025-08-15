@@ -15,7 +15,9 @@
 	<nav class="navbar">
 		<div class="nav-container">
 			<div class="nav-logo">
-				<img src="./images/logo-white.svg" alt="Stemcell México" class="logo-img">
+				<a href="./index.html">
+					<img src="./images/logo-white.svg" alt="Stemcell México" class="logo-img">
+				</a>
 			</div>
 			<ul class="nav-menu">
 				<li><a href="./index.html" data-es="Inicio" data-en="Home">Home</a></li>
@@ -280,10 +282,39 @@
 			<div class="cta-content">
 				<h2 data-es="¿Listo para transformar tu salud?" data-en="Ready to Transform Your Health?">Ready to Transform Your Health?</h2>
 				<p data-es="Agenda tu consulta gratuita y descubre cómo la medicina regenerativa puede cambiar tu vida." data-en="Schedule your free consultation and discover how regenerative medicine can change your life.">Schedule your free consultation and discover how regenerative medicine can change your life.</p>
-				<div class="cta-buttons">
-					<button class="btn-primary" data-es="Agendar Consulta" data-en="Schedule Consultation">Schedule Consultation</button>
-					<button class="btn-secondary" data-es="Llamar Ahora" data-en="Call Now">Call Now</button>
-				</div>
+				
+				<!-- Contact Form -->
+			</div>
+			<div class="contact-form-section">
+				<form class="contact-form" id="faqContactForm">
+					<div class="form-group">
+						<label for="faq-name" data-es="Nombre Completo" data-en="Full Name">Full Name</label>
+						<input type="text" id="faq-name" name="name" required>
+					</div>
+					<div class="form-group">
+						<label for="faq-email" data-es="Correo Electrónico" data-en="Email">Email</label>
+						<input type="email" id="faq-email" name="email" required>
+					</div>
+					<div class="form-group">
+						<label for="faq-phone" data-es="Teléfono" data-en="Phone">Phone</label>
+						<input type="tel" id="faq-phone" name="phone">
+					</div>
+					<div class="form-group">
+						<label for="faq-subject" data-es="Asunto" data-en="Subject">Subject</label>
+						<select id="faq-subject" name="subject" required>
+							<option value="" data-es="Selecciona un asunto" data-en="Select a subject">Select a subject</option>
+							<option value="consultation" data-es="Consulta Médica" data-en="Medical Consultation">Medical Consultation</option>
+							<option value="treatment" data-es="Información de Tratamiento" data-en="Treatment Information">Treatment Information</option>
+							<option value="appointment" data-es="Agendar Cita" data-en="Schedule Appointment">Schedule Appointment</option>
+							<option value="general" data-es="Consulta General" data-en="General Inquiry">General Inquiry</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="faq-message" data-es="Mensaje" data-en="Message">Message</label>
+						<textarea id="faq-message" name="message" rows="5" required></textarea>
+					</div>
+					<button type="submit" class="btn-primary" data-es="Enviar Mensaje" data-en="Send Message">Send Message</button>
+				</form>
 			</div>
 		</div>
 	</section>
