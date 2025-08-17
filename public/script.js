@@ -557,7 +557,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Generic form submission handler
-    function handleFormSubmission(form, formType) {
+    async function handleFormSubmission(form, formType) {
         // Get form data
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
@@ -575,20 +575,50 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Here you would typically send the data to your server
-        console.log(`${formType} form submitted:`, data);
+        // Show loading state
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
         
-        // Show success message
-        showFormMessage(form, 'Thank you for your message! We will get back to you soon.', 'success');
-        
-        // Reset form
-        form.reset();
+        try {
+            // Send data to API endpoint
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...data,
+                    source: formType // Add form source for tracking
+                })
+            });
+            
+            if (response.ok) {
+                // Show success message
+                showFormMessage(form, 'Thank you for your message! We will get back to you soon.', 'success');
+                
+                // Reset form
+                form.reset();
+            } else {
+                const errorData = await response.json();
+                showFormMessage(form, errorData.message || 'Failed to send message. Please try again.', 'error');
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            showFormMessage(form, 'Network error. Please check your connection and try again.', 'error');
+        } finally {
+            // Restore button state
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+        }
     }
     
     // Function to show form messages
     function showFormMessage(form, message, type) {
-        // Remove any existing messages
-        const existingMessage = form.querySelector('.form-message');
+        // Remove any existing messages from the form's parent container
+        const formContainer = form.parentNode;
+        const existingMessage = formContainer.querySelector('.form-message');
         if (existingMessage) {
             existingMessage.remove();
         }
@@ -599,7 +629,7 @@ document.addEventListener('DOMContentLoaded', function() {
         messageElement.textContent = message;
         
         // Insert message after the form
-        form.parentNode.insertBefore(messageElement, form.nextSibling);
+        formContainer.insertBefore(messageElement, form.nextSibling);
         
         // Auto-remove message after 5 seconds
         setTimeout(() => {
