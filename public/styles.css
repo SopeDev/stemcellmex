@@ -476,6 +476,23 @@ p {
     animation-delay: 3.8s;
 }
 
+@keyframes borderRadiusOscillate {
+	0%   { scale: 1; border-radius: 50% 40%; transform: translate3d(0, -5%, 0) }
+	50%  { scale: 1.1; border-radius: 50% 50%; transform: translate3d(0, 5%, 0) }
+	100% { scale: 1; border-radius: 50% 40%; transform: translate3d(0, -5%, 0) }
+}
+
+.shape-inner {
+    position: absolute;
+    background-color: var(--stellar-explorer);
+    opacity: 0.5;
+    width: 40%;
+    height: 40%;
+    top: 30%;
+    left: 30%;
+    animation: borderRadiusOscillate 4s ease-in-out infinite;
+}
+
 @keyframes float {
     0%, 100% { 
         transform: translate3d(0, 0px, 0) rotate(0deg) scale(1); 
@@ -985,11 +1002,6 @@ p {
     margin-bottom: 0;
 }
 
-.cta-section .contact-form .form-group:nth-child(5) textarea {
-    display: block;
-    resize: none;
-}
-
 .cta-section .contact-form .btn-primary {
     grid-column: 1 / -1;
     justify-self: center;
@@ -1247,8 +1259,8 @@ p {
 }
 
 .form-group textarea {
-    resize: vertical;
-    min-height: 120px;
+    display: block;
+    resize: none;
 }
 
 /* Form Messages */
