@@ -298,7 +298,7 @@ p {
     border-radius: 50%;
     background: linear-gradient(45deg, var(--aphrodite-aqua), var(--lamiaceae));
     opacity: 0.15;
-    filter: blur(1px);
+    filter: blur(4px);
     transform-style: preserve-3d;
     will-change: transform;
     backface-visibility: hidden;
@@ -1676,30 +1676,6 @@ p {
     overflow: hidden;
 }
 
-.treatment-stem-cells::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -20%;
-    width: 60%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(69, 237, 185, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: float 20s ease-in-out infinite;
-}
-
-.treatment-stem-cells::after {
-    content: '';
-    position: absolute;
-    bottom: -30%;
-    left: -15%;
-    width: 40%;
-    height: 160%;
-    background: radial-gradient(circle, rgba(191, 255, 189, 0.08) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: float 25s ease-in-out infinite reverse;
-}
-
 .treatment-exosomes {
     background: linear-gradient(90deg, #000000 0%, #003333db 100%), url('./images/IMG_0129_1080.webp');
     background-size: cover;
@@ -1707,30 +1683,6 @@ p {
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow: hidden;
-}
-
-.treatment-exosomes::before {
-    content: '';
-    position: absolute;
-    top: -40%;
-    left: -20%;
-    width: 50%;
-    height: 180%;
-    background: radial-gradient(circle, rgba(202, 255, 251, 0.12) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: float 22s ease-in-out infinite;
-}
-
-.treatment-exosomes::after {
-    content: '';
-    position: absolute;
-    bottom: -25%;
-    right: -10%;
-    width: 35%;
-    height: 150%;
-    background: radial-gradient(circle, rgba(64, 255, 223, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: float 28s ease-in-out infinite reverse;
 }
 
 .treatment-iv-therapy {
@@ -1742,31 +1694,6 @@ p {
     overflow: hidden;
 }
 
-.treatment-iv-therapy::before {
-    content: '';
-    position: absolute;
-    top: -35%;
-    right: -25%;
-    width: 55%;
-    height: 170%;
-    background: radial-gradient(circle, rgba(69, 237, 185, 0.15) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: float 24s ease-in-out infinite;
-}
-
-.treatment-iv-therapy::after {
-    content: '';
-    position: absolute;
-    bottom: -20%;
-    left: -30%;
-    width: 45%;
-    height: 140%;
-    background: radial-gradient(circle, rgba(191, 255, 189, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: float 26s ease-in-out infinite reverse;
-}
-
-
 .treatment-orthopedics {
     background: linear-gradient(90deg, #000000 0%, #003333db 100%), url('./images/IMG_0053_1080.webp');
     background-size: cover;
@@ -1776,28 +1703,36 @@ p {
     overflow: hidden;
 }
 
+.treatment-stem-cells::before,
+.treatment-exosomes::before,
+.treatment-iv-therapy::before,
 .treatment-orthopedics::before {
     content: '';
     position: absolute;
-    top: -45%;
-    left: -15%;
-    width: 48%;
-    height: 190%;
-    background: radial-gradient(circle, rgba(202, 255, 251, 0.13) 0%, transparent 70%);
+    top: -50%;
+    right: -20%;
+    width: 60%;
+    height: 90%;
+    background: rgba(69, 237, 185, 0.05);
     border-radius: 50%;
-    animation: float 23s ease-in-out infinite;
+    animation: float 20s ease-in-out infinite;
+    filter: blur(10px);
 }
 
+.treatment-stem-cells::after,
+.treatment-exosomes::after,
+.treatment-iv-therapy::after,
 .treatment-orthopedics::after {
     content: '';
     position: absolute;
-    bottom: -35%;
-    right: -20%;
-    width: 42%;
-    height: 170%;
-    background: radial-gradient(circle, rgba(64, 255, 223, 0.11) 0%, transparent 70%);
+    bottom: -30%;
+    left: -15%;
+    width: 60%;
+    height: 110%;
+    background: rgba(191, 255, 189, 0.08);
     border-radius: 50%;
-    animation: float 27s ease-in-out infinite reverse;
+    animation: float 25s ease-in-out infinite reverse;
+    filter: blur(10px);
 }
 
 /* Organic floating animation for background elements */
