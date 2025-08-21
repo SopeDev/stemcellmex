@@ -60,7 +60,13 @@ window.addEventListener('scroll', function() {
             navbar.classList.remove('scrolled');
         }
     }
+    
+    // Handle content-wrapper opacity animation (throttled for performance)
+    throttledContentWrapperOpacity();
 });
+
+// Create throttled version of the opacity function
+const throttledContentWrapperOpacity = throttle(handleContentWrapperOpacity, 16); // ~60fps
 
 // Intersection Observer for animations
 const observerOptions = {
@@ -77,6 +83,46 @@ const observer = new IntersectionObserver(function(entries) {
     });
 }, observerOptions);
 
+// Scroll-based opacity animation for content-wrapper elements
+function handleContentWrapperOpacity() {
+    const contentWrappers = document.querySelectorAll('.content-wrapper');
+    
+    contentWrappers.forEach(wrapper => {
+        const rect = wrapper.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // Calculate the center position of the element relative to viewport
+        const elementCenter = rect.top + rect.height / 2;
+        const viewportCenter = windowHeight / 2;
+        
+        // Calculate distance from viewport center
+        const distanceFromCenter = Math.abs(elementCenter - viewportCenter);
+        const maxDistance = windowHeight / 2;
+        
+        // Calculate opacity based on distance from center
+        // When element is at center: opacity = 1
+        // When element is at edges: opacity = 0
+        let opacity = 1 - (distanceFromCenter / maxDistance);
+        opacity = Math.max(0, Math.min(1, opacity)); // Clamp between 0 and 1
+        
+        wrapper.style.opacity = opacity;
+    });
+}
+
+// Throttle function for performance optimization
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+}
+
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', function() {
     const animatedElements = document.querySelectorAll('.service-card, .team-member');
@@ -87,6 +133,9 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
+    
+    // Initialize content-wrapper opacity animation
+    handleContentWrapperOpacity();
 });
 
 // Button click handlers
@@ -100,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add click animation
             this.style.transform = 'scale(0.95)';
             setTimeout(() => {
-                this.style.transform = '';
+                this.style.transform = 'scale(1)';
             }, 150);
             
             // Handle different button actions
@@ -116,6 +165,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (treatmentsSection) {
                     treatmentsSection.scrollIntoView({ behavior: 'smooth' });
                 }
+            } else if (this.textContent.includes('Meet Our Team') || this.textContent.includes('Conoce Nuestro Equipo')) {
+                // Handle About Us page specific buttons
+                const teamSection = document.querySelector('.about-team');
+                if (teamSection) {
+                    teamSection.scrollIntoView({ behavior: 'smooth' });
+                }
             }
         });
     });
@@ -126,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add click animation
             this.style.transform = 'scale(0.95)';
             setTimeout(() => {
-                this.style.transform = '';
+                this.style.transform = 'scale(1)';
             }, 150);
             
             // Handle different button actions
@@ -138,15 +193,61 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             } else if (buttonText.includes('llamar') || buttonText.includes('call')) {
                 console.log('Opening phone call...');
+            } else if (this.textContent.includes('Our Mission') || this.textContent.includes('Nuestra Misión')) {
+                // Handle About Us page specific buttons
+                const missionSection = document.querySelector('.about-mission');
+                if (missionSection) {
+                    missionSection.scrollIntoView({ behavior: 'smooth' });
+                }
             }
         });
     });
 });
 
+// Random shape selector for compact hero sections
+function setupRandomShapes() {
+    const organicShapes = document.querySelector('.organic-shapes');
+    if (!organicShapes) return;
+    
+    // Check if this is a compact hero (not homepage)
+    const heroSection = document.querySelector('.hero');
+    if (heroSection && heroSection.style.minHeight === '55vh') {
+        // This is a compact hero section, set up random shapes
+        const allShapes = Array.from({length: 20}, (_, i) => i + 1);
+        
+        // Randomly select 5 unique shapes
+        const selectedShapes = [];
+        while (selectedShapes.length < 5) {
+            const randomIndex = Math.floor(Math.random() * allShapes.length);
+            const randomShape = allShapes[randomIndex];
+            if (!selectedShapes.includes(randomShape)) {
+                selectedShapes.push(randomShape);
+            }
+        }
+        
+        // Clear existing shapes and add only the selected ones
+        organicShapes.innerHTML = '';
+        
+        selectedShapes.forEach((shapeNum, index) => {
+            const depth = 0.2 + (index * 0.3); // Distribute depths evenly
+            const shapeDiv = document.createElement('div');
+            shapeDiv.className = `shape shape-${shapeNum}`;
+            shapeDiv.setAttribute('data-depth', depth.toFixed(1));
+            shapeDiv.innerHTML = '<div class="shape-inner"></div>';
+            organicShapes.appendChild(shapeDiv);
+        });
+        
+        console.log(`Randomly selected shapes: ${selectedShapes.join(', ')}`);
+    }
+}
+
 // Language toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
     const langBtns = document.querySelectorAll('.lang-btn');
     let currentLanguage = 'en';
+    
+    // Set up random shapes for compact hero sections
+    setupRandomShapes();
     
     // Set initial content to English
     const elementsToTranslate = document.querySelectorAll('[data-es][data-en]');
@@ -157,19 +258,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Set initial navigation to English
-    const navLinks = document.querySelectorAll('.nav-menu a, .mobile-nav-menu a');
-    const navTexts = {
-        es: ['Inicio', 'Tratamientos', 'Testimonios', 'FAQ', 'Contacto'],
-        en: ['Home', 'Treatments', 'Testimonials', 'FAQ', 'Contact']
-    };
-    
-    navLinks.forEach((link, index) => {
-        if (navTexts.en[index]) {
-            link.textContent = navTexts.en[index];
-        }
-    });
-    
     // Apply active states after initial language setup
     updateActiveNavLink();
     
@@ -177,24 +265,35 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateLanguage() {
         currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
         
+        // Close mobile navigation menu if it's open
+        const hamburger = document.querySelector('.hamburger');
+        const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+        const body = document.body;
+        
+        if (mobileOverlay && mobileOverlay.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            body.style.overflow = '';
+            // Restore navbar scrolled state if needed
+            if (window.scrollY > 200) {
+                const navbar = document.querySelector('.navbar');
+                if (navbar) {
+                    navbar.classList.add('scrolled');
+                }
+            }
+        }
+        
         // Update all language buttons
         langBtns.forEach(btn => {
             btn.textContent = currentLanguage === 'en' ? 'ES' : 'EN';
         });
         
-        // Update all elements with language data attributes
+        // Update all elements with language data attributes (including navigation links)
         elementsToTranslate.forEach(element => {
             const targetLang = currentLanguage === 'en' ? 'en' : 'es';
             const newText = element.getAttribute(`data-${targetLang}`);
             if (newText) {
                 element.innerHTML = newText;
-            }
-        });
-        
-        // Update navigation links (both desktop and mobile)
-        navLinks.forEach((link, index) => {
-            if (navTexts[currentLanguage][index]) {
-                link.textContent = navTexts[currentLanguage][index];
             }
         });
         
@@ -319,6 +418,7 @@ function updateActiveNavLink() {
             const isCurrentPage = currentPage.endsWith(href) || 
                 (currentPage.endsWith('/') && href === './index.html') ||
                 (currentPage.endsWith('index.html') && href === './index.html') ||
+                (currentPage.endsWith('about.html') && href === './about.html') ||
                 (currentPage.includes('faq.html') && href === './faq.html') ||
                 (currentPage.includes('contact.html') && href === './contact.html');
             
@@ -330,60 +430,7 @@ function updateActiveNavLink() {
             }
         }
     });
-    
-    // Also handle hash-based navigation for same-page links
-    const hashLinks = document.querySelectorAll('a[href^="#"]');
-    const currentHash = window.location.hash;
-    
-    if (currentHash) {
-        hashLinks.forEach(link => {
-            if (link.getAttribute('href') === currentHash) {
-                link.classList.add('active');
-            }
-        });
-    }
 }
-
-// Update active nav link on hash change
-window.addEventListener('hashchange', function() {
-    updateActiveNavLink();
-});
-
-// Update active nav link on page load
-document.addEventListener('DOMContentLoaded', function() {
-    updateActiveNavLink();
-});
-
-// Update active nav link when navigating between pages
-window.addEventListener('popstate', function() {
-    updateActiveNavLink();
-});
-
-// Also update on window load to catch any late-loading elements
-window.addEventListener('load', function() {
-    updateActiveNavLink();
-    document.body.classList.add('loaded');
-});
-
-// Add loading animation CSS
-const style = document.createElement('style');
-style.textContent = `
-    .loaded .hero-content {
-        animation: fadeInUp 1s ease-out;
-    }
-    
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-`;
-document.head.appendChild(style);
 
 // Smooth Scroll-Based Treatments Section Functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -544,6 +591,15 @@ document.addEventListener('DOMContentLoaded', function() {
         faqContactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             handleFormSubmission(this, 'faq');
+        });
+    }
+    
+    // Handle about page contact form
+    const aboutContactForm = document.getElementById('aboutContactForm');
+    if (aboutContactForm) {
+        aboutContactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleFormSubmission(this, 'about');
         });
     }
     

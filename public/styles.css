@@ -1962,7 +1962,7 @@ p {
     }
 
     .treatment-panel .treatment-info {
-        width: 80%;
+        width: 100%;
     }
     
     .treatment-description p {
@@ -1997,15 +1997,20 @@ p {
         padding-top: 0;
     }
 
-        .treatment-panel .treatment-benefits li:last-child {
+    .treatment-panel .treatment-benefits li:last-child {
         border-bottom: none;
     }
     
-    /* Ensure background animations work on mobile */
-    /* .treatment-panel::before,
-    .treatment-panel::after {
+    .treatment-stem-cells::before,
+    .treatment-exosomes::before,
+    .treatment-iv-therapy::before,
+    .treatment-orthopedics::before,
+    .treatment-stem-cells::after,
+    .treatment-exosomes::after,
+    .treatment-iv-therapy::after,
+    .treatment-orthopedics::after {
         display: none;
-    } */
+    }
 
     /* CTA Contact Form Mobile Styling */
     .cta-section .contact-form {
@@ -2088,12 +2093,348 @@ p {
     .image-placeholder {
         height: 250px;
         border: 2px solid rgba(69, 237, 185, 0.3);
+    }    
+} 
+
+/* Why Choose Us Section Styles */
+.why-choose-us {
+    background: var(--white);
+    padding: 8rem 0;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.why-choose-us .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.why-choose-us .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.why-choose-us .section-title {
+    color: var(--stellar-explorer);
+    margin-bottom: 1rem;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.why-choose-us .section-title span {
+    color: var(--aphrodite-aqua);
+}
+
+.why-choose-us .title-accent {
+    width: 80px;
+    height: 4px;
+    background: var(--aphrodite-aqua);
+    margin: 0 auto 1.5rem;
+    border-radius: 2px;
+}
+
+.why-choose-us .section-subtitle {
+    font-size: 1.2rem;
+    color: var(--gray-medium);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.why-choose-us .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.why-choose-us .feature-item {
+    text-align: center;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(26, 95, 122, 0.1);
+}
+
+.why-choose-us .feature-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-color: var(--aphrodite-aqua);
+}
+
+.why-choose-us .feature-icon {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+}
+
+.why-choose-us .feature-item h3 {
+    color: var(--stellar-explorer);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.why-choose-us .feature-item p {
+    color: var(--gray-medium);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Responsive adjustments for Why Choose Us section */
+@media (max-width: 768px) {
+    .why-choose-us {
+        padding: 4rem 0;
+        min-height: 50vh;
     }
     
-    /* Ensure background animations work on small mobile devices */
-    .treatment-panel::before,
-    .treatment-panel::after {
-        display: none; /* Disable complex animations on small mobile for performance */
+    .why-choose-us .container {
+        padding: 0 1rem;
+    }
+    
+    .why-choose-us .features-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .why-choose-us .feature-item {
+        padding: 1.5rem;
+    }
+}
+
+/* About Us Page Styles */
+.about-page .about-mission,
+.about-page .about-vision,
+.about-page .about-history,
+.about-page .about-team {
+    padding: 0;
+    margin: 0;
+}
+
+.about-page .about-mission .about-image {
+    background-image: url('./images/IMG_0004_1080.webp');
+    background-position: left;
+}
+
+.about-page .about-vision .about-image {
+    background-image: url('./images/IMG_0008_1080.webp');
+    background-position: right;
+}
+
+.about-page .about-history .about-image {
+    background-image: url('./images/IMG_0031_1080.webp');
+    background-position: left;
+}
+
+.about-page .about-team .about-image {
+    background-image: url('./images/IMG_0043_1080.webp');
+    background-position: right;
+}
+
+.about-page .about-block {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.about-page .about-block.reverse {
+    flex-direction: row-reverse;
+}
+
+.about-page .about-image {
+    width: 50%;
+    position: relative;
+    background-size: 100vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.about-page .about-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease;
+}
+
+.about-page .about-content {
+    width: 50vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    background: var(--white);
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.about-page .content-wrapper {
+    max-width: 600px;
+    width: 100%;
+    opacity: 0;
+}
+
+.about-page .content-wrapper .section-title {
+    margin-bottom: 1rem;
+    color: var(--stellar-explorer);
+    transition: color 0.3s ease;
+    text-align: center;
+}
+
+.about-page .content-wrapper .title-accent {
+    width: 60px;
+    height: 4px;
+    background: var(--aphrodite-aqua);
+    margin-bottom: 2rem;
+    transition: width 0.3s ease;
+}
+
+.about-page .content-wrapper p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--gray-dark);
+    transition: color 0.3s ease;
+}
+
+/* .about-page .content-wrapper:hover p {
+    color: var(--stellar-explorer);
+} */
+
+.about-page .mission-values,
+.about-page .vision-goals,
+.about-page .team-highlights,
+.about-page .history-milestones {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 3rem;
+}
+
+.about-page .value-item,
+.about-page .goal-item,
+.about-page .highlight-item,
+.about-page .milestone {
+    padding: 0 1.5rem;
+}
+
+.about-page .value-item:nth-of-type(2),
+.about-page .goal-item:nth-of-type(2),
+.about-page .highlight-item:nth-of-type(2),
+.about-page .milestone:nth-of-type(2) {
+    border: 1px solid var(--aphrodite-aqua);
+    border-top: none;
+    border-bottom: none;
+}
+
+.about-page .value-item h3,
+.about-page .goal-item h3,
+.about-page .highlight-item h3,
+.about-page .milestone h3 {
+    font-family: 'Calvino', serif;
+    font-size: 1.3rem;
+    color: var(--stellar-explorer);
+    margin-bottom: 0.5rem;
+}
+
+.about-page .value-item p,
+.about-page .goal-item p,
+.about-page .highlight-item p,
+.about-page .milestone p {
+    font-size: 1rem;
+    color: var(--gray-medium);
+    margin-bottom: 0;
+}
+
+/* Mobile Responsiveness for About Us */
+@media (max-width: 1024px) {
+    .about-page .about-block {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    .about-page .about-image,
+    .about-page .about-content {
+        width: 100%;
+    }
+    
+    .about-page .about-image {
+        height: 50vh;
+    }
+    
+    .about-page .about-content {
+        padding: 4rem 2rem;
+    }
+    
+    .about-page .mission-values,
+    .about-page .vision-goals,
+    .about-page .team-highlights,
+    .about-page .history-milestones {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .about-page .about-block.reverse {
+        flex-direction: column;
+    }
+
+    .about-page .value-item:nth-of-type(2),
+    .about-page .goal-item:nth-of-type(2),
+    .about-page .highlight-item:nth-of-type(2),
+    .about-page .milestone:nth-of-type(2) {
+        border: 1px solid var(--aphrodite-aqua);
+        border-left: none;
+        border-right: none;
+        padding: 1.5rem
+    }
+
+    .about-page .about-mission .about-image {
+        background-position: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-page .about-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .about-page .content-wrapper .section-title {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+    }
+    
+    .about-page .content-wrapper p {
+        font-size: 1rem;
+    }
+    
+    .about-page .value-item h3,
+    .about-page .goal-item h3,
+    .about-page .highlight-item h3,
+    .about-page .milestone h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-page .about-content {
+        padding: 3.5rem 1.5rem;
+    }
+    
+    .about-page .about-image {
+        height: 40vh;
+    }
+    
+    .about-page .mission-values,
+    .about-page .vision-goals,
+    .about-page .team-highlights,
+    .about-page .history-milestones {
+        margin-top: 1.5rem;
     }
 } 
 
