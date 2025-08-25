@@ -468,6 +468,7 @@ function updateActiveNavLink() {
             const isCurrentPage = currentPage.endsWith(href) || 
                 (currentPage.endsWith('/') && href === './index.html') ||
                 (currentPage.endsWith('index.html') && href === './index.html') ||
+                (currentPage.endsWith('treatments.html') && href === './treatments.html') ||
                 (currentPage.endsWith('about.html') && href === './about.html') ||
                 (currentPage.includes('faq.html') && href === './faq.html') ||
                 (currentPage.includes('contact.html') && href === './contact.html');

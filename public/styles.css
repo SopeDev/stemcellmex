@@ -1833,7 +1833,7 @@ p {
 }
 
 .intro-paragraph p {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     line-height: 1.8;
     color: var(--stellar-explorer);
     max-width: 800px;
@@ -1856,13 +1856,11 @@ p {
     padding: 2.5rem 2rem;
     box-shadow: 0 10px 30px rgba(0, 43, 43, 0.1);
     transition: all 0.3s ease;
-    border: 2px solid rgba(69, 237, 185, 0.2);
 }
 
 .pillar-item:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 43, 43, 0.15);
-    border-color: var(--aphrodite-aqua);
 }
 
 .pillar-icon {
@@ -2245,6 +2243,7 @@ p {
     }
     
     /* Remove overlapping panels implementation for mobile */
+    #tratamientos,
     .treatments-section {
         height: auto;
         min-height: 100vh;
@@ -2424,6 +2423,7 @@ p {
     }
     
     /* Ensure all content is visible on small mobile devices */
+    #tratamientos,
     .treatments-section {
         height: auto;
         min-height: 100vh;
@@ -2442,6 +2442,7 @@ p {
         min-height: 100vh;
         display: block;
         overflow: visible;
+        padding: 1rem;
     }
     
     .panel-content {
