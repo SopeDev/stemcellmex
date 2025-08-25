@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tratamientos - Stemcell México | Medicina Regenerativa de Vanguardia</title>
+    <meta name="description" content="Descubre nuestros tratamientos regenerativos con células madre, exosomas, terapia IV y ortopedia. Medicina regenerativa avanzada en Tijuana, México.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preload" href="./fonts/specter-bold.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="./fonts/calvino-regular.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="./fonts/biosans-regular.woff" as="font" type="font/woff" crossorigin>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="./index.html">
+                    <img src="./images/logo-white.svg" alt="Stemcell México" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="./index.html" data-es="Inicio" data-en="Home">Home</a></li>
+                <li><a href="./treatments.html" data-es="Tratamientos" data-en="Treatments">Treatments</a></li>
+                <li><a href="./about.html" data-es="Sobre Nosotros" data-en="About Us">About Us</a></li>
+                <li><a href="./faq.html" data-es="FAQ" data-en="FAQ">FAQ</a></li>
+                <li><a href="./contact.html" data-es="Contacto" data-en="Contact">Contact</a></li>
+                <li class="language-toggle">
+                    <button class="lang-btn">ES</button>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay">
+        <div class="mobile-nav-content">
+            <ul class="mobile-nav-menu">
+                <li><a href="./index.html" data-es="Inicio" data-en="Home">Home</a></li>
+                <li><a href="./treatments.html" data-es="Tratamientos" data-en="Treatments">Treatments</a></li>
+                <li><a href="./about.html" data-es="Sobre Nosotros" data-en="About Us">About Us</a></li>
+                <li><a href="./faq.html" data-es="FAQ" data-en="FAQ">FAQ</a></li>
+                <li><a href="./contact.html" data-es="Contacto" data-en="Contact">Contact</a></li>
+                <li class="mobile-language-toggle">
+                    <button class="lang-btn">ES</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hero (compact) -->
+    <section class="hero hero-compact">
+        <div class="hero-background parallax-bg">
+            <div class="hero-video-overlay"></div>
+            <div class="organic-shapes parallax-shapes">
+                <!-- Shapes will be randomly selected by JavaScript -->
+            </div>
+        </div>
+        <div class="hero-content parallax-content">
+            <div class="hero-main">
+                <h1 class="hero-title">                    
+                    <span class="main-title" data-es="Medicina del Futuro" data-en="Medicine of the Future">Medicine of the Future</span>
+                </h1>
+                <p class="hero-description" data-es="Descubre nuestros tratamientos avanzados con células madre, exosomas y terapias regenerativas. Medicina personalizada para tu bienestar integral." data-en="Discover our advanced stem cell, exosome, and regenerative therapies. Personalized medicine for your complete well-being.">Discover our advanced stem cell, exosome, and regenerative therapies. Personalized medicine for your complete well-being.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" data-es="Agendar Consulta" data-en="Schedule Consultation">Schedule Consultation</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sliding Treatments Section (MOVED FROM HOMEPAGE) -->
+    <section class="treatments-section">
+        <div class="treatments-container">
+            <!-- Why Choose Regenerative Medicine Panel -->
+            <div class="treatment-panel treatment-overview active" data-panel="overview">
+                <div class="panel-content">
+                    <div class="section-header">
+                        <h2 class="section-title" data-es="¿Por Qué Elegir la Medicina Regenerativa?" data-en="Why Choose Regenerative Medicine?">Why Choose Regenerative Medicine?</h2>
+                        <div class="title-accent"></div>
+                        <!-- <p class="section-subtitle" data-es="Un nuevo paradigma para curar naturalmente" data-en="A new paradigm for healing naturally">A new paradigm for healing naturally</p> -->
+                    </div>
+                    
+                    <div class="why-regenerative-content">
+                        <div class="intro-paragraph">
+                            <p data-es="La medicina regenerativa no solo trata los síntomas, sino que empodera a tu cuerpo para repararse, restaurarse y rejuvenecerse a sí mismo. A través de terapias innovadoras como células madre, exosomas y soluciones IV avanzadas, apuntamos a las causas raíz del envejecimiento, lesiones y condiciones crónicas." data-en="Regenerative medicine doesn't just treat symptoms—it empowers your body to repair, restore, and rejuvenate itself. Through innovative therapies like stem cells, exosomes, and advanced IV solutions, we target the root causes of aging, injuries, and chronic conditions.">Regenerative medicine doesn't just treat symptoms—it empowers your body to repair, restore, and rejuvenate itself. Through innovative therapies like stem cells, exosomes, and advanced IV solutions, we target the root causes of aging, injuries, and chronic conditions.</p>
+                        </div>
+                        
+                        <div class="core-pillars">
+                            <div class="pillar-item">
+                                <div class="pillar-icon">
+                                    <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                    </svg>
+                                </div>
+                                <h3 data-es="Impulsado por la Ciencia" data-en="Science-Driven">Science-Driven</h3>
+                                <p data-es="Basado en las últimas investigaciones en biología celular y regeneración tisular." data-en="Based on the latest research in cellular biology and tissue regeneration.">Based on the latest research in cellular biology and tissue regeneration.</p>
+                            </div>
+                            
+                            <div class="pillar-item">
+                                <div class="pillar-icon">
+                                    <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H17c-.8 0-1.54.37-2.01 1L12 13l-2.99-4A1.5 1.5 0 0 0 7 8H5.46c-.8 0-1.54.37-2.01 1L1 18h2.5v6h16z"/>
+                                    </svg>
+                                </div>
+                                <h3 data-es="Cuidado Personalizado" data-en="Personalized Care">Personalized Care</h3>
+                                <p data-es="Cada protocolo está adaptado a tus objetivos de salud y condición." data-en="Every protocol is tailored to your health goals and condition.">Every protocol is tailored to your health goals and condition.</p>
+                            </div>
+                            
+                            <div class="pillar-item">
+                                <div class="pillar-icon">
+                                    <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                    </svg>
+                                </div>
+                                <h3 data-es="Mínimamente Invasivo" data-en="Minimally Invasive">Minimally Invasive</h3>
+                                <p data-es="Recuperación rápida, sin hospitalización y resultados sostenibles." data-en="Quick recovery, no hospitalization, and sustainable results.">Quick recovery, no hospitalization, and sustainable results.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- <div class="comparison-table">
+                            <h3 data-es="Medicina Tradicional vs. Regenerativa" data-en="Traditional vs. Regenerative Medicine">Traditional vs. Regenerative Medicine</h3>
+                            <div class="table-container">
+                                <div class="table-row header">
+                                    <div class="table-cell" data-es="Medicina Tradicional" data-en="Traditional Medicine">Traditional Medicine</div>
+                                    <div class="table-cell" data-es="Medicina Regenerativa" data-en="Regenerative Medicine">Regenerative Medicine</div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell" data-es="Trata síntomas" data-en="Treats symptoms">Treats symptoms</div>
+                                    <div class="table-cell" data-es="Apunta a la causa raíz" data-en="Targets root cause">Targets root cause</div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell" data-es="Recuperación larga" data-en="Long recovery">Long recovery</div>
+                                    <div class="table-cell" data-es="Recuperación rápida" data-en="Quick recovery">Quick recovery</div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell" data-es="Medicamentos/cirugía" data-en="Drugs/surgery">Drugs/surgery</div>
+                                    <div class="table-cell" data-es="Curación natural" data-en="Natural healing">Natural healing</div>
+                                </div>
+                            </div>
+                        </div> -->
+                        
+                        <!-- <div class="cta-section-overview">
+                            <button class="btn-primary scroll-to-treatments" data-es="Explorar Nuestros Tratamientos" data-en="Explore Our Treatments">Explore Our Treatments</button>
+                        </div> -->
+                    </div>
+                    
+                    <div class="scroll-indicator">
+                        <div class="scroll-arrow"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stem Cells Treatment Panel -->
+            <div id="stem-cells-details" class="treatment-panel treatment-stem-cells" data-panel="stem-cells">
+                <div class="panel-content">
+                    <div class="treatment-header">
+                        <div class="treatment-icon-large">
+                            <img src="./images/icon-1.svg" alt="Stem Cells" class="large-icon">
+                        </div>
+                        <div class="treatment-title-content">
+                            <h2 data-es="Células Madre Mesenquimales" data-en="Mesenchymal Stem Cells">Mesenchymal Stem Cells</h2>
+                            <p class="treatment-tagline" data-es="La base de la medicina regenerativa moderna" data-en="The foundation of modern regenerative medicine">The foundation of modern regenerative medicine</p>
+                        </div>
+                    </div>
+                    <!-- <div class="panel-header">
+                        <h2 class="panel-title" data-es="Células Madre Mesenquimales" data-en="Mesenchymal Stem Cells">Mesenchymal Stem Cells</h2>
+                        <p class="treatment-tagline" data-es="La base de la medicina regenerativa moderna" data-en="The foundation of modern regenerative medicine">The foundation of modern regenerative medicine</p>
+                        <button class="btn-primary" data-es="Agendar Consulta" data-en="Schedule Consultation">Schedule Consultation</button>
+                    </div> -->
+                    <div class="panel-body">
+                        <div class="treatment-info">
+                            <div class="treatment-description">
+                                <p data-es="Las células madre mesenquimales son células especializadas que tienen la capacidad única de diferenciarse en diferentes tipos de tejidos y promover la regeneración natural del cuerpo. Son como los 'arquitectos' de nuestro organismo, capaces de reparar y regenerar tejidos dañados." data-en="Mesenchymal stem cells are specialized cells that have the unique ability to differentiate into different types of tissues and promote natural body regeneration. They are like the 'architects' of our body, capable of repairing and regenerating damaged tissues.">Mesenchymal stem cells are specialized cells that have the unique ability to differentiate into different types of tissues and promote natural body regeneration. They are like the 'architects' of our body, capable of repairing and regenerating damaged tissues.</p>
+                                <p data-es="El tratamiento comienza con una evaluación médica completa. Las células madre se obtienen de fuentes certificadas y se procesan en laboratorios de primer nivel. La aplicación se realiza de manera mínimamente invasiva, dirigida específicamente a las áreas que requieren regeneración." data-en="The treatment begins with a complete medical evaluation. Stem cells are obtained from certified sources and processed in top-level laboratories. The application is performed in a minimally invasive manner, specifically directed to areas requiring regeneration.">The treatment begins with a complete medical evaluation. Stem cells are obtained from certified sources and processed in top-level laboratories. The application is performed in a minimally invasive manner, specifically directed to areas requiring regeneration.</p>
+                                
+                                <div class="treatment-benefits">
+                                    <h3 data-es="Beneficios Principales" data-en="Key Benefits">Key Benefits</h3>
+                                    <ul>
+                                        <li data-es="Regeneración de tejidos dañados" data-en="Regeneration of damaged tissues">Regeneration of damaged tissues</li>
+                                        <li data-es="Reducción de inflamación crónica" data-en="Reduction of chronic inflammation">Reduction of chronic inflammation</li>
+                                        <li data-es="Mejora del sistema inmunológico" data-en="Enhanced immune system">Enhanced immune system</li>
+                                        <li data-es="Aceleración del proceso de curación" data-en="Accelerated healing process">Accelerated healing process</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="treatment-info-box-container">
+                            <div class="treatment-info-box">
+                                <h4 data-es="Información del Tratamiento" data-en="Treatment Information">Treatment Information</h4>
+                                <div class="info-item">
+                                    <span class="info-label" data-es="Duración:" data-en="Duration:">Duration:</span>
+                                    <span class="info-value" data-es="1-2 horas" data-en="1-2 hours">1-2 hours</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-es="Sesiones:" data-en="Sessions:">Sessions:</span>
+                                    <span class="info-value" data-es="1-3 según necesidad" data-en="1-3 as needed">1-3 as needed</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-es="Recuperación:" data-en="Recovery:">Recovery:</span>
+                                    <span class="info-value" data-es="Inmediata" data-en="Immediate">Immediate</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-es="Resultados:" data-en="Results:">Results:</span>
+                                    <span class="info-value" data-es="4-6 meses" data-en="4-6 months">4-6 months</span>
+                                </div>
+                            </div>
+                            <button class="btn-primary" data-es="Agendar Consulta" data-en="Schedule Consultation">Schedule Consultation</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exosomes Treatment Panel -->
+            <div id="exosomes-details" class="treatment-panel treatment-exosomes" data-panel="exosomes">
+                <div class="panel-content">
+                    <div class="treatment-header">
+                        <div class="treatment-icon-large">
+                            <img src="./images/icon-2.svg" alt="Exosomes" class="large-icon">
+                        </div>
+                        <div class="treatment-title-content">
+                            <h2 data-es="Terapia con Exosamas" data-en="Exosome Therapy">Exosome Therapy</h2>
+                            <p class="treatment-tagline" data-es="Comunicación celular optimizada para regeneración avanzada" data-en="Optimized cellular communication for advanced regeneration">Optimized cellular communication for advanced regeneration</p>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="treatment-info">
+                            <div class="treatment-description">
+                                <p data-es="Los exosomas son vesículas extracelulares microscópicas que contienen proteínas, lípidos y ácidos nucleicos. Actúan como mensajeros celulares, facilitando la comunicación entre células y promoviendo procesos de regeneración y rejuvenecimiento a nivel molecular." data-en="Exosomes are microscopic extracellular vesicles containing proteins, lipids, and nucleic acids. They act as cellular messengers, facilitating communication between cells and promoting regeneration and rejuvenation processes at the molecular level.">Exosomes are microscopic extracellular vesicles containing proteins, lipids, and nucleic acids. They act as cellular messengers, facilitating communication between cells and promoting regeneration and rejuvenation processes at the molecular level.</p>
+                                <p data-es="Esta terapia avanzada ofrece múltiples ventajas: es mínimamente invasiva, no requiere anestesia general, tiene un tiempo de recuperación muy corto, y los resultados son más rápidos y duraderos que otros tratamientos regenerativos." data-en="This advanced therapy offers multiple advantages: it's minimally invasive, doesn't require general anesthesia, has a very short recovery time, and results are faster and longer-lasting than other regenerative treatments.">This advanced therapy offers multiple advantages: it's minimally invasive, doesn't require general anesthesia, has a very short recovery time, and results are faster and longer-lasting than other regenerative treatments.</p>
+                                
+                                <div class="treatment-benefits">
+                                    <h3 data-es="Beneficios Principales" data-en="Key Benefits">Key Benefits</h3>
+                                    <ul>
+                                        <li data-es="Rejuvenecimiento celular" data-en="Cellular rejuvenation">Cellular rejuvenation</li>
+                                        <li data-es="Mejora de la función inmunológica" data-en="Enhanced immune function">Enhanced immune function</li>
+                                        <li data-es="Reducción de signos de envejecimiento" data-en="Reduction of aging signs">Reduction of aging signs</li>
+                                        <li data-es="Aceleración de la recuperación" data-en="Accelerated recovery">Accelerated recovery</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="treatment-info-box-container">
+                            <div class="treatment-info-box">
+                                <h4 data-es="Información del Tratamiento" data-en="Treatment Information">Treatment Information</h4>
+                                <div class="info-item">
+                                    <span class="info-label" data-es="Duración:" data-en="Duration:">Duration:</span>
+                                    <span class="info-value" data-es="30-60 minutos" data-en="30-60 minutes">30-60 minutes</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-es="Sesiones:" data-en="Sessions:">Sessions:</span>
+                                    <span class="info-value" data-es="1-2 recomendadas" data-en="1-2 recommended">1-2 recommended</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-es="Recuperación:" data-en="Recovery:">Recovery:</span>
+                                    <span class="info-value" data-es="Inmediata" data-en="Immediate">Immediate</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-es="Resultados:" data-en="Results:">Results:</span>
+                                    <span class="info-value" data-es="2-4 semanas" data-en="2-4 weeks">2-4 weeks</span>
+                                </div>
+                            </div>
+                            <button class="btn-primary" data-es="Agendar Consulta" data-en="Schedule Consultation">Schedule Consultation</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IV Therapy Treatment Panel -->
+            <div id="iv-therapy-details" class="treatment-panel treatment-iv-therapy" data-panel="iv-therapy">
+                <div class="panel-content">
+                    <div class="treatment-header">
+                        <div class="treatment-icon-large">
+                            <img src="./images/icon-3.svg" alt="IV Therapy" class="large-icon">
+                        </div>
+                        <div class="treatment-title-content">
+                            <h2 data-es="Terapia Intravenosa" data-en="Intravenous Therapy">Intravenous Therapy</h2>
+                            <p class="treatment-tagline" data-es="Nutrición directa al torrente sanguíneo para resultados inmediatos" data-en="Direct nutrition to bloodstream for immediate results">Direct nutrition to bloodstream for immediate results</p>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="treatment-info">
+                            <div class="treatment-description">
+                                <p data-es="La terapia intravenosa es un método de administración de nutrientes, vitaminas y minerales directamente al torrente sanguíneo. Esto asegura una absorción del 100%, evitando la pérdida que ocurre en la digestión oral y proporcionando resultados inmediatos y efectivos." data-en="Intravenous therapy is a method of administering nutrients, vitamins, and minerals directly into the bloodstream. This ensures 100% absorption, avoiding the loss that occurs in oral digestion and providing immediate and effective results.">Intravenous therapy is a method of administering nutrients, vitamins, and minerals directly into the bloodstream. This ensures 100% absorption, avoiding the loss that occurs in oral digestion and providing immediate and effective results.</p>
+                                <p data-es="Cada tratamiento IV comienza con una evaluación personalizada de tus necesidades nutricionales. Nuestros especialistas diseñan un cóctel vitamínico específico que se administra de manera segura y cómoda en un ambiente relajante." data-en="Each IV treatment begins with a personalized evaluation of your nutritional needs. Our specialists design a specific vitamin cocktail that is administered safely and comfortably in a relaxing environment.">Each IV treatment begins with a personalized evaluation of your nutritional needs. Our specialists design a specific vitamin cocktail that is administered safely and comfortably in a relaxing environment.</p>
+                                
+                                <div class="treatment-benefits">
+                                    <h3 data-es="Beneficios Principales" data-en="Key Benefits">Key Benefits</h3>
+                                    <ul>
+                                        <li data-es="Absorción directa al torrente sanguíneo" data-en="Direct absorption into bloodstream">Direct absorption into bloodstream</li>
+                                        <li data-es="Resultados inmediatos" data-en="Immediate results">Immediate results</li>
+                                        <li data-es="Mejora de energía y vitalidad" data-en="Enhanced energy and vitality">Enhanced energy and vitality</li>
+                                        <li data-es="Refuerzo del sistema inmunológico" data-en="Immune system boost">Immune system boost</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="treatment-info-box-container">
+                            <div class="treatment-info-box">
+                                <h4 data-es="Información del Tratamiento" data-en="Treatment Information">Treatment Information</h4>
+                                <div class="info-item">
+                                    <span class="info-label" data-es="Duración:" data-en="Duration:">Duration:</span>
+                                    <span class="info-value" data-es="40-60 minutos" data-en="40-60 minutes">40-60 minutes</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-es="Sesiones:" data-en="Sessions:">Sessions:</span>
+                                    <span class="info-value" data-es="1-6 según objetivo" data-en="1-6 as needed">1-6 as needed</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-es="Recuperación:" data-en="Recovery:">Recovery:</span>
+                                    <span class="info-value" data-es="Inmediata" data-en="Immediate">Immediate</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-es="Resultados:" data-en="Results:">Results:</span>
+                                    <span class="info-value" data-es="Inmediatos" data-en="Immediate">Immediate</span>
+                                </div>
+                            </div>
+                            <button class="btn-primary" data-es="Agendar Consulta" data-en="Schedule Consultation">Schedule Consultation</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orthopedics Treatment Panel -->
+            <div id="orthopedics-details" class="treatment-panel treatment-orthopedics" data-panel="orthopedics">
+                <div class="panel-content">
+                    <div class="treatment-header">
+                        <div class="treatment-icon-large">
+                            <img src="./images/icon-4.svg" alt="Orthopedics" class="large-icon">
+                        </div>
+                        <div class="treatment-title-content">
+                            <h2 data-es="Tratamiento Ortopédico Regenerativo" data-en="Regenerative Orthopedic Treatment">Regenerative Orthopedic Treatment</h2>
+                            <p class="treatment-tagline" data-es="Medicina tradicional combinada con terapias regenerativas avanzadas" data-en="Traditional medicine combined with advanced regenerative therapies">Traditional medicine combined with advanced regenerative therapies</p>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="treatment-info">
+                            <div class="treatment-description">
+                                <p data-es="Nuestros tratamientos ortopédicos regenerativos combinan la medicina tradicional con terapias avanzadas con células madre y exosomas. Este enfoque integral nos permite tratar lesiones deportivas, dolores articulares y condiciones degenerativas de manera más efectiva y natural." data-en="Our regenerative orthopedic treatments combine traditional medicine with advanced stem cell and exosome therapies. This integrated approach allows us to treat sports injuries, joint pain, and degenerative conditions more effectively and naturally.">Our regenerative orthopedic treatments combine traditional medicine with advanced stem cell and exosome therapies. This integrated approach allows us to treat sports injuries, joint pain, and degenerative conditions more effectively and naturally.</p>
+                                <p data-es="Cada tratamiento ortopédico comienza con un diagnóstico preciso mediante estudios de imagen avanzados. Luego, diseñamos un protocolo personalizado que puede incluir infiltraciones con células madre, terapia con exosomas, y un programa de rehabilitación específico para optimizar la recuperación." data-en="Each orthopedic treatment begins with precise diagnosis through advanced imaging studies. Then, we design a personalized protocol that may include stem cell infiltrations, exosome therapy, and a specific rehabilitation program to optimize recovery.">Each orthopedic treatment begins with precise diagnosis through advanced imaging studies. Then, we design a personalized protocol that may include stem cell infiltrations, exosome therapy, and a specific rehabilitation program to optimize recovery.</p>
+                                
+                                <div class="treatment-benefits">
+                                    <h3 data-es="Beneficios Principales" data-en="Key Benefits">Key Benefits</h3>
+                                    <ul>
+                                        <li data-es="Regeneración de cartílago y tejido conectivo" data-en="Cartilage and connective tissue regeneration">Cartilage and connective tissue regeneration</li>
+                                        <li data-es="Reducción del dolor articular" data-en="Joint pain reduction">Joint pain reduction</li>
+                                        <li data-es="Mejora de la movilidad" data-en="Improved mobility">Improved mobility</li>
+                                        <li data-es="Recuperación acelerada de lesiones" data-en="Accelerated injury recovery">Accelerated injury recovery</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="treatment-info-box-container">
+                            <div class="treatment-info-box">
+                                <h4 data-es="Información del Tratamiento" data-en="Treatment Information">Treatment Information</h4>
+                                <div class="info-item">
+                                    <span class="info-label" data-es="Duración:" data-en="Duration:">Duration:</span>
+                                    <span class="info-value" data-es="30-60 minutos" data-en="30-60 minutes">30-60 minutes</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-es="Sesiones:" data-en="Sessions:">Sessions:</span>
+                                    <span class="info-value" data-es="1-3 según lesión" data-en="1-3 depending on injury">1-3 depending on injury</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-es="Recuperación:" data-en="Recovery:">Recovery:</span>
+                                    <span class="info-value" data-es="2-4 semanas" data-en="2-4 weeks">2-4 weeks</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-es="Resultados:" data-en="Results:">Results:</span>
+                                    <span class="info-value" data-es="3-6 meses" data-en="3-6 months">3-6 months</span>
+                                </div>
+                            </div>
+                            <button class="btn-primary" data-es="Agendar Consulta" data-en="Schedule Consultation">Schedule Consultation</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Short FAQ Section -->
+    <section class="faq-short">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-es="Preguntas <span>Frecuentes</span>" data-en="Frequently <span>Asked</span> Questions">Frequently <span>Asked</span> Questions</h2>
+                <div class="title-accent"></div>
+                <p class="section-subtitle" data-es="Resolvemos tus dudas más comunes sobre nuestros tratamientos" data-en="We answer your most common questions about our treatments">We answer your most common questions about our treatments</p>
+            </div>
+
+            <div class="faq-short-grid">
+                <!-- Treatment Questions -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-treat-1" id="faq-treat-1-label" data-es="¿Qué son las células madre y cómo funcionan?" data-en="What are stem cells and how do they work?">What are stem cells and how do they work?</button>
+                    <div class="faq-answer" id="faq-treat-1" role="region" aria-labelledby="faq-treat-1-label" data-es="Son células capaces de transformarse en diferentes tipos celulares para reparar tejidos o regenerar áreas dañadas en el cuerpo. Ayudan a regenerar tejidos dañados, controlar la inflamación y promover la curación natural." data-en="Cells capable of transforming into different cell types to repair tissues or regenerate damaged areas in the body. They help regenerate damaged tissues, control inflammation, and promote natural healing.">Cells capable of transforming into different cell types to repair tissues or regenerate damaged areas in the body. They help regenerate damaged tissues, control inflammation, and promote natural healing.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-treat-2" id="faq-treat-2-label" data-es="¿Es segura la terapia de células madre?" data-en="Is stem cell therapy safe?">Is stem cell therapy safe?</button>
+                    <div class="faq-answer" id="faq-treat-2" role="region" aria-labelledby="faq-treat-2-label" data-es="Sí, es una técnica segura cuando se siguen los protocolos adecuados como en Stemcell México. Las células madre mesenquimales tienen bajo riesgo de rechazo porque son inmunomoduladoras." data-en="Yes, it is safe when proper medical protocols are followed, as at Stemcell México. Mesenchymal stem cells have a low risk of rejection because they are immunomodulatory.">Yes, it is safe when proper medical protocols are followed, as at Stemcell México. Mesenchymal stem cells have a low risk of rejection because they are immunomodulatory.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-treat-3" id="faq-treat-3-label" data-es="¿Cuándo veré resultados del tratamiento?" data-en="When will I see treatment results?">When will I see treatment results?</button>
+                    <div class="faq-answer" id="faq-treat-3" role="region" aria-labelledby="faq-treat-3-label" data-es="Algunos pacientes notan cambios en semanas, otros en meses dependiendo de su condición inicial. Los efectos pueden durar de meses a años, especialmente si se combina con un estilo de vida saludable." data-en="Some patients notice changes in weeks, others in months, depending on their initial condition. Effects can last from months to years, especially if combined with a healthy lifestyle.">Some patients notice changes in weeks, others in months, depending on their initial condition. Effects can last from months to years, especially if combined with a healthy lifestyle.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-treat-4" id="faq-treat-4-label" data-es="¿Qué condiciones tratan con células madre?" data-en="What conditions do you treat with stem cells?">What conditions do you treat with stem cells?</button>
+                    <div class="faq-answer" id="faq-treat-4" role="region" aria-labelledby="faq-treat-4-label" data-es="Tratamos lesiones deportivas, problemas articulares, artritis, desgaste de cartílago, hernias discales, dolor lumbar crónico, enfermedades degenerativas y ofrecemos terapias de rejuvenecimiento." data-en="We treat sports injuries, joint problems, arthritis, cartilage wear, herniated discs, chronic low back pain, degenerative diseases and offer rejuvenation therapies.">We treat sports injuries, joint problems, arthritis, cartilage wear, herniated discs, chronic low back pain, degenerative diseases and offer rejuvenation therapies.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-treat-5" id="faq-treat-5-label" data-es="¿Cuánto tiempo dura el tratamiento?" data-en="How long does the treatment take?">How long does the treatment take?</button>
+                    <div class="faq-answer" id="faq-treat-5" role="region" aria-labelledby="faq-treat-5-label" data-es="Generalmente entre 30 minutos y 1 hora dependiendo de la aplicación. Algunos tratamientos requieren refuerzos o varias sesiones para maximizar los beneficios." data-en="Generally between 30 minutes and 1 hour depending on the application. Some treatments require boosters or multiple sessions to maximize benefits.">Generally between 30 minutes and 1 hour depending on the application. Some treatments require boosters or multiple sessions to maximize benefits.</div>
+                </div>
+            </div>
+
+            <div class="faq-short-footer">
+                <a href="./faq.html" class="text-link" data-es="Ver Todas las Preguntas<span class='arrow-icon'> →</span>" data-en="View All Questions<span class='arrow-icon'> →</span>">View All Questions<span class="arrow-icon"> →</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 data-es="¿Listo para transformar tu salud?" data-en="Ready to Transform Your Health?">Ready to Transform Your Health?</h2>
+                <p data-es="Agenda tu consulta gratuita y descubre cómo la medicina regenerativa puede cambiar tu vida." data-en="Schedule your free consultation and discover how regenerative medicine can change your life.">Schedule your free consultation and discover how regenerative medicine can change your life.</p>
+                
+                <!-- Contact Form -->
+            </div>
+            <div class="contact-form-section">
+                <form class="contact-form" id="treatmentsContactForm">
+                    <div class="form-group">
+                        <label for="treatments-name" data-es="Nombre Completo" data-en="Full Name">Full Name</label>
+                        <input type="text" id="treatments-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="treatments-email" data-es="Correo Electrónico" data-en="Email">Email</label>
+                        <input type="email" id="treatments-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="treatments-phone" data-es="Teléfono (Opcional)" data-en="Phone (Optional)">Phone (Optional)</label>
+                        <input type="tel" id="treatments-phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="treatments-subject" data-es="Asunto" data-en="Subject">Subject</label>
+                        <select id="treatments-subject" name="subject" required>
+                            <option value="" data-es="Selecciona un asunto" data-en="Select a subject">Select a subject</option>
+                            <option value="consultation" data-es="Consulta Médica" data-en="Medical Consultation">Medical Consultation</option>
+                            <option value="treatment" data-es="Información de Tratamiento" data-en="Treatment Information">Treatment Information</option>
+                            <option value="appointment" data-es="Agendar Cita" data-en="Schedule Appointment">Schedule Appointment</option>
+                            <option value="general" data-es="Consulta General" data-en="General Inquiry">General Inquiry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="treatments-message" data-es="Mensaje" data-en="Message">Message</label>
+                        <textarea id="treatments-message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" data-es="Enviar Mensaje" data-en="Send Message">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-es="Stemcell México" data-en="Stemcell Mexico">Stemcell Mexico</h3>
+                    <p data-es="Medicina regenerativa de vanguardia en Tijuana, México." data-en="Cutting-edge regenerative medicine in Tijuana, Mexico.">Cutting-edge regenerative medicine in Tijuana, Mexico.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-es="Contacto" data-en="Contact">Contact</h4>
+                    <p data-es="Torre Médica del Prado" data-en="Prado Medical Tower">Prado Medical Tower</p>
+                    <p data-es="Consultorio 1802" data-en="Office 1802">Office 1802</p>
+                    <p data-es="Tijuana, B.C., México" data-en="Tijuana, B.C., Mexico">Tijuana, B.C., Mexico</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-es="Enlaces" data-en="Links">Links</h4>
+                    <ul>
+                        <li><a href="./index.html" data-es="Inicio" data-en="Home">Home</a></li>
+                        <li><a href="./treatments.html" data-es="Tratamientos" data-en="Treatments">Treatments</a></li>
+                        <li><a href="./about.html" data-es="Sobre Nosotros" data-en="About Us">About Us</a></li>
+                        <li><a href="./faq.html" data-es="FAQ" data-en="FAQ">FAQ</a></li>
+                        <li><a href="./contact.html" data-es="Contacto" data-en="Contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-es="Síguenos" data-en="Follow Us">Follow Us</h4>
+                    <div class="social-links">
+                        <a href="" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.058 1.644-.07 4.849-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.87 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 <span data-es="Stemcell México" data-en="Stemcell Mexico">Stemcell Mexico</span>. <span data-es="Todos los derechos reservados." data-en="All rights reserved.">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

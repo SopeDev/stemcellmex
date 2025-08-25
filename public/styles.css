@@ -263,6 +263,12 @@ p {
     perspective: 1000px;
 }
 
+/* Compact Hero Section */
+.hero-compact {
+    min-height: 55vh;
+    padding-top: 5rem;
+}
+
 .hero-background {
     position: absolute;
     top: 0;
@@ -536,6 +542,10 @@ p {
     text-align: center;
 }
 
+.hero-compact .hero-content {
+    min-height: 55vh;
+}
+
 .hero-main {
     color: var(--white);
     max-width: 700px;
@@ -658,7 +668,7 @@ p {
 /* Section Styles */
 .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 .section-title {
@@ -706,6 +716,22 @@ p {
     font-weight: normal;
     font-size: 1.1rem;
     line-height: 1.8;
+}
+
+.about-text p:last-of-type {
+    margin-bottom: 1rem;
+}
+
+.text-link {
+    color: var(--stellar-explorer);
+    font-family: 'Calvino', serif;
+    font-style: italic;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+}
+
+.text-link:hover {
+    color: var(--aphrodite-aqua);
 }
 
 .photo-gallery {
@@ -769,14 +795,16 @@ p {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 }
 
 .service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
     background: var(--white);
     padding: 2rem;
     border-radius: 15px;
-    text-align: center;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
@@ -806,11 +834,21 @@ p {
     font-family: 'Specter', sans-serif;
     font-weight: bold;
     font-size: 1.6rem;
+    text-align: center;
+    align-self: center;
 }
 
 .service-card p {
     color: var(--gray-dark);
+    margin-bottom: 1rem;
 }
+
+.service-card .text-link {
+    margin-top: auto;
+    text-align: center;
+}
+
+
 
 /* Team Section */
 .team {
@@ -1090,16 +1128,34 @@ p {
 
 .social-links {
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .social-link {
     color: var(--journey-sky);
     text-decoration: none;
     transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .social-link:hover {
+    color: var(--aphrodite-aqua);
+}
+
+.social-media-section .social-links {
+    flex-direction: row;
+    gap: 1.5rem;
+    justify-content: space-between;
+}
+
+.social-media-section .social-link {
+    color: var(--stellar-explorer);
+}
+
+.social-media-section .social-link:hover {
     color: var(--aphrodite-aqua);
 }
 
@@ -1194,6 +1250,86 @@ p {
     outline: 2px solid var(--aphrodite-aqua);
     outline-offset: 2px;
     border-radius: 8px;
+}
+
+/* Short FAQ Section for Treatments Page */
+.faq-short {
+    padding: 4rem 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(177, 225, 214, 0.96)), url('./images/background-faq.webp');
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.faq-short .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.faq-short .section-subtitle {
+    color: var(--gray-medium);
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+.faq-short-grid {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-short .faq-item {
+    background: var(--white);
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.faq-short .faq-question {
+    width: 100%;
+    padding: 1rem 1.25rem 1rem 3rem;
+    background: var(--white);
+    border: none;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--stellar-explorer);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-short .faq-question:hover {
+    background: var(--gray-light);
+}
+
+.faq-short .faq-question[aria-expanded="true"]::after {
+    transform: rotate(45deg);
+}
+
+.faq-short .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: var(--gray-light);
+}
+
+.faq-short .faq-answer[aria-hidden="false"] {
+    max-height: 200px;
+    padding: 1.5rem 2rem;
+}
+
+.faq-short .faq-answer p {
+    color: var(--gray-medium);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.faq-short-footer {
+    text-align: center;
+    margin-top: 3rem;
 }
 
 /* Contact Page */
@@ -1574,6 +1710,18 @@ p {
 }
 
 /* Sliding Treatments Section */
+#tratamientos {
+    height: 100vh;
+}
+
+.treatment-overview .panel-content{
+    justify-content: center;
+}
+
+#tratamientos .panel-content .btn-primary {
+    align-self: center;
+}
+
 .treatments-section {
     position: relative;
     width: 100%;
@@ -1610,8 +1758,9 @@ p {
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 2rem;
-    height: 100%;
+    padding: 4rem 2rem 2rem;
+    /* height: 100%; */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -1638,7 +1787,7 @@ p {
 /* Overview Panel Styles */
 .treatment-overview {
     padding: 6rem 0;
-    background: linear-gradient(135deg, var(--journey-sky), var(--luminescent-sky)), url('./images/background-1.jpg');
+    background: white;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1651,7 +1800,11 @@ p {
     overflow: hidden;
 }
 
-.treatment-overview::before {
+#tratamientos .treatment-overview {
+    background: linear-gradient(135deg, var(--journey-sky), var(--luminescent-sky)), url('./images/background-1.jpg');
+}
+
+#tratamientos .treatment-overview::before {
     content: '';
     position: absolute;
     top: 0;
@@ -1664,6 +1817,152 @@ p {
 
 .treatment-overview .panel-title {
     color: var(--white);
+}
+
+/* Why Choose Regenerative Medicine Content Styles */
+.why-regenerative-content {
+    /* max-width: 1000px;
+    margin: 0 auto; */
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.intro-paragraph {
+    margin-bottom: 2rem;
+}
+
+.intro-paragraph p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: var(--stellar-explorer);
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Bio Sans', sans-serif;
+    font-weight: normal;
+}
+
+.core-pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.pillar-item {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 10px 30px rgba(0, 43, 43, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(69, 237, 185, 0.2);
+}
+
+.pillar-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 43, 43, 0.15);
+    border-color: var(--aphrodite-aqua);
+}
+
+.pillar-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--aphrodite-aqua), var(--lamiaceae));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    box-shadow: 0 8px 25px rgba(69, 237, 185, 0.3);
+}
+
+.pillar-item h3 {
+    color: var(--stellar-explorer);
+    margin-bottom: 1rem;
+    font-family: 'Specter', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.pillar-item p {
+    color: var(--gray-dark);
+    line-height: 1.6;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.comparison-table {
+    margin-bottom: 4rem;
+}
+
+.comparison-table h3 {
+    color: var(--stellar-explorer);
+    margin-bottom: 2rem;
+    font-family: 'Calvino', serif;
+    font-weight: normal;
+    font-size: 1.8rem;
+}
+
+.table-container {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 43, 43, 0.1);
+    border: 2px solid rgba(69, 237, 185, 0.2);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid rgba(69, 237, 185, 0.2);
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-row.header {
+    background: linear-gradient(135deg, var(--aphrodite-aqua), var(--lamiaceae));
+    color: var(--white);
+    font-weight: bold;
+}
+
+.table-cell {
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-family: 'Bio Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.table-row:not(.header) .table-cell:first-child {
+    color: var(--gray-dark);
+    border-right: 1px solid rgba(69, 237, 185, 0.2);
+}
+
+.table-row:not(.header) .table-cell:last-child {
+    color: var(--stellar-explorer);
+    font-weight: 500;
+}
+
+.cta-section-overview {
+    margin-top: 3rem;
+}
+
+.cta-section-overview .btn-primary {
+    font-size: 1.2rem;
+    padding: 1.2rem 3rem;
+    box-shadow: 0 8px 25px rgba(69, 237, 185, 0.4);
+}
+
+.cta-section-overview .btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(69, 237, 185, 0.5);
 }
 
 /* Individual Treatment Panel Backgrounds - Redesigned according to directive */
@@ -1764,6 +2063,13 @@ p {
     text-align: left;
 }
 
+.panel-content .panel-body {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10rem;
+    align-items: end;
+}
+
 /* .treatment-panel .title-accent {
     width: 120px;
     height: 2px;
@@ -1776,9 +2082,15 @@ p {
 /* Enhanced Treatment Info Grid */
 .treatment-panel .treatment-info {
     display: block;
-    width: 50%;
+    width: 100%;
     min-width: min-content;
     position: relative;
+}
+
+.treatment-info-box-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 /* Enhanced Treatment Description */
@@ -1788,9 +2100,13 @@ p {
     font-size: 1.1rem;
     line-height: 1.8;
     color: var(--white);
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     position: relative;
+}
+
+.treatment-panel .treatment-description p:last-of-type {
+    margin-bottom: 2.5rem;    
 }
 
 /* Enhanced Treatment Benefits */
@@ -1961,6 +2277,60 @@ p {
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
+    /* Mobile styles for Why Choose Regenerative Medicine section */
+    .why-regenerative-content {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+    
+    .intro-paragraph p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+    
+    .core-pillars {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .pillar-item {
+        padding: 2rem 1.5rem;
+    }
+    
+    .pillar-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+    }
+    
+    .pillar-item h3 {
+        font-size: 1.3rem;
+    }
+    
+    .pillar-item p {
+        font-size: 0.95rem;
+    }
+    
+    .comparison-table h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .table-container {
+        max-width: 100%;
+    }
+    
+    .table-cell {
+        padding: 1rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .cta-section-overview .btn-primary {
+        font-size: 1.1rem;
+        padding: 1rem 2.5rem;
+    }
+
     .treatment-panel .treatment-info {
         width: 100%;
     }
@@ -1984,11 +2354,11 @@ p {
     
     .treatment-panel .treatment-benefits ul {
         flex-direction: column;
-        width: fit-content;
+        width: auto;
     }
 
     .treatment-panel .treatment-benefits li {
-        padding: 1.5rem 0;
+        padding: 1rem 0;
         border-right: none;
         border-bottom: 1px solid var(--aphrodite-aqua);
     }
@@ -2075,7 +2445,7 @@ p {
     }
     
     .panel-content {
-        padding: 1rem;
+        padding: 3rem 1rem 4.5rem;
         height: auto;
         min-height: 100vh;
     }
@@ -2093,7 +2463,54 @@ p {
     .image-placeholder {
         height: 250px;
         border: 2px solid rgba(69, 237, 185, 0.3);
-    }    
+    }
+    
+    /* Small mobile styles for Why Choose Regenerative Medicine section */
+    .why-regenerative-content {
+        padding: 0 0.5rem;
+    }
+    
+    .intro-paragraph p {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    
+    .core-pillars {
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .pillar-item {
+        padding: 1.5rem 1rem;
+    }
+    
+    .pillar-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .pillar-item h3 {
+        font-size: 1.2rem;
+    }
+    
+    .pillar-item p {
+        font-size: 0.9rem;
+    }
+    
+    .comparison-table h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .table-cell {
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .cta-section-overview .btn-primary {
+        font-size: 1rem;
+        padding: 0.9rem 2rem;
+    }
 } 
 
 /* Why Choose Us Section Styles */
@@ -2248,21 +2665,17 @@ p {
 }
 
 .about-page .about-image {
-    width: 50%;
+    width: 50vw;
     position: relative;
-    background-size: 100vh;
+    background-size: 50vw auto;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
-.about-page .about-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: transform 0.3s ease;
+@media (max-aspect-ratio: 6/5) {
+	.about-page .about-image {
+		background-size: auto 100vh;
+	}
 }
 
 .about-page .about-content {
@@ -2367,6 +2780,7 @@ p {
     
     .about-page .about-image {
         height: 50vh;
+        background-size: 100vw auto;
     }
     
     .about-page .about-content {
@@ -2427,7 +2841,7 @@ p {
     }
     
     .about-page .about-image {
-        height: 40vh;
+        background-size: auto 100vh;
     }
     
     .about-page .mission-values,
@@ -2435,6 +2849,349 @@ p {
     .about-page .team-highlights,
     .about-page .history-milestones {
         margin-top: 1.5rem;
+    }
+} 
+
+/* ===== TREATMENTS PAGE STYLES ===== */
+
+
+
+/* Treatments Overview Section */
+.treatments-overview {
+    padding: 6rem 0;
+    background: var(--white);
+}
+
+.treatments-overview .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.treatments-overview .section-subtitle {
+    font-size: 1.2rem;
+    color: var(--gray-medium);
+    margin-top: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.treatments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.treatment-card {
+    background: var(--white);
+    border: 2px solid var(--journey-sky);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.treatment-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--aphrodite-aqua) 0%, var(--lamiaceae) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.treatment-card:hover::before {
+    opacity: 0.05;
+}
+
+.treatment-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 43, 43, 0.1);
+    border-color: var(--aphrodite-aqua);
+}
+
+.treatment-card .card-icon {
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.treatment-card .treatment-icon {
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 4px 8px rgba(0, 43, 43, 0.2));
+}
+
+.treatment-card h3 {
+    color: var(--stellar-explorer);
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.treatment-card p {
+    color: var(--gray-medium);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+.treatment-card .btn-outline {
+    position: relative;
+    z-index: 2;
+}
+
+/* Treatment Details Section */
+.treatment-details {
+    padding: 6rem 0;
+    background: var(--gray-light);
+}
+
+.treatment-section {
+    margin-bottom: 6rem;
+    background: var(--white);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 43, 43, 0.1);
+}
+
+.treatment-section:last-child {
+    margin-bottom: 0;
+}
+
+.treatment-header {
+    /* background: linear-gradient(135deg, var(--stellar-explorer) 0%, var(--journey-sky) 100%); */
+    color: var(--white);
+    /* padding: 3rem 2rem; */
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.treatment-icon-large {
+    flex-shrink: 0;
+}
+
+.treatment-icon-large .large-icon {
+    width: 100px;
+    height: 100px;
+    /* filter: brightness(0) invert(1); */
+}
+
+.treatment-title-content h2 {
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.treatment-tagline {
+    font-size: 1.2rem;
+    color: var(--aphrodite-aqua);
+    margin: 0;
+}
+
+.treatment-content {
+    padding: 3rem 2rem;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+}
+
+.content-main .content-section {
+    margin-bottom: 2.5rem;
+}
+
+.content-main .content-section:last-child {
+    margin-bottom: 0;
+}
+
+.content-main .content-section h3 {
+    color: var(--stellar-explorer);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.content-main .content-section p {
+    color: var(--gray-medium);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.treatment-conditions {
+    list-style: none;
+    padding: 0;
+}
+
+.treatment-conditions li {
+    color: var(--gray-medium);
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.treatment-conditions li::before {
+    content: '•';
+    color: var(--aphrodite-aqua);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+}
+
+/* Content Sidebar */
+.content-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+
+.treatment-info-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: white;
+    border: 2px solid var(--aphrodite-aqua);
+    border-radius: 15px;
+    padding: 2rem;
+    min-width: 300px;
+}
+
+.treatment-info-box h4 {
+    /* color: var(--stellar-explorer); */
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--journey-sky);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+.info-value {
+    color: var(--aphrodite-aqua);
+    font-weight: bold;
+}
+
+.consultation-btn {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+
+/* Button Styles */
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--aphrodite-aqua);
+    color: var(--aphrodite-aqua);
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Bio Sans', sans-serif;
+}
+
+.btn-outline:hover {
+    background: var(--aphrodite-aqua);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* Mobile Responsiveness for Treatments Page */
+@media (max-width: 1024px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    /* .treatment-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    } */
+
+    .panel-content .panel-body {
+        gap: 5rem;
+    }
+    
+    .treatments-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .panel-content .panel-body {
+        grid: none;
+    }
+
+    .treatment-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .treatment-header {
+        padding: 2rem 1.5rem;
+    }
+    
+    .treatments-overview,
+    .treatment-details,
+    .cta-section {
+        padding: 4rem 0;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .panel-content .panel-body {
+        grid-gap: 2rem;
+    }
+
+    .treatment-content {
+        padding: 1.5rem 1rem;
+    }
+    
+    .treatment-header {
+        padding: 1.5rem 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .treatments-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .treatment-card {
+        padding: 2rem 1.5rem;
     }
 } 
 

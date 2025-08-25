@@ -48,6 +48,32 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Scroll to treatments functionality
+    const scrollToTreatmentsBtn = document.querySelector('.scroll-to-treatments');
+    if (scrollToTreatmentsBtn) {
+        scrollToTreatmentsBtn.addEventListener('click', function() {
+            const treatmentsSection = document.querySelector('.treatments-section');
+            if (treatmentsSection) {
+                // Scroll to the second treatment panel (stem cells)
+                const stemCellsPanel = document.querySelector('#stem-cells-details');
+                if (stemCellsPanel) {
+                    const offsetTop = stemCellsPanel.offsetTop - 100;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // Fallback to treatments section
+                    const offsetTop = treatmentsSection.offsetTop + 100;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    }
 });
 
 // Navbar background change on scroll
@@ -211,7 +237,7 @@ function setupRandomShapes() {
     
     // Check if this is a compact hero (not homepage)
     const heroSection = document.querySelector('.hero');
-    if (heroSection && heroSection.style.minHeight === '55vh') {
+    if (heroSection && heroSection.classList.contains('hero-compact')) {
         // This is a compact hero section, set up random shapes
         const allShapes = Array.from({length: 20}, (_, i) => i + 1);
         
@@ -306,6 +332,30 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add event listeners to all language buttons
     langBtns.forEach(btn => {
         btn.addEventListener('click', updateLanguage);
+    });
+});
+
+// FAQ Accordion Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            const answer = this.nextElementSibling;
+            
+            // Close all other FAQ items
+            faqQuestions.forEach(otherQuestion => {
+                if (otherQuestion !== this) {
+                    otherQuestion.setAttribute('aria-expanded', 'false');
+                    otherQuestion.nextElementSibling.setAttribute('aria-hidden', 'true');
+                }
+            });
+            
+            // Toggle current FAQ item
+            this.setAttribute('aria-expanded', !isExpanded);
+            answer.setAttribute('aria-hidden', isExpanded);
+        });
     });
 });
 
@@ -489,7 +539,7 @@ document.addEventListener('DOMContentLoaded', function() {
         sectionEnd = sectionStart + (treatmentPanels.length * window.innerHeight);
     }
     
-    // Initialize on load (only for desktop)
+    // Initialize on load (only on desktop)
     if (!isMobile) {
         initializeSection();
     }
@@ -547,6 +597,32 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    const initialHash = window.location.hash
+    if (initialHash) {
+        const target = document.querySelector(initialHash)
+        if (target) {
+            enableDesktopMode()
+            initializeSection()
+
+            // Map hash -> panel index within treatmentPanels NodeList
+            const panelsArray = Array.from(treatmentPanels)
+            const idx = panelsArray.findIndex(p => '#' + p.id === initialHash)
+
+            if (idx !== -1) {
+            // Jump to the correct scroll offset for that panel range
+            const y = sectionStart + (idx * window.innerHeight) + 1
+            window.scrollTo({ top: y, behavior: 'instant' })
+            // Force one computation to settle transforms
+            handleScroll()
+            } else {
+            // Fallback if not in the list for some reason
+            target.scrollIntoView({ behavior: 'instant', block: 'start' })
+            handleScroll()
+            }
+        }
+    }
+
     
     // Optimized scroll handler for smooth performance
     let scrollTimeout;
@@ -609,6 +685,15 @@ document.addEventListener('DOMContentLoaded', function() {
         contactPageForm.addEventListener('submit', function(e) {
             e.preventDefault();
             handleFormSubmission(this, 'contact');
+        });
+    }
+    
+    // Handle treatments page contact form
+    const treatmentsContactForm = document.getElementById('treatmentsContactForm');
+    if (treatmentsContactForm) {
+        treatmentsContactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleFormSubmission(this, 'treatments');
         });
     }
     
@@ -695,3 +780,124 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 });
+
+// ===== TREATMENTS PAGE FUNCTIONALITY =====
+
+// Treatments page specific functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if we're on the treatments page
+    if (window.location.pathname.includes('treatments.html') || document.querySelector('.treatments-hero')) {
+        initializeTreatmentsPage();
+    }
+});
+
+function initializeTreatmentsPage() {
+    // Smooth scrolling for "Learn More" buttons
+    const learnMoreButtons = document.querySelectorAll('.learn-more-btn');
+    learnMoreButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const treatmentType = this.closest('.treatment-card').dataset.treatment;
+            const targetSection = document.getElementById(`${treatmentType}-details`);
+            
+            if (targetSection) {
+                const offsetTop = targetSection.offsetTop - 100;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+
+
+    // Smooth scrolling for footer treatment links
+    const footerTreatmentLinks = document.querySelectorAll('footer a[href^="#"]');
+    footerTreatmentLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                const offsetTop = targetSection.offsetTop - 100;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Add scroll animations for treatment sections
+    const treatmentSections = document.querySelectorAll('.treatment-section');
+    const treatmentObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    treatmentSections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        treatmentObserver.observe(section);
+    });
+
+    // Add hover effects for treatment cards
+    const treatmentCards = document.querySelectorAll('.treatment-card');
+    treatmentCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+
+    // Consultation button functionality
+    const consultationButtons = document.querySelectorAll('.consultation-btn');
+    consultationButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Scroll to CTA section
+            const ctaSection = document.querySelector('.cta-section');
+            if (ctaSection) {
+                const offsetTop = ctaSection.offsetTop - 100;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Add parallax effect to organic shapes in hero (handled by main parallax system)
+    // The main parallax system will handle the organic shapes automatically
+
+    // Add intersection observer for treatment cards
+    const cardObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -30px 0px'
+    });
+
+    treatmentCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        cardObserver.observe(card);
+    });
+}

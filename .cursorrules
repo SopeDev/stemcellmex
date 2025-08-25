@@ -1,0 +1,54 @@
+# Stemcell MX Project Rules
+
+## Project Overview
+This is a modern, sophisticated website for Stemcell MX, a stem cell therapy company. The project balances clinical trust with organic vitality, positioned between high-end wellness and serious medical institution.
+
+## Technical Stack
+- HTML, CSS, JavaScript only (no frameworks)
+- Maintain performance and clean code - minimal bloat
+- Use subtle animations/micro-interactions for engagement
+
+## Design Principles
+- Modern, sophisticated, science-driven identity with human warmth
+- Premium but approachable positioning
+- Balance clinical trust with organic vitality
+- "Una página moderna y cautivadora para el ojo"
+- When creating new pages/sections, keep in mind the style already established in other pages/sections for consistency
+
+## Color Palette
+- Primary: Aphrodite Aqua (#45EDB9), Stellar Explorer (#002B2B), Journey To The Sky (#CCEDEC)
+- Auxiliary: Light Mint (#BFFFBD), Luminescent Sky (#CAFFFB), Lamiaceae (#40FFDF)
+- Deep teal backdrops for elegance, bright aqua/mint for energy
+- Fresh, watery, luminous aesthetic
+
+## Typography
+- Headings: Specter (Bold → Light → Regular)
+- Impact phrases: Calvino Grande (Regular → Light → Light Italic)
+- Body text: Bio Sans (Regular → Light → Light Italic)
+- Serif headlines with selective italics for editorial tone
+
+## Visual Elements
+- Organic "cell/amoeba" shapes as cutouts/masks
+- Small flower/rosette cell icons for decoration
+- Fluid, biomorphic shapes hinting at stem cells
+- Translucent layers, soft gradients, subtle laboratory imagery
+- Mix of B&W portraits and clinical lifestyle shots
+
+## Code Standards
+- Clean, semantic HTML structure
+- Modular CSS with consistent naming conventions
+- Efficient JavaScript with smooth animations
+- Responsive design principles
+- Accessibility considerations
+
+## Content Structure
+- Reference "faq", "general info", and "website info" documents for copy (located in reference folder in root)
+- Follow content specs in "propuesta" document
+- Maintain clear information hierarchy
+- Professional yet approachable tone
+
+## When Making Changes
+- Always consider the balance between clinical trust and organic warmth
+- Ensure visual elements serve a clear purpose
+- Maintain the sophisticated yet accessible brand positioning
+- Keep performance and clean code as priorities
