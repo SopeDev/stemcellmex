@@ -2419,7 +2419,7 @@ p {
     }
     
     .about, .team, .cta-section {
-        padding: 3rem 0;
+        padding: 6rem 0 4rem;
     }
     
     /* Ensure all content is visible on small mobile devices */
@@ -3163,7 +3163,7 @@ p {
     .treatments-overview,
     .treatment-details,
     .cta-section {
-        padding: 4rem 0;
+        padding: 6rem 0 4rem;
     }
     
     .cta-buttons {

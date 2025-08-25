@@ -275,21 +275,31 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set up random shapes for compact hero sections
     setupRandomShapes();
     
-    // Set initial content to English
-    const elementsToTranslate = document.querySelectorAll('[data-es][data-en]');
-    elementsToTranslate.forEach(element => {
-        const newText = element.getAttribute('data-en');
-        if (newText) {
-            element.innerHTML = newText;
-        }
-    });
-    
-    // Apply active states after initial language setup
-    updateActiveNavLink();
+    // Function to apply language to all elements
+    function applyLanguage(lang) {
+        const elementsToTranslate = document.querySelectorAll('[data-es][data-en]');
+        elementsToTranslate.forEach(element => {
+            const newText = element.getAttribute(`data-${lang}`);
+            if (newText) {
+                element.innerHTML = newText;
+            }
+        });
+        
+        // Update all language buttons
+        langBtns.forEach(btn => {
+            btn.textContent = lang === 'en' ? 'ES' : 'EN';
+        });
+        
+        // Re-apply active states after language change
+        updateActiveNavLink();
+    }
     
     // Function to update language
     function updateLanguage() {
         currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
+        
+        // Save to localStorage
+        localStorage.setItem('stemcell-language', currentLanguage);
         
         // Close mobile navigation menu if it's open
         const hamburger = document.querySelector('.hamburger');
@@ -309,24 +319,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Update all language buttons
-        langBtns.forEach(btn => {
-            btn.textContent = currentLanguage === 'en' ? 'ES' : 'EN';
-        });
-        
-        // Update all elements with language data attributes (including navigation links)
-        elementsToTranslate.forEach(element => {
-            const targetLang = currentLanguage === 'en' ? 'en' : 'es';
-            const newText = element.getAttribute(`data-${targetLang}`);
-            if (newText) {
-                element.innerHTML = newText;
-            }
-        });
-        
-        // Re-apply active states after language change
-        updateActiveNavLink();
+        // Apply the new language
+        applyLanguage(currentLanguage);
         
         console.log(`Switched to ${currentLanguage === 'en' ? 'English' : 'Spanish'}`);
+    }
+    
+    // Check localStorage for saved language preference
+    const savedLanguage = localStorage.getItem('stemcell-language');
+    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'es')) {
+        currentLanguage = savedLanguage;
+        applyLanguage(currentLanguage);
+    } else {
+        // Set initial content to English (default)
+        applyLanguage('en');
     }
     
     // Add event listeners to all language buttons
