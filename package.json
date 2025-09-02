@@ -1,0 +1,24 @@
+{
+  "name": "stemcellmex",
+  "version": "1.0.0",
+  "description": "Stemcell MX - Regenerative Medicine Website",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required'",
+    "start": "echo 'Static site'"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "stem-cell",
+    "regenerative-medicine",
+    "medical-website"
+  ],
+  "author": "Stemcell MX",
+  "license": "MIT"
+}

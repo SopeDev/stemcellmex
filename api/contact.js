@@ -17,6 +17,18 @@ export default async function handler(req, res) {
 			return res.status(400).json({ message: 'Missing required fields' })
 		}
 
+		// Check if email configuration is available
+		if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.TO_EMAIL) {
+			console.log('Email configuration missing. Contact form submission received:', {
+				name, email, subject, message, source
+			})
+			// Return success but log the submission for manual processing
+			return res.status(200).json({ 
+				ok: true, 
+				message: 'Message received. We will contact you soon.' 
+			})
+		}
+
 		// create reusable transporter using SMTP (use your provider)
 		const transporter = nodemailer.createTransport({
 			host: process.env.SMTP_HOST,
