@@ -702,7 +702,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (homepageContactForm) {
         homepageContactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            handleFormSubmission(this, 'homepage');
+            handleFormSubmission(this, 'Home Page');
         });
     }
     
@@ -711,7 +711,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (faqContactForm) {
         faqContactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            handleFormSubmission(this, 'faq');
+            handleFormSubmission(this, 'FAQ Page');
         });
     }
     
@@ -720,7 +720,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (aboutContactForm) {
         aboutContactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            handleFormSubmission(this, 'about');
+            handleFormSubmission(this, 'About Page');
         });
     }
     
@@ -729,7 +729,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactPageForm) {
         contactPageForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            handleFormSubmission(this, 'contact');
+            handleFormSubmission(this, 'Contact Page');
         });
     }
     
@@ -738,7 +738,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (treatmentsContactForm) {
         treatmentsContactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            handleFormSubmission(this, 'treatments');
+            handleFormSubmission(this, 'Treatments Page');
         });
     }
     
