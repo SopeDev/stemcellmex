@@ -39,7 +39,7 @@ export default async function handler(req, res) {
 		].filter(Boolean).join('\n')
 
 		await transporter.sendMail({
-			from: `"Website" <${process.env.FROM_EMAIL || 'no-reply@yourdomain.com'}>`,
+			from: `"Website" <${process.env.FROM_EMAIL || 'contact@stemcellmex.com.mx'}>`,
 			to,
 			replyTo: email,
 			subject: `[Contact] ${subject}`,

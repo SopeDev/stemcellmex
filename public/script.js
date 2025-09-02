@@ -343,24 +343,62 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // FAQ Accordion Functionality
 document.addEventListener('DOMContentLoaded', function() {
-    const faqQuestions = document.querySelectorAll('.faq-question');
+    const faqItems = document.querySelectorAll('.faq-item');
     
-    faqQuestions.forEach(question => {
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        
+        // Set initial state
+        question.setAttribute('aria-expanded', 'false');
+        answer.setAttribute('aria-hidden', 'true');
+        answer.style.maxHeight = '0';
+        answer.style.opacity = '0';
+        
         question.addEventListener('click', function() {
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
-            const answer = this.nextElementSibling;
+            const isOpen = item.classList.contains('open');
             
-            // Close all other FAQ items
-            faqQuestions.forEach(otherQuestion => {
-                if (otherQuestion !== this) {
+            // Close all other FAQ items with smooth animation
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item && otherItem.classList.contains('open')) {
+                    const otherQuestion = otherItem.querySelector('.faq-question');
+                    const otherAnswer = otherItem.querySelector('.faq-answer');
+                    
+                    otherItem.classList.remove('open');
                     otherQuestion.setAttribute('aria-expanded', 'false');
-                    otherQuestion.nextElementSibling.setAttribute('aria-hidden', 'true');
+                    otherAnswer.setAttribute('aria-hidden', 'true');
+                    otherAnswer.style.maxHeight = '0';
+                    otherAnswer.style.opacity = '0';
                 }
             });
             
             // Toggle current FAQ item
-            this.setAttribute('aria-expanded', !isExpanded);
-            answer.setAttribute('aria-hidden', isExpanded);
+            if (!isOpen) {
+                // Open current item
+                item.classList.add('open');
+                question.setAttribute('aria-expanded', 'true');
+                answer.setAttribute('aria-hidden', 'false');
+                answer.style.maxHeight = answer.scrollHeight + 48 + 'px';
+                // Delay opacity for smoother animation
+                setTimeout(() => {
+                    answer.style.opacity = '1';
+                }, 50);
+            } else {
+                // Close current item
+                item.classList.remove('open');
+                question.setAttribute('aria-expanded', 'false');
+                answer.setAttribute('aria-hidden', 'true');
+                answer.style.opacity = '0';
+                answer.style.maxHeight = '0';
+            }
+        });
+        
+        // Handle keyboard navigation
+        question.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                question.click();
+            }
         });
     });
 });
