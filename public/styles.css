@@ -1882,6 +1882,11 @@ p {
     box-shadow: 0 8px 25px rgba(69, 237, 185, 0.3);
 }
 
+.pillar-item .pillar-icon svg {
+    width: 70%;
+    fill: white;
+}
+
 .pillar-item h3 {
     color: var(--stellar-explorer);
     margin-bottom: 1rem;
@@ -2641,22 +2646,22 @@ p {
 }
 
 .about-page .about-mission .about-image {
-    background-image: url('./images/IMG_0004_1080.webp');
+    background-image: url('./images/IMG_0008_1080.webp');
     background-position: left;
 }
 
 .about-page .about-vision .about-image {
-    background-image: url('./images/IMG_0008_1080.webp');
+    background-image: url('./images/IMG_0004_1080.webp');
     background-position: right;
 }
 
 .about-page .about-history .about-image {
-    background-image: url('./images/IMG_0031_1080.webp');
+    background-image: url('./images/IMG_0053_1080.webp');
     background-position: left;
 }
 
 .about-page .about-team .about-image {
-    background-image: url('./images/IMG_0043_1080.webp');
+    background-image: url('./images/IMG_0216_1080.webp');
     background-position: right;
 }
 
