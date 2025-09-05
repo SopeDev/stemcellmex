@@ -1,29 +1,50 @@
+// Error handling utility
+function handleError(error, context = 'Unknown') {
+    console.error(`Error in ${context}:`, error);
+    
+    // Send to analytics if available
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'exception', {
+            'description': `${context}: ${error.message}`,
+            'fatal': false
+        });
+    }
+}
+
 // Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
-    const mobileOverlay = document.querySelector('.mobile-nav-overlay');
-    const navbar = document.querySelector('.navbar');
-    const body = document.body;
+    try {
+        const hamburger = document.querySelector('.hamburger');
+        const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+        const navbar = document.querySelector('.navbar');
+        const body = document.body;
     
-    // Open mobile menu
-    if (hamburger && mobileOverlay) {
-        hamburger.addEventListener('click', function() {
-            if (mobileOverlay.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                mobileOverlay.classList.remove('active');
-                body.style.overflow = '';
-                if (window.scrollY > 200) {
-                    navbar.classList.add('scrolled');
+        // Open mobile menu
+        if (hamburger && mobileOverlay) {
+            hamburger.addEventListener('click', function() {
+                try {
+                    if (mobileOverlay.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        mobileOverlay.classList.remove('active');
+                        body.style.overflow = '';
+                        if (window.scrollY > 200) {
+                            navbar.classList.add('scrolled');
+                        }
+                    } else {
+                        hamburger.classList.add('active');
+                        mobileOverlay.classList.add('active');
+                        body.style.overflow = 'hidden';
+                        if (navbar.classList.contains('scrolled')) {
+                            navbar.classList.remove('scrolled');
+                        }
+                    }
+                } catch (error) {
+                    handleError(error, 'Mobile Menu Toggle');
                 }
-            } else {
-                hamburger.classList.add('active');
-                mobileOverlay.classList.add('active');
-                body.style.overflow = 'hidden';
-                if (navbar.classList.contains('scrolled')) {
-                    navbar.classList.remove('scrolled');
-                }
-            }                
-        });
+            });
+        }
+    } catch (error) {
+        handleError(error, 'Mobile Navigation Setup');
     }
 });
 

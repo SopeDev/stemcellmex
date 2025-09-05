@@ -1,14 +1,102 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stemcell México - Medicina Regenerativa de Vanguardia</title>
-    <meta name="description" content="Tratamientos regenerativos de alta calidad basados en terapias con células madre. Medicina regenerativa en Tijuana, México.">
-    <link rel="stylesheet" href="styles.css">
+    <title>Stemcell México - Cutting-Edge Regenerative Medicine</title>
+    <meta name="description" content="High-quality regenerative treatments based on stem cell therapies. Cutting-edge regenerative medicine in Tijuana, Mexico. Tratamientos regenerativos de alta calidad en Tijuana, México.">
+    <meta name="keywords" content="stem cells, regenerative medicine, cell therapy, exosomes, IV infusions, orthopedics, Mexico, Tijuana, células madre, medicina regenerativa, terapia celular, exosomas, sueros IV, ortopedia">
+    <meta name="author" content="Stemcell México">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="en">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stemcellmex.com/">
+    <meta property="og:title" content="Stemcell México - Cutting-Edge Regenerative Medicine">
+    <meta property="og:description" content="High-quality regenerative treatments based on stem cell therapies. Cutting-edge regenerative medicine in Tijuana, Mexico.">
+    <meta property="og:image" content="https://stemcellmex.com/images/og-image.jpg">
+    <meta property="og:site_name" content="Stemcell México">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="es_MX">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://stemcellmex.com/">
+    <meta property="twitter:title" content="Stemcell México - Cutting-Edge Regenerative Medicine">
+    <meta property="twitter:description" content="High-quality regenerative treatments based on stem cell therapies. Cutting-edge regenerative medicine in Tijuana, Mexico.">
+    <meta property="twitter:image" content="https://stemcellmex.com/images/og-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://stemcellmex.com/">
+    
+    <!-- Hreflang for multilingual SEO -->
+    <link rel="alternate" hreflang="en" href="https://stemcellmex.com/">
+    <link rel="alternate" hreflang="es" href="https://stemcellmex.com/">
+    <link rel="alternate" hreflang="x-default" href="https://stemcellmex.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    
+    <link rel="stylesheet" href="styles.min.css">
     <link rel="preload" href="./fonts/specter-bold.woff" as="font" type="font/woff" crossorigin>
     <link rel="preload" href="./fonts/calvino-regular.woff" as="font" type="font/woff" crossorigin>
     <link rel="preload" href="./fonts/biosans-regular.woff" as="font" type="font/woff" crossorigin>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalOrganization",
+      "name": "Stemcell México",
+      "description": "Cutting-edge regenerative medicine in Tijuana, Mexico. High-quality stem cell treatments, exosomes, IV therapy, and orthopedics. Medicina regenerativa de vanguardia en Tijuana, México.",
+      "url": "https://stemcellmex.com",
+      "logo": "https://stemcellmex.com/images/logo-white.svg",
+      "image": "https://stemcellmex.com/images/og-image.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Torre Médica del Prado, Consultorio 1802",
+        "addressLocality": "Tijuana",
+        "addressRegion": "Baja California",
+        "addressCountry": "MX"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "contact@stemcellmex.com.mx"
+      },
+      "medicalSpecialty": [
+        "Regenerative Medicine",
+        "Stem Cell Therapy",
+        "Orthopedics",
+        "IV Therapy"
+      ],
+      "founder": [
+        {
+          "@type": "Person",
+          "name": "Dr. Juan Manuel Dipp Tagle",
+          "jobTitle": "Medical Director"
+        },
+        {
+          "@type": "Person", 
+          "name": "Dr. Juan Manuel Dipp Núñez",
+          "jobTitle": "Orthopedic Surgeon"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/stemcellmex",
+        "https://www.instagram.com/stemcellmex"
+      ],
+      "inLanguage": ["en", "es"]
+    }
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -376,6 +464,36 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID', {
+            page_title: 'Stemcell México - Medicina Regenerativa',
+            page_location: window.location.href,
+            custom_map: {
+                'custom_parameter_1': 'medical_website'
+            }
+        });
+    </script>
+
+    <!-- Error Tracking (Sentry) - Optional -->
+    <script>
+        // Basic error tracking
+        window.addEventListener('error', function(e) {
+            console.error('JavaScript Error:', e.error);
+            // In production, send to your error tracking service
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'exception', {
+                    'description': e.error.message,
+                    'fatal': false
+                });
+            }
+        });
+    </script>
+
+    <script src="script.min.js"></script>
 </body>
 </html> 
