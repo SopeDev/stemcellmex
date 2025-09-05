@@ -967,3 +967,138 @@ function initializeTreatmentsPage() {
         cardObserver.observe(card);
     });
 }
+
+// Testimonial Slider Functionality
+function initTestimonialSlider() {
+    try {
+        const slider = document.querySelector('.testimonials-slider');
+        if (!slider) return;
+
+        const items = slider.querySelectorAll('.testimonial-item');
+        const dots = slider.querySelectorAll('.dot');
+        const prevBtn = slider.querySelector('.testimonial-prev');
+        const nextBtn = slider.querySelector('.testimonial-next');
+        
+        let currentSlide = 0;
+        let autoSlideInterval;
+        let isTransitioning = false;
+        const slideInterval = 5000; // 5 seconds
+
+        // Function to show specific slide
+        function showSlide(index) {
+            if (isTransitioning) return; // Prevent rapid clicking during transitions
+            
+            isTransitioning = true;
+            
+            // Remove active class from all items and dots
+            items.forEach(item => item.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Add active class to current slide
+            if (items[index]) {
+                items[index].classList.add('active');
+            }
+            if (dots[index]) {
+                dots[index].classList.add('active');
+            }
+            
+            currentSlide = index;
+            
+            // Reset transition flag after animation completes
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 500); // Match CSS transition duration
+        }
+
+        // Function to go to next slide
+        function nextSlide() {
+            const nextIndex = (currentSlide + 1) % items.length;
+            showSlide(nextIndex);
+        }
+
+        // Function to go to previous slide
+        function prevSlide() {
+            const prevIndex = (currentSlide - 1 + items.length) % items.length;
+            showSlide(prevIndex);
+        }
+
+        // Function to start auto-sliding
+        function startAutoSlide() {
+            stopAutoSlide(); // Clear any existing interval first
+            autoSlideInterval = setInterval(nextSlide, slideInterval);
+        }
+
+        // Function to stop auto-sliding
+        function stopAutoSlide() {
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = null; // Reset to null
+            }
+        }
+
+        // Function to restart auto-sliding with a small delay
+        function restartAutoSlide() {
+            stopAutoSlide();
+            // Add a small delay to prevent rapid clicking issues
+            setTimeout(() => {
+                startAutoSlide();
+            }, 100);
+        }
+
+        // Event listeners for navigation buttons
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function() {
+                nextSlide();
+                restartAutoSlide();
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function() {
+                prevSlide();
+                restartAutoSlide();
+            });
+        }
+
+        // Event listeners for dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                showSlide(index);
+                restartAutoSlide();
+            });
+        });
+
+        // Pause auto-slide on hover
+        slider.addEventListener('mouseenter', stopAutoSlide);
+        slider.addEventListener('mouseleave', function() {
+            // Only restart if not currently transitioning
+            if (!isTransitioning) {
+                startAutoSlide();
+            }
+        });
+
+        // Pause auto-slide when page is not visible
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                stopAutoSlide();
+            } else {
+                startAutoSlide();
+            }
+        });
+
+        // Initialize slider
+        showSlide(0);
+        startAutoSlide();
+
+        // Clean up on page unload
+        window.addEventListener('beforeunload', stopAutoSlide);
+
+    } catch (error) {
+        handleError(error, 'Testimonial Slider');
+    }
+}
+
+// Initialize testimonial slider when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initTestimonialSlider();
+});
