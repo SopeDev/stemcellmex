@@ -1,5 +1,5 @@
 // api/contact.js
-import nodemailer from 'nodemailer'
+const nodemailer = require('nodemailer')
 
 // Simple in-memory rate limiting (for production, use Redis or database)
 const rateLimitMap = new Map()
@@ -37,7 +37,7 @@ function sanitizeInput(input) {
 	return input.toString().trim().slice(0, 1000)
 }
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
 	// Set CORS headers
 	res.setHeader('Access-Control-Allow-Origin', '*')
 	res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
