@@ -927,7 +927,7 @@ p {
 }
 
 .member-specialty {
-    color: var(--aphrodite-aqua);
+    color: #1a8282;
     font-weight: bold;
     margin-bottom: 1rem;
     font-size: 1.1rem;
@@ -1089,6 +1089,66 @@ p {
     background: var(--stellar-explorer);
     color: var(--white);
     padding: 4rem 0 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Footer animation container */
+.footer-animation {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    z-index: 1;
+    filter: blur(2px);
+}
+
+.footer-animation::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: var(--aphrodite-aqua);
+    filter: blur(500px);
+    
+    /* SVG mask with wavy top */
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none"><path fill="white" d="M0,90 C150,50 300,130 450,90 C600,50 750,130 900,90 C1050,50 1200,120 1200,120 L1200,180 L0,180 Z"/></svg>') top left / 2200px 180px repeat-x;
+            mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none"><path fill="white" d="M0,90 C150,50 300,130 450,90 C600,50 750,130 900,90 C1050,50 1200,120 1200,120 L1200,180 L0,180 Z"/></svg>') top left / 2200px 180px repeat-x;
+
+    /* Back-and-forth animation */
+    animation: wave-bounce 10s ease-in-out infinite alternate;
+}
+
+.footer-animation::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: var(--aphrodite-aqua);
+    filter: blur(500px);
+    
+    /* SVG mask with wavy top */
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none"><path fill="white" d="M0,90 C150,50 300,130 450,90 C600,50 750,130 900,90 C1050,50 1200,120 1200,120 L1200,180 L0,180 Z"/></svg>') top left / 2000px 200px repeat-x;
+            mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none"><path fill="white" d="M0,90 C150,50 300,130 450,90 C600,50 750,130 900,90 C1050,50 1200,120 1200,120 L1200,180 L0,180 Z"/></svg>') top left / 2000px 200px repeat-x;
+
+    /* Back-and-forth animation */
+    animation: wave-bounce 7s ease-in-out infinite alternate;
+}
+
+@keyframes wave-bounce {
+    from {
+        -webkit-mask-position: 0 0;
+                mask-position: 0 0;
+    }
+    to {
+        -webkit-mask-position: -300px 0; /* how far it swings */
+                mask-position: -300px 0;
+    }
 }
 
 .footer-content {
@@ -1096,6 +1156,8 @@ p {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
 }
 
 .footer-section h3, .footer-section h4 {
@@ -1163,7 +1225,13 @@ p {
     border-top: 1px solid var(--gray-dark);
     padding-top: 2rem;
     text-align: center;
+    position: relative;
+    z-index: 2;
     color: var(--gray-medium);
+}
+
+.footer-bottom p {
+    margin: 0;
 }
 
 /* FAQ Page */
@@ -2199,6 +2267,13 @@ p {
     .about-content {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+    
+    /* Adjust water effect for mobile */
+    .footer::before {
+        height: 80px;
+        -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 180" preserveAspectRatio="none"><path fill="white" d="M0,90 C150,50 300,130 450,90 C600,50 750,130 900,90 C1050,50 1200,120 1200,120 L1200,180 L0,180 Z"/></svg>') top left / 800px 120px repeat-x;
+                mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 180" preserveAspectRatio="none"><path fill="white" d="M0,90 C150,50 300,130 450,90 C600,50 750,130 900,90 C1050,50 1200,120 1200,120 L1200,180 L0,180 Z"/></svg>') top left / 800px 120px repeat-x;
     }
     
     .photo-gallery {
