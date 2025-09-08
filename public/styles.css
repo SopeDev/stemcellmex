@@ -1167,7 +1167,7 @@ p {
 
 .footer-section p {
     color: var(--journey-sky);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
 }
 
 .footer-section ul {
@@ -1185,6 +1185,36 @@ p {
 }
 
 .footer-section ul li a:hover {
+    color: var(--aphrodite-aqua);
+}
+
+/* Contact info styling */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    color: var(--journey-sky);
+}
+
+.contact-item svg {
+    color: var(--aphrodite-aqua);
+    flex-shrink: 0;
+}
+
+.contact-item a {
+    color: var(--journey-sky);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
     color: var(--aphrodite-aqua);
 }
 
@@ -1210,7 +1240,7 @@ p {
 .social-media-section .social-links {
     flex-direction: row;
     gap: 1.5rem;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .social-media-section .social-link {
@@ -1223,7 +1253,7 @@ p {
 
 .footer-bottom {
     border-top: 1px solid var(--gray-dark);
-    padding-top: 2rem;
+    padding: 2rem 0;
     text-align: center;
     position: relative;
     z-index: 2;
@@ -1516,15 +1546,9 @@ p {
     display: flex;
     align-items: flex-start;
     margin-bottom: 2rem;
-    padding: 1rem;
-    background: rgba(69, 237, 185, 0.05);
     border-radius: 12px;
     transition: all 0.3s ease;
-}
-
-.contact-item:hover {
-    background: rgba(69, 237, 185, 0.1);
-    transform: translateY(-2px);
+    align-items: center;
 }
 
 .contact-icon {
