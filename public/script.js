@@ -789,8 +789,14 @@ document.addEventListener('DOMContentLoaded', function() {
         submitButton.textContent = 'Sending...';
         
         try {
+            // Determine the correct API endpoint based on environment
+            const isLocalDevelopment = window.location.protocol === 'file:' || window.location.hostname === 'localhost';
+            const apiEndpoint = isLocalDevelopment 
+                ? 'https://stemcellmex.vercel.app/api/contact'  // Production API endpoint
+                : '/api/contact';  // Relative path for production
+            
             // Send data to API endpoint
-            const response = await fetch('/api/contact', {
+            const response = await fetch(apiEndpoint, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -813,7 +819,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         } catch (error) {
             console.error('Form submission error:', error);
-            showFormMessage(form, 'Network error. Please check your connection and try again.', 'error');
+            
+            // Check if it's a CORS or network error
+            if (error.message.includes('CORS') || error.message.includes('Failed to fetch')) {
+                // Provide alternative contact methods
+                showFormMessage(form, 'Unable to send message through the form. Please contact us directly at consultas@stemcellmex.com or call +52 (664) 655-8334.', 'error');
+            } else {
+                showFormMessage(form, 'Network error. Please check your connection and try again.', 'error');
+            }
         } finally {
             // Restore button state
             submitButton.disabled = false;
