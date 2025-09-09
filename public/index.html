@@ -223,6 +223,70 @@
         </div>
     </section>
 
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="video-container">
+            <div class="video-background">
+                <video id="background-video" muted loop>
+                    <source src="./video/alfredo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-overlay"></div>
+                <div class="video-texture"></div>
+            </div>
+            <div class="video-content">
+                <div class="video-play-button" id="video-play-btn">
+                    <div class="play-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                </div>
+                <h2 class="video-title" data-es="Descubre Nuestra Historia" data-en="Discover Our Story">Discover Our Story</h2>
+                <p class="video-description" data-es="Conoce de primera mano cómo la medicina regenerativa está transformando vidas en Stemcell México." data-en="Learn first-hand how regenerative medicine is transforming lives at Stemcell México.">Learn first-hand how regenerative medicine is transforming lives at Stemcell México.</p>
+                <button class="btn-primary video-cta" id="video-cta-btn" data-es="Ver Video" data-en="Watch Video">Watch Video</button>
+            </div>
+        </div>
+        
+        <!-- Video Modal -->
+        <div class="video-modal" id="video-modal">
+            <div class="modal-backdrop" id="modal-backdrop"></div>
+            <div class="modal-content">
+                <button class="modal-close" id="modal-close">&times;</button>
+                <video id="modal-video" controls>
+                    <source src="./video/alfredo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transition Banner Section -->
+    <section class="transition-banner">
+        <div class="container">
+            <div class="banner-content">
+                <div class="banner-text">
+                    <h3 class="banner-title" data-es="Transformando <span>Vidas</span> a Través de la <span>Ciencia</span>" data-en="Transforming <span>Lives</span> Through <span>Science</span>">Transforming <span>Lives</span> Through <span>Science</span></h3>
+                    <p class="banner-description" data-es="Cada día, avanzamos en la frontera de la medicina regenerativa, ofreciendo esperanza y resultados reales a nuestros pacientes." data-en="Every day, we advance the frontier of regenerative medicine, offering hope and real results to our patients.">Every day, we advance the frontier of regenerative medicine, offering hope and real results to our patients.</p>
+                </div>
+                <div class="banner-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label" data-es="Pacientes Tratados" data-en="Patients Treated">Patients Treated</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">35+</div>
+                        <div class="stat-label" data-es="Años de Experiencia Médica" data-en="Years of Medical Experience">Years of Medical Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label" data-es="Tasa de Satisfacción" data-en="Satisfaction Rate">Satisfaction Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="tratamientos" class="treatments-section">
         <div class="treatments-container">
             <div class="treatment-panel treatment-overview active" data-panel="overview">
@@ -238,7 +302,7 @@
                             </div>
                             <h3 data-es="Células Madre Mesenquimales" data-en="Mesenchymal Stem Cells">Mesenchymal Stem Cells</h3>
                             <p data-es="La base de la medicina regenerativa moderna. Regeneración natural del cuerpo para diversas condiciones médicas." data-en="The foundation of modern regenerative medicine. Natural body regeneration for various medical conditions.">The foundation of modern regenerative medicine. Natural body regeneration for various medical conditions.</p>
-                            <a href="./treatments.html" class="text-link" data-es="Conocer Más<span class='arrow-icon'> →</span>" data-en="Learn More<span class='arrow-icon'> →</span>">Learn More<span class="arrow-icon"> →</span></a>
+                            <a href="./treatments.html#overview" class="text-link" data-es="Conocer Más<span class='arrow-icon'> →</span>" data-en="Learn More<span class='arrow-icon'> →</span>">Learn More<span class="arrow-icon"> →</span></a>
                         </div>
                         <div class="service-card">
                             <div class="service-icon">
@@ -246,7 +310,7 @@
                             </div>
                             <h3 data-es="Exosamas" data-en="Exosomes">Exosomes</h3>
                             <p data-es="Terapia avanzada para regeneración celular y rejuvenecimiento. Comunicación celular optimizada." data-en="Advanced therapy for cellular regeneration and rejuvenation. Optimized cellular communication.">Advanced therapy for cellular regeneration and rejuvenation. Optimized cellular communication.</p>
-                            <a href="./treatments.html" class="text-link" data-es="Conocer Más<span class='arrow-icon'> →</span>" data-en="Learn More<span class='arrow-icon'> →</span>">Learn More<span class="arrow-icon"> →</span></a>
+                            <a href="./treatments.html#overview" class="text-link" data-es="Conocer Más<span class='arrow-icon'> →</span>" data-en="Learn More<span class='arrow-icon'> →</span>">Learn More<span class="arrow-icon"> →</span></a>
                         </div>
                         <div class="service-card">
                             <div class="service-icon">
@@ -254,7 +318,7 @@
                             </div>
                             <h3 data-es="Sueros IV" data-en="IV Therapy">IV Therapy</h3>
                             <p data-es="Tratamientos multivitamínicos intravenosos personalizados. Absorción directa al torrente sanguíneo para resultados inmediatos." data-en="Personalized intravenous multivitamin treatments. Direct absorption into bloodstream for immediate results.">Personalized intravenous multivitamin treatments. Direct absorption into bloodstream for immediate results.</p>
-                            <a href="./treatments.html" class="text-link" data-es="Conocer Más<span class='arrow-icon'> →</span>" data-en="Learn More<span class='arrow-icon'> →</span>">Learn More<span class="arrow-icon"> →</span></a>
+                            <a href="./treatments.html#overview" class="text-link" data-es="Conocer Más<span class='arrow-icon'> →</span>" data-en="Learn More<span class='arrow-icon'> →</span>">Learn More<span class="arrow-icon"> →</span></a>
                         </div>
                         <div class="service-card">
                             <div class="service-icon">
@@ -262,7 +326,7 @@
                             </div>
                             <h3 data-es="Ortopedia" data-en="Orthopedics">Orthopedics</h3>
                             <p data-es="Tratamiento de lesiones deportivas y dolores articulares. Rehabilitación óptima para recuperación rápida." data-en="Treatment of sports injuries and joint pain. Optimal rehabilitation for rapid recovery.">Treatment of sports injuries and joint pain. Optimal rehabilitation for rapid recovery.</p>
-                            <a href="./treatments.html" class="text-link" data-es="Conocer Más<span class='arrow-icon'> →</span>" data-en="Learn More<span class='arrow-icon'> →</span>">Learn More<span class="arrow-icon"> →</span></a>
+                            <a href="./treatments.html#overview" class="text-link" data-es="Conocer Más<span class='arrow-icon'> →</span>" data-en="Learn More<span class='arrow-icon'> →</span>">Learn More<span class="arrow-icon"> →</span></a>
                         </div>
                     </div>
                     <button class="btn-primary" data-es="Agendar Consulta" data-en="Schedule Consultation">Schedule Consultation</button>

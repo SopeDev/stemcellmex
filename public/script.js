@@ -671,20 +671,28 @@ document.addEventListener('DOMContentLoaded', function() {
             enableDesktopMode()
             initializeSection()
 
-            // Map hash -> panel index within treatmentPanels NodeList
-            const panelsArray = Array.from(treatmentPanels)
-            const idx = panelsArray.findIndex(p => '#' + p.id === initialHash)
-
-            if (idx !== -1) {
-            // Jump to the correct scroll offset for that panel range
-            const y = sectionStart + (idx * window.innerHeight) + 1
-            window.scrollTo({ top: y, behavior: 'instant' })
-            // Force one computation to settle transforms
-            handleScroll()
+            // Special handling for overview panel
+            if (target.classList.contains('treatment-overview')) {
+                // Scroll to the top of the treatments section for overview
+                const y = sectionStart
+                window.scrollTo({ top: y, behavior: 'instant' })
+                handleScroll()
             } else {
-            // Fallback if not in the list for some reason
-            target.scrollIntoView({ behavior: 'instant', block: 'start' })
-            handleScroll()
+                // Map hash -> panel index within treatmentPanels NodeList
+                const panelsArray = Array.from(treatmentPanels)
+                const idx = panelsArray.findIndex(p => '#' + p.id === initialHash)
+
+                if (idx !== -1) {
+                // Jump to the correct scroll offset for that panel range
+                const y = sectionStart + (idx * window.innerHeight) + 1
+                window.scrollTo({ top: y, behavior: 'instant' })
+                // Force one computation to settle transforms
+                handleScroll()
+                } else {
+                // Fallback if not in the list for some reason
+                target.scrollIntoView({ behavior: 'instant', block: 'start' })
+                handleScroll()
+                }
             }
         }
     }
@@ -1114,4 +1122,114 @@ function initTestimonialSlider() {
 // Initialize testimonial slider when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initTestimonialSlider();
+});
+
+// Video Section Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    try {
+        const videoSection = document.querySelector('.video-section');
+        if (!videoSection) return;
+
+        const backgroundVideo = document.getElementById('background-video');
+        const videoPlayBtn = document.getElementById('video-play-btn');
+        const videoCtaBtn = document.getElementById('video-cta-btn');
+        const videoModal = document.getElementById('video-modal');
+        const modalVideo = document.getElementById('modal-video');
+        const modalClose = document.getElementById('modal-close');
+        const modalBackdrop = document.getElementById('modal-backdrop');
+        const body = document.body;
+
+        // Start background video when section is in view
+        const videoObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (backgroundVideo) {
+                        backgroundVideo.play().catch(error => {
+                            console.log('Background video autoplay prevented:', error);
+                        });
+                    }
+                } else {
+                    if (backgroundVideo) {
+                        backgroundVideo.pause();
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        videoObserver.observe(videoSection);
+
+        // Open video modal
+        function openVideoModal() {
+            if (videoModal && modalVideo) {
+                videoModal.classList.add('active');
+                body.style.overflow = 'hidden';
+                
+                // Load and play video in modal
+                modalVideo.load();
+                modalVideo.play().catch(error => {
+                    console.log('Modal video play prevented:', error);
+                });
+            }
+        }
+
+        // Close video modal
+        function closeVideoModal() {
+            if (videoModal && modalVideo) {
+                videoModal.classList.remove('active');
+                body.style.overflow = '';
+                modalVideo.pause();
+                modalVideo.currentTime = 0;
+            }
+        }
+
+        // Event listeners
+        if (videoPlayBtn) {
+            videoPlayBtn.addEventListener('click', openVideoModal);
+        }
+
+        if (videoCtaBtn) {
+            videoCtaBtn.addEventListener('click', openVideoModal);
+        }
+
+        if (modalClose) {
+            modalClose.addEventListener('click', closeVideoModal);
+        }
+
+        if (modalBackdrop) {
+            modalBackdrop.addEventListener('click', closeVideoModal);
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && videoModal && videoModal.classList.contains('active')) {
+                closeVideoModal();
+            }
+        });
+
+        // Pause background video when modal is open
+        if (videoModal) {
+            const modalObserver = new MutationObserver(function(mutations) {
+                mutations.forEach(mutation => {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        if (videoModal.classList.contains('active')) {
+                            if (backgroundVideo) {
+                                backgroundVideo.pause();
+                            }
+                        } else {
+                            if (backgroundVideo) {
+                                backgroundVideo.play().catch(error => {
+                                    console.log('Background video resume prevented:', error);
+                                });
+                            }
+                        }
+                    }
+                });
+            });
+            
+            modalObserver.observe(videoModal, { attributes: true });
+        }
+
+    } catch (error) {
+        handleError(error, 'Video Section');
+    }
 });
