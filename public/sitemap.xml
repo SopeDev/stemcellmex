@@ -2,42 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://stemcellmex.com/</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://stemcellmex.com/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://stemcellmex.com/"/>
   </url>
   <url>
-    <loc>https://stemcellmex.com/about.html</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://stemcellmex.com/about.html"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://stemcellmex.com/about.html"/>
-  </url>
-  <url>
     <loc>https://stemcellmex.com/treatments.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://stemcellmex.com/treatments.html"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://stemcellmex.com/treatments.html"/>
   </url>
   <url>
-    <loc>https://stemcellmex.com/faq.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://stemcellmex.com/about.html</loc>
+    <lastmod>2025-01-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://stemcellmex.com/faq.html"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://stemcellmex.com/faq.html"/>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stemcellmex.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://stemcellmex.com/about.html"/>
   </url>
   <url>
     <loc>https://stemcellmex.com/contact.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://stemcellmex.com/contact.html"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://stemcellmex.com/contact.html"/>
+  </url>
+  <url>
+    <loc>https://stemcellmex.com/faq.html</loc>
+    <lastmod>2025-01-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stemcellmex.com/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://stemcellmex.com/faq.html"/>
   </url>
 </urlset>

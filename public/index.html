@@ -568,30 +568,22 @@
     <!-- Enhanced Google Analytics Tracking -->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        console.log('GA Tracking script loaded');
-        console.log('gtag function available:', typeof gtag === 'function');
-        
         // --------------- FORM SUBMISSIONS ---------------
         // Add data-formname="Contact" (or similar) to each <form> so we can name them
         // Example: <form id="contact" data-formname="Contact">
         document.querySelectorAll('form').forEach(form => {
             const formName = form.getAttribute('data-formname') || form.getAttribute('id') || 'Form'
-            console.log('Form found:', formName, form.id);
             
             // fire event right before the browser navigates away
             form.addEventListener('submit', e => {
-                console.log('Form submitted:', formName);
                 // send GA4 event
                 if (typeof gtag === 'function') {
-                    console.log('Sending GA4 form_submit event');
                     gtag('event', 'form_submit', {
                         form_name: formName,
                         form_id: form.id || '',
                         page_path: location.pathname,
                         page_title: document.title
                     })
-                } else {
-                    console.error('gtag function not available');
                 }
 
                 // let the native submit continue immediately
@@ -601,62 +593,45 @@
 
         // --------------- PHONE CLICKS ---------------
         document.querySelectorAll('a[href^="tel:"]').forEach(a => {
-            console.log('Phone link found:', a.href);
             a.addEventListener('click', () => {
-                console.log('Phone clicked:', a.href);
                 if (typeof gtag === 'function') {
-                    console.log('Sending GA4 click_phone event');
                     gtag('event', 'click_phone', {
                         phone_number: a.getAttribute('href').replace('tel:', ''),
                         link_text: a.textContent.trim(),
                         page_path: location.pathname,
                         page_title: document.title
                     })
-                } else {
-                    console.error('gtag function not available');
                 }
             })
         })
 
         // --------------- EMAIL CLICKS ---------------
         document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
-            console.log('Email link found:', a.href);
             a.addEventListener('click', () => {
-                console.log('Email clicked:', a.href);
                 if (typeof gtag === 'function') {
-                    console.log('Sending GA4 click_email event');
                     gtag('event', 'click_email', {
                         email: a.getAttribute('href').replace('mailto:', ''),
                         link_text: a.textContent.trim(),
                         page_path: location.pathname,
                         page_title: document.title
                     })
-                } else {
-                    console.error('gtag function not available');
                 }
             })
         })
 
         // --------------- WHATSAPP (optional) ---------------
         document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]').forEach(a => {
-            console.log('WhatsApp link found:', a.href);
             a.addEventListener('click', () => {
-                console.log('WhatsApp clicked:', a.href);
                 if (typeof gtag === 'function') {
-                    console.log('Sending GA4 wa_click event');
                     gtag('event', 'wa_click', {
                         href: a.href,
                         link_text: a.textContent.trim(),
                         page_path: location.pathname,
                         page_title: document.title
                     })
-                } else {
-                    console.error('gtag function not available');
                 }
             })
         })
-        
-        console.log('GA Tracking setup complete');
     })
     </script>
 </body>

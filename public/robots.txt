@@ -1,12 +1,40 @@
+# Robots.txt for Stemcell México
+# https://stemcellmex.com
+
 User-agent: *
 Allow: /
 
-# Sitemap
+# Block access to sensitive files
+Disallow: /.env
+Disallow: /api/
+Disallow: /reference/
+Disallow: /*.json$
+Disallow: /package.json
+Disallow: /vercel.json
+Disallow: /*.md$
+
+# Allow important assets
+Allow: /images/
+Allow: /fonts/
+Allow: /video/
+Allow: /styles.min.css
+Allow: /script.min.js
+
+# Sitemap location
 Sitemap: https://stemcellmex.com/sitemap.xml
 
-# Disallow admin or private areas (if any)
-# Disallow: /admin/
-# Disallow: /private/
-
-# Allow all search engines to crawl the site
+# Crawl delay for respectful crawling
 Crawl-delay: 1
+
+# Specific instructions for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
