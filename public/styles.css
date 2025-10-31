@@ -1297,6 +1297,13 @@ p {
     position: relative;
 }
 
+.member-photo .photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .member-info h3 {
     color: var(--stellar-explorer);
     margin-bottom: 0.5rem;
