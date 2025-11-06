@@ -1172,7 +1172,7 @@ function initTestimonialSlider() {
         let currentSlide = 0;
         let autoSlideInterval;
         let isTransitioning = false;
-        const slideInterval = 5000; // 5 seconds
+        const slideInterval = 6000; // 6 seconds
 
         // Function to show specific slide
         function showSlide(index) {

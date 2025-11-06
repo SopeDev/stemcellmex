@@ -3462,6 +3462,10 @@ p {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .testimonials-container {
+        min-height: 200px;
+    }
+    
     .testimonial-controls {
         gap: 1rem;
     }
@@ -3475,6 +3479,28 @@ p {
     .dot {
         width: 10px;
         height: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials-container {
+        min-height: 250px;
+    }
+    
+    .testimonial-quote {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        padding-left: 1.5rem;
+    }
+    
+    .testimonial-quote::before {
+        font-size: 2.5rem;
+        left: -0.2rem;
+    }
+    
+    .testimonial-author {
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
     }
 } 
 
