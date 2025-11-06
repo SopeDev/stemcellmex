@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Stemcell México - Contacto</title>
-	<meta name="description" content="Contacta con Stemcell México para consultas sobre medicina regenerativa en Tijuana.">
+	<title>Contact Us - Stem Cell Therapy Tijuana | Stemcell México Near San Diego</title>
+	<meta name="description" content="Contact Stemcell México in Tijuana, Mexico - 5 minutes from San Diego. Schedule your consultation for regenerative medicine treatments. Call or visit us.">
+	<meta name="language" content="en">
+	
+	<!-- Open Graph / Social Media -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://www.stemcell.mx/contact.html">
+	<meta property="og:title" content="Contact Us - Stem Cell Therapy Tijuana | Stemcell México Near San Diego">
+	<meta property="og:description" content="Contact Stemcell México in Tijuana, Mexico - 5 minutes from San Diego. Schedule your consultation for regenerative medicine treatments. Call or visit us.">
+	<meta property="og:image" content="https://www.stemcell.mx/images/og-image.jpg">
+	<meta property="og:site_name" content="Stemcell México">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:locale:alternate" content="es_MX">
+	
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://www.stemcell.mx/contact.html">
+	<meta property="twitter:title" content="Contact Us - Stem Cell Therapy Tijuana | Stemcell México Near San Diego">
+	<meta property="twitter:description" content="Contact Stemcell México in Tijuana, Mexico - 5 minutes from San Diego. Schedule your consultation for regenerative medicine treatments. Call or visit us.">
+	<meta property="twitter:image" content="https://www.stemcell.mx/images/og-image.jpg">
+	
+	<!-- Canonical URL -->
+	<link rel="canonical" href="https://www.stemcell.mx/contact.html">
+	
+	<!-- Hreflang for multilingual SEO -->
+	<link rel="alternate" hreflang="en" href="https://www.stemcell.mx/contact.html">
+	<link rel="alternate" hreflang="es" href="https://www.stemcell.mx/contact.html?lang=es">
+	<link rel="alternate" hreflang="x-default" href="https://www.stemcell.mx/contact.html">
+	
 	<link rel="stylesheet" href="styles.min.css">
 	<link rel="preload" href="./fonts/specter-bold.woff" as="font" type="font/woff" crossorigin>
 	<link rel="preload" href="./fonts/calvino-regular.woff" as="font" type="font/woff" crossorigin>
@@ -26,12 +53,12 @@
 	<nav class="navbar">
 		<div class="nav-container">
 			<div class="nav-logo">
-				<a href="./index.html">
+				<a href="/">
 					<img src="./images/logo-white.svg" alt="Stemcell México" class="logo-img">
 				</a>
 			</div>
 			            <ul class="nav-menu">
-                <li><a href="./index.html" data-es="Inicio" data-en="Home">Home</a></li>
+                <li><a href="/" data-es="Inicio" data-en="Home">Home</a></li>
                 <li><a href="./treatments.html" data-es="Tratamientos" data-en="Treatments">Treatments</a></li>
                 <li><a href="./about.html" data-es="Sobre Nosotros" data-en="About Us">About Us</a></li>
                 <li><a href="./faq.html" data-es="FAQ" data-en="FAQ">FAQ</a></li>
@@ -52,7 +79,7 @@
 	<div class="mobile-nav-overlay">
 		<div class="mobile-nav-content">
 			<ul class="mobile-nav-menu">
-                <li><a href="./index.html" data-es="Inicio" data-en="Home">Home</a></li>
+                <li><a href="/" data-es="Inicio" data-en="Home">Home</a></li>
                 <li><a href="./treatments.html" data-es="Tratamientos" data-en="Treatments">Treatments</a></li>
                 <li><a href="./about.html" data-es="Sobre Nosotros" data-en="About Us">About Us</a></li>
                 <li><a href="./faq.html" data-es="FAQ" data-en="FAQ">FAQ</a></li>
@@ -254,7 +281,7 @@
 				<div class="footer-section">
 					<h4 data-es="Enlaces" data-en="Links">Links</h4>
 					<ul>
-						<li><a href="./index.html" data-es="Inicio" data-en="Home">Home</a></li>
+						<li><a href="/" data-es="Inicio" data-en="Home">Home</a></li>
 						<li><a href="./treatments.html" data-es="Tratamientos" data-en="Treatments">Treatments</a></li>
 						<li><a href="./about.html" data-es="Sobre Nosotros" data-en="About Us">About Us</a></li>
 						<li><a href="./faq.html" data-es="FAQ" data-en="FAQ">FAQ</a></li>
@@ -300,12 +327,14 @@
 			// fire event right before the browser navigates away
 			form.addEventListener('submit', e => {
 				// send GA4 event
-				if (typeof gtag === 'function') {
+				if (typeof gtag !== 'undefined') {
 					gtag('event', 'form_submit', {
-						form_name: formName,
-						form_id: form.id || '',
-						page_path: location.pathname,
-						page_title: document.title
+						'event_category': 'Form',
+						'event_label': 'Form Submission',
+						'form_name': formName,
+						'form_id': form.id || '',
+						'page_path': location.pathname,
+						'page_title': document.title
 					})
 				}
 
@@ -316,13 +345,15 @@
 
 		// --------------- PHONE CLICKS ---------------
 		document.querySelectorAll('a[href^="tel:"]').forEach(a => {
-			a.addEventListener('click', () => {
-				if (typeof gtag === 'function') {
+			a.addEventListener('click', (e) => {
+				if (typeof gtag !== 'undefined') {
 					gtag('event', 'click_phone', {
-						phone_number: a.getAttribute('href').replace('tel:', ''),
-						link_text: a.textContent.trim(),
-						page_path: location.pathname,
-						page_title: document.title
+						'event_category': 'Contact',
+						'event_label': 'Phone Click',
+						'phone_number': a.getAttribute('href').replace('tel:', ''),
+						'link_text': a.textContent.trim(),
+						'page_path': location.pathname,
+						'page_title': document.title
 					})
 				}
 			})
@@ -330,32 +361,71 @@
 
 		// --------------- EMAIL CLICKS ---------------
 		document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
-			a.addEventListener('click', () => {
-				if (typeof gtag === 'function') {
+			a.addEventListener('click', (e) => {
+				if (typeof gtag !== 'undefined') {
 					gtag('event', 'click_email', {
-						email: a.getAttribute('href').replace('mailto:', ''),
-						link_text: a.textContent.trim(),
-						page_path: location.pathname,
-						page_title: document.title
+						'event_category': 'Contact',
+						'event_label': 'Email Click',
+						'email': a.getAttribute('href').replace('mailto:', ''),
+						'link_text': a.textContent.trim(),
+						'page_path': location.pathname,
+						'page_title': document.title
 					})
 				}
 			})
 		})
 
-		// --------------- WHATSAPP (optional) ---------------
+		// --------------- WHATSAPP CLICKS ---------------
 		document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]').forEach(a => {
-			a.addEventListener('click', () => {
-				if (typeof gtag === 'function') {
+			a.addEventListener('click', (e) => {
+				if (typeof gtag !== 'undefined') {
 					gtag('event', 'wa_click', {
-						href: a.href,
-						link_text: a.textContent.trim(),
-						page_path: location.pathname,
-						page_title: document.title
+						'event_category': 'Contact',
+						'event_label': 'WhatsApp Click',
+						'href': a.href,
+						'link_text': a.textContent.trim(),
+						'page_path': location.pathname,
+						'page_title': document.title
 					})
 				}
 			})
 		})
 	})
+
+	// --------------- WHATSAPP BUTTON BILINGUAL MESSAGE ---------------
+	function updateWhatsAppMessage() {
+		const whatsappBtn = document.querySelector('.whatsapp-float');
+		if (whatsappBtn) {
+			const currentLang = localStorage.getItem('stemcell-language') || 'en';
+			const messages = {
+				en: "Hello%2C%20I%27m%20interested%20in%20learning%20more%20about%20stem%20cell%20treatments",
+				es: "Hola%2C%20estoy%20interesado%20en%20conocer%20m%C3%A1s%20sobre%20tratamientos%20con%20c%C3%A9lulas%20madre"
+			};
+			whatsappBtn.href = `https://wa.me/526643896911?text=${messages[currentLang]}`;
+		}
+	}
+	
+	// Update on page load
+	updateWhatsAppMessage();
+	
+	// Update when language changes
+	const langBtns = document.querySelectorAll('.lang-btn');
+	langBtns.forEach(btn => {
+		btn.addEventListener('click', () => {
+			setTimeout(updateWhatsAppMessage, 100);
+		});
+	});
 	</script>
+
+	<!-- Floating WhatsApp Button -->
+	<a href="https://wa.me/526643896911?text=Hello%2C%20I%27m%20interested%20in%20learning%20more%20about%20stem%20cell%20treatments" 
+	   class="whatsapp-float" 
+	   target="_blank" 
+	   rel="noopener noreferrer"
+	   aria-label="Contact us on WhatsApp">
+		<svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+			<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+		</svg>
+	</a>
 </body>
 </html>

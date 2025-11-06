@@ -296,6 +296,55 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set up random shapes for compact hero sections
     setupRandomShapes();
     
+    // Function to get language from URL parameter
+    function getLanguageFromURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const langParam = urlParams.get('lang');
+        if (langParam === 'es') {
+            return 'es';
+        }
+        return 'en'; // Default to English
+    }
+    
+    // Function to update URL with language parameter
+    function updateURLWithLanguage(lang) {
+        const url = new URL(window.location.href);
+        
+        if (lang === 'es') {
+            // Add ?lang=es for Spanish
+            url.searchParams.set('lang', 'es');
+        } else {
+            // Remove lang parameter for English (default)
+            url.searchParams.delete('lang');
+        }
+        
+        // Update URL without page reload (using history API)
+        window.history.replaceState({}, '', url.toString());
+    }
+    
+    // Function to update HTML lang attribute
+    function updateHTMLLangAttribute(lang) {
+        document.documentElement.lang = lang;
+    }
+    
+    // Function to update canonical URL
+    function updateCanonicalURL(lang) {
+        let canonicalLink = document.querySelector('link[rel="canonical"]');
+        if (!canonicalLink) {
+            canonicalLink = document.createElement('link');
+            canonicalLink.rel = 'canonical';
+            document.head.appendChild(canonicalLink);
+        }
+        
+        const baseURL = 'https://www.stemcell.mx';
+        const currentPath = window.location.pathname;
+        const canonicalURL = lang === 'es' 
+            ? `${baseURL}${currentPath}?lang=es`
+            : `${baseURL}${currentPath}`;
+        
+        canonicalLink.href = canonicalURL;
+    }
+    
     // Function to apply language to all elements
     function applyLanguage(lang) {
         const elementsToTranslate = document.querySelectorAll('[data-es][data-en]');
@@ -311,6 +360,16 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.textContent = lang === 'en' ? 'ES' : 'EN';
         });
         
+        // Update HTML lang attribute
+        updateHTMLLangAttribute(lang);
+        
+        // Update canonical URL
+        updateCanonicalURL(lang);
+        
+        // Update navigation links to preserve language parameter
+        // Pass the language directly to avoid timing issues
+        preserveLanguageOnNavigation(lang);
+        
         // Re-apply active states after language change
         updateActiveNavLink();
     }
@@ -321,6 +380,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Save to localStorage
         localStorage.setItem('stemcell-language', currentLanguage);
+        
+        // Update URL with language parameter
+        updateURLWithLanguage(currentLanguage);
         
         // Close mobile navigation menu if it's open
         const hamburger = document.querySelector('.hamburger');
@@ -346,20 +408,127 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(`Switched to ${currentLanguage === 'en' ? 'English' : 'Spanish'}`);
     }
     
-    // Check localStorage for saved language preference
+    // Initialize language: Check URL parameter first, then localStorage, then default to English
+    const urlLanguage = getLanguageFromURL();
     const savedLanguage = localStorage.getItem('stemcell-language');
-    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'es')) {
+    
+    if (urlLanguage === 'es') {
+        // URL parameter says Spanish
+        currentLanguage = 'es';
+        localStorage.setItem('stemcell-language', 'es');
+    } else if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'es')) {
+        // Use saved preference, but sync URL if needed
         currentLanguage = savedLanguage;
-        applyLanguage(currentLanguage);
+        if (savedLanguage === 'es' && urlLanguage !== 'es') {
+            // Saved preference is Spanish but URL doesn't reflect it
+            updateURLWithLanguage('es');
+        } else if (savedLanguage === 'en' && urlLanguage === 'es') {
+            // Saved preference is English but URL says Spanish - trust URL
+            currentLanguage = 'es';
+            localStorage.setItem('stemcell-language', 'es');
+        }
     } else {
-        // Set initial content to English (default)
-        applyLanguage('en');
+        // Default to English
+        currentLanguage = 'en';
+        localStorage.setItem('stemcell-language', 'en');
+        // Ensure URL doesn't have lang parameter for English
+        if (urlLanguage === 'es') {
+            updateURLWithLanguage('en');
+        }
     }
+    
+    // Apply the determined language
+    applyLanguage(currentLanguage);
     
     // Add event listeners to all language buttons
     langBtns.forEach(btn => {
         btn.addEventListener('click', updateLanguage);
     });
+    
+    // Preserve language parameter when navigating between pages
+    function preserveLanguageOnNavigation(langOverride = null) {
+        // Use provided language override, or get from URL, or use currentLanguage variable
+        const currentLang = langOverride !== null ? langOverride : (getLanguageFromURL() || currentLanguage);
+        const allNavLinks = document.querySelectorAll('a[href^="./"], a[href^="/"], a[href^="index.html"]');
+        
+        allNavLinks.forEach(link => {
+            let href = link.getAttribute('href');
+            
+            // Skip hash links (same-page anchors), external links, and mailto/tel links
+            if (!href || href.startsWith('#') || href.startsWith('http://') || href.startsWith('https://') || 
+                href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) {
+                return;
+            }
+            
+            // Store original href to restore if needed
+            const originalHref = link.getAttribute('data-original-href') || href;
+            if (!link.hasAttribute('data-original-href')) {
+                link.setAttribute('data-original-href', originalHref);
+            }
+            
+            // Start with original href (without any lang parameter)
+            href = originalHref;
+            
+            // Separate hash fragment from the URL if it exists
+            let hashFragment = '';
+            const hashIndex = href.indexOf('#');
+            if (hashIndex !== -1) {
+                hashFragment = href.substring(hashIndex);
+                href = href.substring(0, hashIndex);
+            }
+            
+            // Remove any existing lang parameter from the path part
+            href = href.replace(/[?&]lang=es/g, '');
+            href = href.replace(/\?&/, '?'); // Clean up if ?& remains
+            href = href.replace(/\?$/, ''); // Remove trailing ?
+            
+            // Add language parameter if we're in Spanish mode (before the hash)
+            if (currentLang === 'es') {
+                const separator = href.includes('?') ? '&' : '?';
+                href = href + separator + 'lang=es';
+            }
+            
+            // Reconstruct the full URL with hash fragment
+            link.href = href + hashFragment;
+        });
+    }
+    
+    // Initialize navigation link preservation on page load
+    preserveLanguageOnNavigation();
+    
+    // Re-run link preservation when DOM changes (for dynamically added links)
+    // Use MutationObserver to watch for new links added to the page
+    let linkUpdateTimeout;
+    const linkObserver = new MutationObserver(function(mutations) {
+        let shouldUpdate = false;
+        mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length) {
+                mutation.addedNodes.forEach(function(node) {
+                    if (node.nodeType === 1) { // Element node
+                        // Check if the added node is a link or contains links
+                        if (node.tagName === 'A' || (node.querySelector && node.querySelector('a[href^="./"], a[href^="/"]'))) {
+                            shouldUpdate = true;
+                        }
+                    }
+                });
+            }
+        });
+        if (shouldUpdate) {
+            // Debounce to avoid too many updates
+            clearTimeout(linkUpdateTimeout);
+            linkUpdateTimeout = setTimeout(function() {
+                preserveLanguageOnNavigation();
+            }, 100);
+        }
+    });
+    
+    // Observe the entire document for added nodes (only if body exists)
+    if (document.body) {
+        linkObserver.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    }
 });
 
 // FAQ Accordion Functionality
