@@ -3397,6 +3397,7 @@ p {
 .testimonial-author {
     font-weight: 600;
     text-align: right;
+    padding-right: 10px;
 }
 
 /* Testimonial Controls */
