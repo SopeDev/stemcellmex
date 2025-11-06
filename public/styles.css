@@ -3483,12 +3483,8 @@ p {
 }
 
 @media (max-width: 480px) {
-    .testimonials-container {
-        min-height: 250px;
-    }
-    
     .testimonial-quote {
-        font-size: 0.95rem;
+        font-size: 1rem;
         line-height: 1.6;
         padding-left: 1.5rem;
     }
@@ -3499,15 +3495,12 @@ p {
     }
     
     .testimonial-author {
-        font-size: 0.9rem;
+        font-size: 1rem;
         margin-top: 0.5rem;
     }
 } 
 
 /* ===== TREATMENTS PAGE STYLES ===== */
-
-
-
 /* Treatments Overview Section */
 .treatments-overview {
     padding: 6rem 0;
